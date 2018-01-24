@@ -1,4 +1,3 @@
-# My Full Stack Project
-## Food Stories
-### (Clone of Kitchen Stories https://kitchenstories.io/en)
-
+# Food Stories
+## (Clone of Kitchen Stories https://kitchenstories.io/en)
+### Full-stack Project
