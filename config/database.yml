@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: kitchen_stories_development
+  database: food_stories_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: kitchen_stories_test
+  database: food_stories_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: kitchen_stories_production
-  username: kitchen_stories
+  database: food_stories_production
+  username: food_stories
   password: <%= ENV['KITCHEN_STORIES_DATABASE_PASSWORD'] %>
