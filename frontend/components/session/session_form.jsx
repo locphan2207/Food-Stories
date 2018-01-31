@@ -49,7 +49,7 @@ class SessionForm extends React.Component {
     let welcomeText = 'Welcome to Kitchen Stories';
     let subWelcomeText = 'Create your account';
     let welcomeImg = <img className="two-hand"
-      src="https://kitchenstories.io/images/icon_hand_magic.svg"></img>;
+      src={window.imageUrls.iconHand}></img>;
 
     if (this.props.formType === 'login') {
       buttonText = 'Log In';
@@ -57,7 +57,7 @@ class SessionForm extends React.Component {
       welcomeText = 'Welcome back!';
       subWelcomeText = 'Log in to your account';
       welcomeImg = <img className="one-hand"
-        src="https://kitchenstories.io/images/peace-hands.svg"></img>;
+        src={window.imageUrls.peaceHands}></img>;
     }
     let errorIndex = null;
     if (this.props.errors.length > 0) {

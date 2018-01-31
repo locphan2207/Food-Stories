@@ -49,6 +49,11 @@
   outline:none;
 }
 
+.session-input:focus {
+  color: black;
+  border-bottom: 1px solid black;
+}
+
 .session-button {
   background: #0a7f78;
   color: white;

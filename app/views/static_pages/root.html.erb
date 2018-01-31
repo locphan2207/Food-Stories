@@ -3,5 +3,9 @@
     window.currentUser =
       <%= render("current_user.json.jbuilder").html_safe %>;
   <% end %>
+  window.imageUrls = {
+    peaceHands: "<%= image_path("peace-hands.svg") %>",
+    iconHand: "<%= image_path("icon_hand_magic.svg") %>"
+  }
 </script>
 <div id="root">Everything is broken<div>
