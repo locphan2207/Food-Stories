@@ -30,20 +30,20 @@ gem 'jbuilder', '~> 2.5'
 gem 'pry-rails'
 gem 'bcrypt'
 gem 'rails_12factor'
+gem 'jquery-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'better_errors'
-  gem 'binding_of_caller'
   gem 'annotate'
-  gem 'jquery-rails'
 end
 
 group :development do
