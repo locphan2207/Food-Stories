@@ -13,12 +13,14 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
+    @errors = []
     if current_user
       current_user.reset_session_token!
       session[:session_token] = nil
-      render json: {}
+      render :show
     else
-      render json: {errors: ['You are not logged in']}, status: 401
+      @errors += ['You are not logged in']
+      render :show, status: 401
     end
   end
 end

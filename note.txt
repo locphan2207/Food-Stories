@@ -1,0 +1,11 @@
+add node buildpack before ruby
+run migratoin: heroku run rails db:migrate
+
+heroky server log: heroku logs -t
+
+for image url:
+window.staticImages = {
+  headerImage: "<%= asset_url("link.png") %>"
+}
+
+so that you can use the variable window.staticImages.headerImage

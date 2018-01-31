@@ -2,10 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import * as actions from './actions/session_actions';
+import Root from './components/root';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
-  const store = configureStore();
+  let store;
+  console.log(window.currentUser);
+  if (window.currentUser) {
+    store = configureStore({session: {currentUser: window.currentUser}});
+  } else {
+    store = configureStore();
+  }
+
   //testing:
   window.getState = store.getState;
   window.dispatch = store.dispatch;
@@ -13,5 +21,5 @@ document.addEventListener("DOMContentLoaded", () => {
   window.login = actions.login;
   window.logout = actions.logout;
   //
-  ReactDOM.render(<h1>Food Stories</h1>, root);
+  ReactDOM.render(<Root store={store} />, root);
 });
