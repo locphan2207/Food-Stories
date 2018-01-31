@@ -46,7 +46,7 @@ class SessionForm extends React.Component {
           onChange={e =>this.setState({username: e.target.value})}
           type="text" value={this.state.username}/>
     );
-    let welcomeText = 'Welcome to Kitchen Stories';
+    let welcomeText = 'Welcome to Food Stories';
     let subWelcomeText = 'Create your account';
     let welcomeImg = <img className="two-hand"
       src={window.imageUrls.iconHand}></img>;

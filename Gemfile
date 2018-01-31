@@ -29,7 +29,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'pry-rails'
 gem 'bcrypt'
-gem 'rails_12factor'
 gem 'jquery-rails'
 
 # Use Capistrano for deployment
