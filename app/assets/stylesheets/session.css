@@ -9,6 +9,8 @@
 }
 
 .modal-form {
+  position: relative;
+  width: 348px;
   border-radius: 12px;
   box-shadow: 0 0 16px rgba(0,0,0,0.13);
   background: white;
@@ -23,9 +25,65 @@
 }
 
 .welcome1 {
-  font-size: 130%;
+  font-size: 170%;
+  text-align: center;
+  font-weight: bold;
+  margin: 17.6px 0 0 0;
 }
 
 .welcome2 {
-  font-size: 100%;
+  font-size: 110%;
+  font-weight: lighter;
+  text-align: center;
+  margin: 17.6px 0;;
+}
+
+.session-input {
+  min-width: 100%;
+  font-size: 15px;
+  font-weight: lighter;
+  border: none;
+  border-bottom: 1px solid #d8d8d8;
+  padding: 20px 0 7px 0;
+  color: #d8d8d8;
+}
+
+.session-button {
+  background: #0a7f78;
+  color: white;
+  margin: 0 auto;
+  margin-top: 30px;
+  font-size: 90%;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 17px;
+}
+
+.modal-form>ul {
+  padding: 10px 0;
+  margin: 0;
+}
+
+.two-hand {
+  margin: 0 auto;
+  width: 56px;
+}
+
+.one-hand {
+  margin: 0 auto;
+  width: 27px;
+}
+
+.modal-form>ul>li {
+  list-style: none;
+  color: #dc4a38;
+  font-size: 80%;
+  font-weight: lighter;
+}
+
+#close {
+  cursor: pointer;
+  position: absolute;
+  right: 17.6px;
+  top: 17.6px;
 }

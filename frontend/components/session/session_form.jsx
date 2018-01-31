@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom';
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {username: "Username", email: "Email", password: "Password", exit: false};
+    this.state = {username: "Username", email: "E-mail", password: "Password", exit: false};
     console.log(this.props);
   }
 
@@ -23,6 +23,9 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state); //Need this, idk why
+    if (user.username === "Username") user.username = "";
+    if (user.email === "E-mail") user.email = "";
+    if (user.password === "Password") user.password = "";
     this.props.submit(user);
   }
 
@@ -37,7 +40,7 @@ class SessionForm extends React.Component {
     //If not logged in, start setting up form:
     let buttonText = 'Sign Up';
     let usernameField = (
-        <input
+        <input className="session-input"
           onFocus={e => this.handleFocus(e, "Username")}
           onBlur={e => this.handleFocusOut(e, "Username")}
           onChange={e =>this.setState({username: e.target.value})}
@@ -45,12 +48,16 @@ class SessionForm extends React.Component {
     );
     let welcomeText = 'Welcome to Kitchen Stories';
     let subWelcomeText = 'Create your account';
+    let welcomeImg = <img className="two-hand"
+      src="https://kitchenstories.io/images/icon_hand_magic.svg"></img>;
 
     if (this.props.formType === 'login') {
       buttonText = 'Log In';
       usernameField = null;
       welcomeText = 'Welcome back!';
       subWelcomeText = 'Log in to your account';
+      welcomeImg = <img className="one-hand"
+        src="https://kitchenstories.io/images/peace-hands.svg"></img>;
     }
     let errorIndex = null;
     if (this.props.errors.length > 0) {
@@ -64,21 +71,24 @@ class SessionForm extends React.Component {
         <form
           className="modal-form"
           onSubmit={e => this.handleSubmit(e)}>
+          <img id="close" onClick={() => this.setState({exit: true})}
+            src="https://kitchenstories.io/images/icon_close.svg"></img>
+          {welcomeImg}
           <p className="welcome1">{welcomeText}</p>
           <p className="welcome2">{subWelcomeText}</p>
-          <ul>{errorIndex}</ul>
           {usernameField}
-          <input
-            onFocus={e => this.handleFocus(e, "Email")}
-            onBlur={e => this.handleFocusOut(e, "Email")}
+          <input className="session-input"
+            onFocus={e => this.handleFocus(e, "E-mail")}
+            onBlur={e => this.handleFocusOut(e, "E-mail")}
             onChange={e =>this.setState({email: e.target.value})}
             type="text" value={this.state.email}/>
-          <input
+          <input className="session-input"
             onFocus={e => this.handleFocus(e, "Password")}
             onBlur={e => this.handleFocusOut(e, "Password")}
             onChange={e => this.setState({password: e.target.value})}
             type="text" value={this.state.password}/>
-          <input type="submit" value={buttonText} />
+          <ul>{errorIndex}</ul>
+          <input className="session-button" type="submit" value={buttonText} />
         </form>
       </div>
     );
