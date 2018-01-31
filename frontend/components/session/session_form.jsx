@@ -6,7 +6,6 @@ class SessionForm extends React.Component {
     super(props);
     this.state = {username: "Username", email: "Email", password: "Password", exit: false};
     console.log(this.props);
-    this.formInputs = {username: "", email: "", password: ""};
   }
 
   handleFocus(e, label) {
@@ -15,8 +14,10 @@ class SessionForm extends React.Component {
   }
 
   handleFocusOut(e, label) {
-    if (e.target.value === "") e.target.value=label;
-    if (e.target.type === "password") e.target.type = "text";
+    if (e.target.value === "") {
+      e.target.value=label;
+      e.target.type = "text";
+    }
   }
 
   handleSubmit(e) {
@@ -40,7 +41,7 @@ class SessionForm extends React.Component {
           onFocus={e => this.handleFocus(e, "Username")}
           onBlur={e => this.handleFocusOut(e, "Username")}
           onChange={e =>this.setState({username: e.target.value})}
-          type="text" value="Username"/>
+          type="text" value={this.state.username}/>
     );
     let welcomeText = 'Welcome to Kitchen Stories';
     let subWelcomeText = 'Create your account';
@@ -71,12 +72,12 @@ class SessionForm extends React.Component {
             onFocus={e => this.handleFocus(e, "Email")}
             onBlur={e => this.handleFocusOut(e, "Email")}
             onChange={e =>this.setState({email: e.target.value})}
-            type="text" value="Email"/>
+            type="text" value={this.state.email}/>
           <input
             onFocus={e => this.handleFocus(e, "Password")}
             onBlur={e => this.handleFocusOut(e, "Password")}
             onChange={e => this.setState({password: e.target.value})}
-            type="text" value="Password"/>
+            type="text" value={this.state.password}/>
           <input type="submit" value={buttonText} />
         </form>
       </div>
