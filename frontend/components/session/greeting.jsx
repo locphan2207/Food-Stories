@@ -25,7 +25,7 @@ class Greeting extends React.Component {
           <img className="searchIcon"
             src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-512.png"></img>
           <img className="profile-pic"
-            src="https://support.plymouth.edu/kb_images/Yammer/default.jpeg">
+            src={window.imageUrls.userDefault}>
           </img>
           <p onClick={() => this.toggleDropdown()}
             className="username">{this.props.currentUser.username}</p>

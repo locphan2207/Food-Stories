@@ -72,7 +72,7 @@ class SessionForm extends React.Component {
           className="modal-form"
           onSubmit={e => this.handleSubmit(e)}>
           <img id="close" onClick={() => this.setState({exit: true})}
-            src="https://kitchenstories.io/images/icon_close.svg"></img>
+            src={window.imageUrls.iconClose}></img>
           {welcomeImg}
           <p className="welcome1">{welcomeText}</p>
           <p className="welcome2">{subWelcomeText}</p>
