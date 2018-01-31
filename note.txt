@@ -9,3 +9,5 @@ window.staticImages = {
 }
 
 so that you can use the variable window.staticImages.headerImage
+
+trying to clear form input

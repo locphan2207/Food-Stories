@@ -21,3 +21,9 @@
   font-weight: normal;
   font-style: normal;
 }
+
+body {
+  font-family: Conv_Brandon_light, Arial, sans-serif;
+  font-size: 17.6px;
+  font-weight: 700;
+}

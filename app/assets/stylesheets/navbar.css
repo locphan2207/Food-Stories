@@ -1,13 +1,10 @@
 
 .header-row {
   position: relative;
-  font-family: Conv_Brandon_light, Arial, sans-serif;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   border-bottom: 1px solid rgb(216,216,216);
-  font-size: 17.6px;
-  font-weight: 700;
   padding: 0 35.2px 0 35.2px;
   margin-top: -10px;
 }
@@ -58,13 +55,20 @@
 }
 
 .right-menu>a {
+  font-size: 95%;
   padding: 0 12.5px;
   border-left: 1px solid #8e8e8e;
-  line-height: 1;
+}
+
+.searchIcon {
+  width: 20px;
+  height: 20px;
+  padding: 0 12.5px;
+  margin-top: 3px;
 }
 
 /*dropdown*/
-.right-menu>img {
+.profile-pic {
   padding: 0 12.5px;
   width: 30px;
   height: 30px;
@@ -77,7 +81,7 @@
 }
 
 .username {
-  font-size: 100%;
+  font-size: 110%;
   posistion: relative;
   margin: 0;
   color: black;
@@ -94,10 +98,6 @@
   box-shadow: 0 0 16px rgba(0,0,0,0.13);
 }
 
-.right-menu>p:hover .user-dropdown {
-  display: block;
-}
-
 .user-info {
   margin: 0 20px;
   display: flex;
@@ -108,7 +108,6 @@
 .user-text {
   line-height: 0.5;
   font-size: 100%;
-  /* background: red; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -127,6 +126,7 @@
 }
 
 .logout {
+  cursor: pointer;
   font-size: 100%;
   color: rgb(10, 127, 120);
   padding: 15px 0;

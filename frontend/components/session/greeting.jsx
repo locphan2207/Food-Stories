@@ -22,6 +22,8 @@ class Greeting extends React.Component {
     if (this.props.currentUser) {
       return (
         <div className="right-menu">
+          <img className="searchIcon"
+            src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-512.png"></img>
           <img className="profile-pic"
             src="https://support.plymouth.edu/kb_images/Yammer/default.jpeg">
           </img>
@@ -33,6 +35,8 @@ class Greeting extends React.Component {
     } else {
       return (
         <div className="right-menu">
+          <img className="searchIcon"
+            src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-512.png"></img>
           <Link to="/login">Log In</Link>
           <Link to="/signup">Sign Up</Link>
         </div>

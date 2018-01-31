@@ -4,8 +4,19 @@ import {Redirect} from 'react-router-dom';
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {username: "", email: "", password: ""};
+    this.state = {username: "Username", email: "Email", password: "Password", exit: false};
     console.log(this.props);
+    this.formInputs = {username: "", email: "", password: ""};
+  }
+
+  handleFocus(e, label) {
+    if (e.target.value === "Password") e.target.type = "password";
+    if (e.target.value === label) e.target.value = "";
+  }
+
+  handleFocusOut(e, label) {
+    if (e.target.value === "") e.target.value=label;
+    if (e.target.type === "password") e.target.type = "text";
   }
 
   handleSubmit(e) {
@@ -16,7 +27,7 @@ class SessionForm extends React.Component {
 
   render() {
     //Redirect if logged in:
-    if (this.props.isLoggedIn) {
+    if (this.props.isLoggedIn || this.state.exit) {
       return (
         <Redirect to="/" />
       );
@@ -24,36 +35,51 @@ class SessionForm extends React.Component {
 
     //If not logged in, start setting up form:
     let buttonText = 'Sign Up';
-    let emailField = (
-      <label>Email
-        <input onChange={(e)=>this.setState({email: e.target.value})}
-          type="text"/>
-      </label>
+    let usernameField = (
+        <input
+          onFocus={e => this.handleFocus(e, "Username")}
+          onBlur={e => this.handleFocusOut(e, "Username")}
+          onChange={e =>this.setState({username: e.target.value})}
+          type="text" value="Username"/>
     );
+    let welcomeText = 'Welcome to Kitchen Stories';
+    let subWelcomeText = 'Create your account';
+
     if (this.props.formType === 'login') {
       buttonText = 'Log In';
-      emailField = null;
+      usernameField = null;
+      welcomeText = 'Welcome back!';
+      subWelcomeText = 'Log in to your account';
     }
     let errorIndex = null;
     if (this.props.errors.length > 0) {
       errorIndex = (this.props.errors.map(error => (<li>{error}</li>)));
     }
 
+    //onClick={() => this.setState({exit: true})}
     //Render form based on type:
     return (
-      <form onSubmit={(e) => this.handleSubmit(e)}>
-        <ul>{errorIndex}</ul>
-        <label>Username
-          <input onChange={(e)=>this.setState({username: e.target.value})}
-            type="text"/>
-        </label>
-        {emailField}
-        <label>Password
-          <input onChange={(e)=>this.setState({password: e.target.value})}
-            type="password"/>
-        </label>
-        <input type="submit" value={buttonText} />
-      </form>
+      <div className="modal-screen">
+        <form
+          className="modal-form"
+          onSubmit={e => this.handleSubmit(e)}>
+          <p className="welcome1">{welcomeText}</p>
+          <p className="welcome2">{subWelcomeText}</p>
+          <ul>{errorIndex}</ul>
+          {usernameField}
+          <input
+            onFocus={e => this.handleFocus(e, "Email")}
+            onBlur={e => this.handleFocusOut(e, "Email")}
+            onChange={e =>this.setState({email: e.target.value})}
+            type="text" value="Email"/>
+          <input
+            onFocus={e => this.handleFocus(e, "Password")}
+            onBlur={e => this.handleFocusOut(e, "Password")}
+            onChange={e => this.setState({password: e.target.value})}
+            type="text" value="Password"/>
+          <input type="submit" value={buttonText} />
+        </form>
+      </div>
     );
   }
 }
