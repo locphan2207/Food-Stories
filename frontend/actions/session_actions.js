@@ -16,17 +16,17 @@ const receiveSessionErrors = (errors) => ({
 export const signup = (user) => (dispatch) => {
   SessionAPIUtil.postUser(user)
     .then(response => dispatch(receiveCurrentUser(response.currentUser)))
-    .fail(response => dispatch(receiveSessionErrors(response.responseJSON.errors)));
+    .fail(promise => dispatch(receiveSessionErrors(promise.responseJSON.errors)));
 };
 
 export const login = (user) => (dispatch) => {
   SessionAPIUtil.postSession(user)
     .then(response => dispatch(receiveCurrentUser(response.currentUser)))
-    .fail(response => dispatch(receiveSessionErrors(response.responseJSON.errors)));
+    .fail(promise => dispatch(receiveSessionErrors(promise.responseJSON.errors)));
 };
 
 export const logout = () => (dispatch) => {
   SessionAPIUtil.deleteSession()
     .then((response) => dispatch(receiveCurrentUser(response.currentUser)))
-    .fail(response => dispatch(receiveSessionErrors(response.responseJSON.errors)));
+    .fail(promise => dispatch(receiveSessionErrors(promise.responseJSON.errors)));
 };

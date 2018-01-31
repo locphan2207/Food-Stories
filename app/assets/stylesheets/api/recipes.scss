@@ -1,3 +1,61 @@
 // Place all the styles related to the api/recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.recipe-index {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 1000px;
+  margin: 0 300px;
+  padding: 20px 10px 0 10px;
+}
+
+.recipe-item {
+  padding: 0 10px;
+  width: 200px;
+  height: 391px;
+  list-style: none;
+}
+
+.recipe-item-pic-container {
+  width: 200px;
+  height: 266px;
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+}
+
+.recipe-item-pic {
+  height: 266px;
+}
+.recipe-white {
+  background: rgba(255,255,255,0.05);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2
+}
+
+.recipe-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.5) 100%);
+}
+.recipe-time {
+  padding: 0;
+  margin: 0;
+  color: white;
+  font-size: 14.08px;
+  font-weight: bolder;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 4;
+  line-height: 1.35;
+}

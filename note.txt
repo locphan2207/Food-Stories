@@ -11,3 +11,6 @@ window.staticImages = {
 so that you can use the variable window.staticImages.headerImage
 
 trying to clear form input
+
+dispatch(clearError)
+link to other session form

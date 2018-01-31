@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
-import * as actions from './actions/session_actions';
+import {fetchRecipes} from './actions/recipe_actions';
 import Root from './components/root';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -17,9 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //testing:
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.signup = actions.signup;
-  window.login = actions.login;
-  window.logout = actions.logout;
+  window.fetchRecipes = fetchRecipes;
   //
   ReactDOM.render(<Root store={store} />, root);
 });

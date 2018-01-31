@@ -1,7 +1,7 @@
 class Api::RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
-    render :index
+    render :index, status: 200
   end
 
   def show
