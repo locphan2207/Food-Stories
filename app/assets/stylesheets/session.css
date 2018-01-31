@@ -46,6 +46,7 @@
   border-bottom: 1px solid #d8d8d8;
   padding: 20px 0 7px 0;
   color: #d8d8d8;
+  outline:none;
 }
 
 .session-button {
