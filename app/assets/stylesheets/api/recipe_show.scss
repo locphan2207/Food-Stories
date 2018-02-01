@@ -113,26 +113,35 @@
   position: relative;
 }
 
-.time>div>p:first-child {
+.min {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -70%);
   font-family: "Conv_Brandon_med";
   font-size: 110%;
+  line-height: 0.9;
 }
 
-.time>div>p:first-child>span {
+.min>span {
   font-family: "Conv_Brandon_light";
   font-size: 90%;
   color: black;
   display: block;
 }
 
-.time>div>p:last-child {
+.time div>p:last-child {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   font-size: 115%;
+}
+
+canvas {
+  position: absolute;
+  // top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  // background: rgba(43,431,43,0.5);
 }

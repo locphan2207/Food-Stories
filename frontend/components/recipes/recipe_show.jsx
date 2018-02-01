@@ -2,7 +2,6 @@ import React from 'react';
 
 class RecipeShow extends React.Component {
   componentDidMount() {
-    // console.log(this.props.match.params.recipeId);
     this.props.fetchRecipe(this.props.match.params.recipeId);
   }
 
@@ -47,15 +46,18 @@ class RecipeShow extends React.Component {
             </div>
             <div className="time">
               <div>
-                <p>{recipe.preparation_min} <span>min.</span></p>
+                <canvas id="canvas" width="85" height="85"></canvas>
+                <p className="min">{recipe.preparation_min} <span>min.</span></p>
                 <p>Preparation</p>
               </div>
               <div>
-                <p>{recipe.baking_min} <span>min.</span></p>
+                <canvas id="canvas" width="85" height="85"></canvas>
+                <p className="min">{recipe.baking_min} <span>min.</span></p>
                 <p>Baking</p>
               </div>
               <div>
-                <p>{recipe.resting_min} <span>min.</span></p>
+                <canvas id="canvas" width="85" height="85"></canvas>
+                <p className="min">{recipe.resting_min} <span>min.</span></p>
                 <p>Resting</p>
               </div>
             </div>
