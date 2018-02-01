@@ -2,6 +2,11 @@ import React from 'react';
 import drawCanvas from '../../util/canvas';
 
 class RecipeShow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {servingNum: 3, canvasLoaded: false};
+  }
+
   componentWillMount() {
     // console.log("will mount");
     this.props.fetchRecipe(this.props.match.params.recipeId);
@@ -11,14 +16,31 @@ class RecipeShow extends React.Component {
     // console.log("did update");
     // console.log(nextProp.recipe);
     const {preparation_min, baking_min, resting_min} = this.props.recipe;
-    this.onload = drawCanvas(preparation_min, baking_min, resting_min);
+    // We need canvasLoaded to only render canvas ONCE after first load
+    if (!this.state.canvasLoaded) {
+      this.onload = drawCanvas(preparation_min, baking_min, resting_min);
+      this.setState({canvasLoaded: true});
+    }
   }
 
   render() {
-    console.log("is rendering");
     const {recipe} = this.props;
-    if (!recipe) return (<div></div>);  //THIS IS WEIRD but.. it takes
-                                        //extra 1 react cycle to get params?
+    //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
+    if (!recipe) return (<div></div>);
+
+    //Setup:
+    let ingredientRows = recipe.ingredients.split(", "); //split by comma
+    ingredientRows = ingredientRows.map(row => {
+      //We split the pair by colon, and show eacg in table
+      return (
+        <tr>
+          <td>{parseInt(row.split(": ")[1]) * this.state.servingNum}</td>
+          <td>{row.split(": ")[0]}</td>
+        </tr>
+      );
+    });
+
+    //Rendering:
     return (
       <div>
         <div className="post-header-container">
@@ -71,7 +93,17 @@ class RecipeShow extends React.Component {
                 <p>Resting</p>
               </div>
             </div>
-            <p>Ingredients: {recipe.ingredients}</p>
+            <div className="ingredients">
+              <p className="dif-title">Ingredients</p>
+              <p>Serving:
+                <button onClick={() => this.setState({servingNum: this.state.servingNum - 1})}>-</button>
+                {this.state.servingNum}
+                <button onClick={() => this.setState({servingNum: this.state.servingNum + 1})}>+</button>
+              </p>
+              <table><tbody>
+                {ingredientRows}
+              </tbody></table>
+            </div>
             <p>{recipe.text}</p>
           </div>
           <div className="right-col">

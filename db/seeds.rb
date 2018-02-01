@@ -15,8 +15,8 @@ User.create(username: 'loc', email: 'loc@gmail.com', password: 'chetcha')
     difficulty: "easy",
     ingredients: "hamburger: 1, salad: 1, carrot: 3",
     text: "Roughly chop pecans. Add sugar, water, and pecans to a pot. Allow the mixture to slowly simmer on medium heat for approx. 5 min. or until it thickens. Set aside and allow to cool.",
-    baking_min: 20 + rand(10),
-    preparation_min: 10 + rand(20),
-    resting_min: rand(5)
+    baking_min: 20 + rand(40),
+    preparation_min: 10 + rand(50),
+    resting_min: rand(30)
   )
 end
