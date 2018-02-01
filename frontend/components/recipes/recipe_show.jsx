@@ -41,10 +41,24 @@ class RecipeShow extends React.Component {
               <img src={window.imageUrls.iconStarEmpty}></img>
               <span>Too few ratings</span>
             </p>
-            <p>Difficulty: {recipe.difficulty}</p>
-            <p>Preparation: {recipe.preparation_min}</p>
-            <p>Baking: {recipe.baking_min}</p>
-            <p>Resting: {recipe.resting_min}</p>
+            <div className="difficulty">
+              <span className="dif-title">Difficulty</span>
+              <span>{recipe.difficulty} 👌</span>
+            </div>
+            <div className="time">
+              <div>
+                <p>{recipe.preparation_min} <span>min.</span></p>
+                <p>Preparation</p>
+              </div>
+              <div>
+                <p>{recipe.baking_min} <span>min.</span></p>
+                <p>Baking</p>
+              </div>
+              <div>
+                <p>{recipe.resting_min} <span>min.</span></p>
+                <p>Resting</p>
+              </div>
+            </div>
             <p>Ingredients: {recipe.ingredients}</p>
             <p>{recipe.text}</p>
           </div>

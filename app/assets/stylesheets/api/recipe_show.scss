@@ -76,3 +76,63 @@
   font-family: "Conv_Brandon_reg";
   font-size: 90%;
 }
+
+.difficulty {
+  padding: 20px 0;
+  background-image: linear-gradient(to right, #909090 33%, rgba(255,255,255,0) 0%);
+  background-position: bottom;
+  background-size: 7px 2px;
+  background-repeat: repeat-x;
+}
+
+.dif-title {
+  font-family: "Conv_Brandon_med";
+  font-size: 140%;
+  padding-right: 35px;
+}
+
+.difficulty span:last-child {
+  font-family: "Conv_Brandon_reg";
+  font-size: 135%;
+}
+
+.time {
+  display: flex;
+  justify-content: center;
+  padding: 35px 0;
+  background-image: linear-gradient(to right, #909090 33%, rgba(255,255,255,0) 0%);
+  background-position: bottom;
+  background-size: 7px 2px;
+  background-repeat: repeat-x;
+}
+
+.time>div {
+  width: 127px;
+  height: 103px;
+  text-align: center;
+  position: relative;
+}
+
+.time>div>p:first-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Conv_Brandon_med";
+  font-size: 110%;
+}
+
+.time>div>p:first-child>span {
+  font-family: "Conv_Brandon_light";
+  font-size: 90%;
+  color: black;
+  display: block;
+}
+
+.time>div>p:last-child {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 115%;
+}
