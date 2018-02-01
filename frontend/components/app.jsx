@@ -2,6 +2,7 @@ import React from 'react';
 import GreetingContainer from './session/greeting_container';
 import SessionFormContainer from './session/session_form_container';
 import RecipeIndexContainer from './recipes/recipe_index_container';
+import RecipeShowContainer from './recipes/recipe_show_container';
 import {Route, Link} from 'react-router-dom';
 
 const App = () => (
@@ -21,7 +22,8 @@ const App = () => (
     <Route path='/signup' component={SessionFormContainer} />
     <Route path='/login' component={SessionFormContainer} />
 
-    <Route path='/recipes' component={RecipeIndexContainer} />
+    <Route exact path='/recipes' component={RecipeIndexContainer} />
+    <Route path='/recipes/:recipeId' component={RecipeShowContainer} />
   </div>
 );
 

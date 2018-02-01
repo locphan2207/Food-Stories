@@ -7,7 +7,6 @@ class RecipeIndex extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const {recipes} = this.props;
     return (
       <div className="main-section">

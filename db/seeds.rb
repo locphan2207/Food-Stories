@@ -9,7 +9,7 @@ User.create(username: 'loc', email: 'loc@gmail.com', password: 'chetcha')
 
 (0..20).each do |i|
   Recipe.create(
-    title: "Testing Recipe#{i}",
+    title: "Testing Recipe #{i} with testing author #{i}",
     author_id: "1",
     img_url: "http://static1.businessinsider.com/image/586d0877dd0895e1148b45f4/the-50-best-food-bloggers-to-follow-on-instagram-in-2017.jpg",
     difficulty: "easy",
