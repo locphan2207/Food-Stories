@@ -1,11 +1,21 @@
 import React from 'react';
+import drawCanvas from '../../util/canvas';
 
 class RecipeShow extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
+    // console.log("will mount");
     this.props.fetchRecipe(this.props.match.params.recipeId);
   }
 
+  componentDidUpdate() {
+    // console.log("did update");
+    // console.log(nextProp.recipe);
+    const {preparation_min, baking_min, resting_min} = this.props.recipe;
+    this.onload = drawCanvas(preparation_min, baking_min, resting_min);
+  }
+
   render() {
+    console.log("is rendering");
     const {recipe} = this.props;
     if (!recipe) return (<div></div>);  //THIS IS WEIRD but.. it takes
                                         //extra 1 react cycle to get params?
@@ -46,17 +56,17 @@ class RecipeShow extends React.Component {
             </div>
             <div className="time">
               <div>
-                <canvas id="canvas" width="85" height="85"></canvas>
+                <canvas id="canvas1" width="85" height="85"></canvas>
                 <p className="min">{recipe.preparation_min} <span>min.</span></p>
                 <p>Preparation</p>
               </div>
               <div>
-                <canvas id="canvas" width="85" height="85"></canvas>
+                <canvas id="canvas2" width="85" height="85"></canvas>
                 <p className="min">{recipe.baking_min} <span>min.</span></p>
                 <p>Baking</p>
               </div>
               <div>
-                <canvas id="canvas" width="85" height="85"></canvas>
+                <canvas id="canvas3" width="85" height="85"></canvas>
                 <p className="min">{recipe.resting_min} <span>min.</span></p>
                 <p>Resting</p>
               </div>

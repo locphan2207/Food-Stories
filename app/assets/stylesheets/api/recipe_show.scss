@@ -131,8 +131,10 @@
 }
 
 .time div>p:last-child {
+  ont-family: "Conv_Brandon_med";
+  letter-spacing: 0.5px;
   position: absolute;
-  bottom: 0;
+  bottom: -7%;
   left: 50%;
   transform: translateX(-50%);
   font-size: 115%;
@@ -140,8 +142,6 @@
 
 canvas {
   position: absolute;
-  // top: 50%;
   left: 50%;
   transform: translateX(-50%);
-  // background: rgba(43,431,43,0.5);
 }

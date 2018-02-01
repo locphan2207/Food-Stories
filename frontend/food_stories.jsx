@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import {fetchRecipes} from './actions/recipe_actions';
 import Root from './components/root';
-import drawCircle from './util/canvas';
+// import drawCircle from './util/canvas';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-  window.onload = drawCircle; //canvas
+  // window.onload = drawCircle; //canvas
   //testing:
   window.getState = store.getState;
   window.dispatch = store.dispatch;
