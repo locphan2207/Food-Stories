@@ -21,9 +21,10 @@ const App = () => (
 
     <Route path='/signup' component={SessionFormContainer} />
     <Route path='/login' component={SessionFormContainer} />
-
-    <Route exact path='/recipes' component={RecipeIndexContainer} />
-    <Route path='/recipes/:recipeId' component={RecipeShowContainer} />
+    <section className="main-section">
+      <Route exact path='/recipes' component={RecipeIndexContainer} />
+      <Route path='/recipes/:recipeId' component={RecipeShowContainer} />
+    </section>
   </div>
 );
 

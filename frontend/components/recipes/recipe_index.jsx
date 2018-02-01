@@ -9,7 +9,7 @@ class RecipeIndex extends React.Component {
   render() {
     const {recipes} = this.props;
     return (
-      <div className="main-section">
+      <div>
         <p className="index-title">Recipes</p>
         <ul className="recipe-index">
           {recipes.map(recipe => (
