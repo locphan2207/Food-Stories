@@ -12,7 +12,7 @@ const RecipeIndexItem = (props) => {
       <div className="recipe-gradient"></div>
       <p className="recipe-time">{duration} min.</p>
     </div>
-    <p>{props.recipe.title}</p>
+    <p className="recipe-title">{props.recipe.title}</p>
   </li>
   );
 };

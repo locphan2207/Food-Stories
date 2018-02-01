@@ -8,7 +8,7 @@ class UserDropdown extends React.Component {
           <img src={window.imageUrls.userDefault}>
           </img>
           <div className="user-text">
-            <p className="username">{this.props.currentUser.username}</p>
+            <p className="username2">{this.props.currentUser.username}</p>
             <p className="email">{this.props.currentUser.email}</p>
           </div>
         </div>

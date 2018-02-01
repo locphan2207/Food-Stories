@@ -28,7 +28,7 @@ class Greeting extends React.Component {
             src={window.imageUrls.userDefault}>
           </img>
           <p onClick={() => this.toggleDropdown()}
-            className="username">{this.props.currentUser.username}</p>
+            className="username1">{this.props.currentUser.username}</p>
           {userDropdown}
         </div>
       );

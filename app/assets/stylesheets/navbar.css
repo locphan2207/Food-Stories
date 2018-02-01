@@ -1,6 +1,7 @@
 
 .header-row {
   position: relative;
+  height: 70px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -10,33 +11,38 @@
 }
 
 .logo {
+  font-family: Conv_Brandon_med;
   margin: 0 17.6px 0 0;
-  font-weight: 900;
-  font-size: 35px;
-  padding-right: 45px;
+  /* font-weight: bold; */
+  font-size: 37px;
+  padding: 10px 45px 0 0;
 }
 
 .navigation, .right-menu {
   display: flex;
   justify-content: flex-start;
   /* margin-top: 7px; */
-  margin: 19px 0 12px 0;
-}
-
-.navigation {
-  padding-right: 38%;
+  margin: 30px 0 12px 0;
 }
 
 .right-menu {
   position: absolute;
-  right: 35.2px;
-  top: 0;
+  right: 50.2px;
+  top: 3px;
 }
 
 .navigation>li>a, .right-menu>a {
-  font-size: 110%;
+  font-family: "Conv_Brandon_reg";
+  font-weight: lighter;
+  font-size: 115%;
   color: #8e8e8e;
   text-decoration: none;
+}
+
+.right-menu>a {
+  vertical-align: bottom;
+  margin-top: 15px
+  padding: 0;
 }
 
 .navigation>li {
@@ -63,28 +69,25 @@
 .searchIcon {
   width: 20px;
   height: 20px;
-  padding: 0 12.5px;
-  margin-top: 3px;
+  padding: 0 10px;
 }
 
-/*dropdown*/
 .profile-pic {
   padding: 0 12.5px;
   width: 30px;
   height: 30px;
   border-left: 1px solid #8e8e8e;
   line-height: 1;
+  transform: translateY(-20%);
 }
 
-.right-menu>p {
+/*dropdown*/
+.username1 {
   cursor: pointer;
-}
-
-.username {
+  font-family: Conv_Brandon_med;
   font-size: 110%;
-  posistion: relative;
-  margin: 0;
   color: black;
+  /* margin-top: 10px; */
 }
 
 .user-dropdown {
@@ -106,7 +109,7 @@
 }
 
 .user-text {
-  line-height: 0.5;
+  line-height: 0.9;
   font-size: 100%;
   display: flex;
   flex-direction: column;
@@ -114,7 +117,13 @@
   margin: 10px 60px 0 0;
 }
 
-.user-dropdown img {
+.username2 {
+  font-size: 120%;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+.user-info img {
   width: 75px;
   height: 75px;
   margin: 25px;

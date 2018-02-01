@@ -22,8 +22,33 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Conv_Brandon_reg';
+  src: url('fonts/Brandon_reg.eot');
+  src: local('☺'), asset-url("fonts/Brandon_reg.woff") format('woff'), asset-url('fonts/Brandon_reg.ttf') format('truetype'), asset-url('fonts/Brandon_reg.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Conv_Brandon_med';
+  src: url('fonts/Brandon_med.eot');
+  src: local('☺'), asset-url("fonts/Brandon_med.woff") format('woff'), asset-url('fonts/Brandon_med.ttf') format('truetype'), asset-url('fonts/Brandon_med.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Conv_Brandon_bld';
+  src: url('fonts/Brandon_bld.eot');
+  src: local('☺'), asset-url("fonts/Brandon_bld.woff") format('woff'), asset-url('fonts/Brandon_bld.ttf') format('truetype'), asset-url('fonts/Brandon_bld.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  font-family: Conv_Brandon_light, Arial, sans-serif;
-  font-size: 17.6px;
-  font-weight: 700;
+  font-family: "Conv_Brandon_light", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  letter-spacing: 1px;
 }

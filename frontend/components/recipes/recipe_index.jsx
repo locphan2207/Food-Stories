@@ -10,13 +10,16 @@ class RecipeIndex extends React.Component {
     console.log(this.props);
     const {recipes} = this.props;
     return (
-      <ul className="recipe-index">
-        {recipes.map(recipe => (
-          <RecipeIndexItem key={recipe.id}
-            recipe={recipe}
-          />
-        ))}
-      </ul>
+      <div className="main-section">
+        <p className="index-title">Recipes</p>
+        <ul className="recipe-index">
+          {recipes.map(recipe => (
+            <RecipeIndexItem key={recipe.id}
+              recipe={recipe}
+            />
+          ))}
+        </ul>
+      </div>
     );
   }
 }
