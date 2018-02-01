@@ -8,7 +8,7 @@
 }
 
 .index-title {
-  font-family: Conv_Brandon_reg;
+  font-family: Conv_Brandon_med;
   font-weight: normal;
   letter-spacing: 1px;
   font-size: 25px;
@@ -30,7 +30,9 @@
   width: 200px;
   height: 391px;
   list-style: none;
+  cursor: pointer;
 }
+
 
 .recipe-item-pic-container {
   width: 200px;
@@ -38,6 +40,12 @@
   overflow: hidden;
   border-radius: 12px;
   position: relative;
+  transition: all .15s ease-in-out; //to initialize transition when event happens
+}
+
+.recipe-item-pic-container:hover {
+  transform: scale(1.02);  //need to initialize in original element
+  box-shadow: 0 0 10px #979797;
 }
 
 .recipe-item-pic {
@@ -77,9 +85,14 @@
 }
 
 .recipe-title {
-  font-family: Conv_Brandon_reg;
-  line-height: 1.35;
-  font-size: 110%;
-  margin: 9px 0 5px 0;
+  font-family: Conv_Brandon_med;
+  font-size: 115%;
+  margin: 9px 0 0 0;
+  color: #606060;
+  // letter-spacing: 2px;
+}
+
+.recipe-title:visited, .recipe-title:hover {
   color: #464646;
+  text-decoration: none;
 }
