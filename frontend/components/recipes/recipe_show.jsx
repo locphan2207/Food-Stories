@@ -8,25 +8,39 @@ class RecipeShow extends React.Component {
   }
 
   componentWillMount() {
-    // console.log("will mount");
+    console.log("will mount");
     this.props.fetchRecipe(this.props.match.params.recipeId);
   }
 
   componentDidUpdate() {
-    // console.log("did update");
+    console.log("did update");
     // console.log(nextProp.recipe);
     const {preparation_min, baking_min, resting_min} = this.props.recipe;
     // We need canvasLoaded to only render canvas ONCE after first load
     if (!this.state.canvasLoaded) {
-      this.onload = drawCanvas(preparation_min, baking_min, resting_min);
       this.setState({canvasLoaded: true});
+      this.onload = drawCanvas(preparation_min, baking_min, resting_min);
+    }
+  }
+
+  ingredientMultiply(type) {
+    if (type === "minus") {
+      if (this.state.servingNum > 1) {
+        this.setState({servingNum: this.state.servingNum - 1});
+      } else if (this.state.servingNum === 1) {
+        this.setState({servingNum: this.state.servingNum - 0.5});
+      }
+    } else {
+      this.setState({servingNum: this.state.servingNum + 1});
     }
   }
 
   render() {
+    console.log("rendering");
+    console.log(this.props);
     const {recipe} = this.props;
     //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
-    if (!recipe) return (<div></div>);
+    if (!recipe || !recipe.ingredients) return (<div></div>);
 
     //Setup:
     let ingredientRows = recipe.ingredients.split(", "); //split by comma
@@ -96,9 +110,9 @@ class RecipeShow extends React.Component {
             <div className="ingredients">
               <p className="dif-title">Ingredients</p>
               <p>Serving:
-                <button onClick={() => this.setState({servingNum: this.state.servingNum - 1})}>-</button>
+                <button onClick={() => this.ingredientMultiply("minus")}>-</button>
                 {this.state.servingNum}
-                <button onClick={() => this.setState({servingNum: this.state.servingNum + 1})}>+</button>
+                <button onClick={() => this.ingredientMultiply("add")}>+</button>
               </p>
               <table><tbody>
                 {ingredientRows}
