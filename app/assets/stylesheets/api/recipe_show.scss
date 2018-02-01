@@ -156,8 +156,10 @@ canvas {
 
 .serving {
   margin: 10px 0;
-  font-family: "Conv_Brandon_bld";
+  font-family: "Conv_Brandon_med";
   font-size: 90%;
+  letter-spacing: 0.9px;
+  padding-bottom: 17px;
 }
 
 .serving>button {
@@ -176,4 +178,9 @@ canvas {
 
 .serving>button:hover {
   background: #0da299;
+}
+
+.ingredients td {
+  min-width: 127px;
+  min-height: 23px;
 }

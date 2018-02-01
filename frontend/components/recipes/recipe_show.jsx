@@ -46,10 +46,13 @@ class RecipeShow extends React.Component {
     let ingredientRows = recipe.ingredients.split(", "); //split by comma
     ingredientRows = ingredientRows.map(row => {
       //We split the pair by colon, and show eacg in table
+      const ingreName = row.split(": ")[0];
+      const amount = parseInt(row.split(": ")[1].split(" ")[0]);
+      const unit = row.split(": ")[1].split(" ")[1];
       return (
         <tr>
-          <td>{parseInt(row.split(": ")[1]) * this.state.servingNum}</td>
-          <td>{row.split(": ")[0]}</td>
+          <td>{amount * this.state.servingNum} {unit}</td>
+          <td>{ingreName}</td>
         </tr>
       );
     });
