@@ -30,14 +30,27 @@ class RecipeShow extends React.Component {
             <img src={window.imageUrls.iconPrint}></img>
           </div>
         </div>
-        <p>{recipe.title}</p>
-        <p>Rating: {recipe.rating}</p>
-        <p>Difficulty: {recipe.difficulty}</p>
-        <p>Preparation: {recipe.preparation_min}</p>
-        <p>Baking: {recipe.baking_min}</p>
-        <p>Resting: {recipe.resting_min}</p>
-        <p>Ingredients: {recipe.ingredients}</p>
-        <p>{recipe.text}</p>
+        <div className="row">
+          <div className="left-col">
+            <p className="post-title">{recipe.title}</p>
+            <p className="rating">
+              <img src={window.imageUrls.iconStarEmpty}></img>
+              <img src={window.imageUrls.iconStarEmpty}></img>
+              <img src={window.imageUrls.iconStarEmpty}></img>
+              <img src={window.imageUrls.iconStarEmpty}></img>
+              <img src={window.imageUrls.iconStarEmpty}></img>
+              <span>Too few ratings</span>
+            </p>
+            <p>Difficulty: {recipe.difficulty}</p>
+            <p>Preparation: {recipe.preparation_min}</p>
+            <p>Baking: {recipe.baking_min}</p>
+            <p>Resting: {recipe.resting_min}</p>
+            <p>Ingredients: {recipe.ingredients}</p>
+            <p>{recipe.text}</p>
+          </div>
+          <div className="right-col">
+        </div>
+        </div>
       </div>
     );
   }

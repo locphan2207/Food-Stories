@@ -30,6 +30,7 @@
   font-size: 115%;
   letter-spacing: 0.7px;
   line-height: 1;
+  outline: none;
 }
 
 .detail-button:hover {
@@ -41,4 +42,37 @@
 .sharing>img{
   size: 10x;
   padding: 18px 8px 18px 8px;
+}
+
+.row {
+  width: 100%;
+}
+
+.left-col {
+  width: 587px;
+}
+
+.post-title {
+  font-family: "Conv_Brandon_med";
+  font-size: 160%;
+  padding: 30px 0;
+}
+
+.rating {
+  padding-bottom: 20px;
+  background-image: linear-gradient(to right, #909090 33%, rgba(255,255,255,0) 0%);
+  background-position: bottom;
+  background-size: 7px 2px;
+  background-repeat: repeat-x;
+}
+
+.rating>img {
+  width: 19px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.rating>span {
+  font-family: "Conv_Brandon_reg";
+  font-size: 90%;
 }
