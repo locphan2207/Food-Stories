@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -30,11 +30,10 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     //Redirect if logged in:
     if (this.props.isLoggedIn || this.state.exit) {
-      return (
-        <Redirect to="/" />
-      );
+      window.history.go(-1); // go back to previous page!!! LOVE IT
     }
 
     //If not logged in, start setting up form:
@@ -48,16 +47,22 @@ class SessionForm extends React.Component {
     );
     let welcomeText = 'Welcome to Food Stories';
     let subWelcomeText = 'Create your account';
-    let welcomeImg = <img className="two-hand"
-      src={window.imageUrls.iconHand}></img>;
-
+    let welcomeImg = (<img className="two-hand"
+      src={window.imageUrls.iconHand}></img>);
+    let changeForm = (
+      <p className="change-form">I already have an <Link to="/login">account</Link></p>
+    );
     if (this.props.formType === 'login') {
       buttonText = 'Log In';
       usernameField = null;
       welcomeText = 'Welcome back!';
       subWelcomeText = 'Log in to your account';
-      welcomeImg = <img className="one-hand"
-        src={window.imageUrls.peaceHands}></img>;
+      welcomeImg = (<img className="one-hand"
+        src={window.imageUrls.peaceHands}></img>
+      );
+      changeForm = (
+        <p className="change-form">I don’t have an account. <Link to="/signup">Sign-up!</Link></p>
+      );
     }
     let errorIndex = null;
     if (this.props.errors.length > 0) {
@@ -89,6 +94,7 @@ class SessionForm extends React.Component {
             type="text" value={this.state.password}/>
           <ul>{errorIndex}</ul>
           <input className="session-button" type="submit" value={buttonText} />
+          {changeForm}
         </form>
       </div>
     );

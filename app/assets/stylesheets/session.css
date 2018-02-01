@@ -93,3 +93,15 @@
   right: 17.6px;
   top: 17.6px;
 }
+
+.change-form {
+  text-align: center;
+  font-size: 85%;
+  padding-top: 20px;
+  color: #999999;
+}
+
+.change-form>a {
+  color: #999999;
+  text-decoration: underline;
+}
