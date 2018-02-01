@@ -39,19 +39,9 @@
   text-decoration: none;
 }
 
-.right-menu>a {
-  vertical-align: bottom;
-  margin-top: 15px
-  /* padding: 0; */
-}
-
 .navigation>li {
   padding-right: 25px;
   list-style: none;
-}
-
-.navigation a {
-  /* padding: 0; */
 }
 
 .navigation a:hover {
@@ -61,6 +51,7 @@
 }
 
 .right-menu>a {
+  vertical-align: bottom;
   font-size: 95%;
   padding: 0 12.5px;
   border-left: 1px solid #8e8e8e;
