@@ -109,7 +109,7 @@ class RecipeShow extends React.Component {
             </div>
             <div className="ingredients">
               <p className="dif-title">Ingredients</p>
-              <p>Serving:
+              <p className="serving">Servings:
                 <button onClick={() => this.ingredientMultiply("minus")}>-</button>
                 {this.state.servingNum}
                 <button onClick={() => this.ingredientMultiply("add")}>+</button>

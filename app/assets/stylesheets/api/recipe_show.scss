@@ -147,5 +147,33 @@ canvas {
 }
 
 .ingredients {
-  
+  padding: 20px 0;
+  background-image: linear-gradient(to right, #909090 33%, rgba(255,255,255,0) 0%);
+  background-position: bottom;
+  background-size: 7px 2px;
+  background-repeat: repeat-x;
+}
+
+.serving {
+  margin: 10px 0;
+  font-family: "Conv_Brandon_bld";
+  font-size: 90%;
+}
+
+.serving>button {
+  font-family: "Conv_Brandon_bld";
+  margin: 0 7px;
+  background: #0a7f78;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  border: none;
+  padding: 0;
+  outline: 0;
+}
+
+.serving>button:hover {
+  background: #0da299;
 }
