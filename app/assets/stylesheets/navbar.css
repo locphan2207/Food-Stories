@@ -11,7 +11,7 @@
 }
 
 .logo {
-  font-family: Conv_Brandon_med;
+  font-family: "Conv_Brandon_med";
   margin: 0 17.6px 0 0;
   /* font-weight: bold; */
   font-size: 37px;
@@ -32,7 +32,7 @@
 }
 
 .navigation>li>a, .right-menu>a {
-  font-family: Conv_Brandon_med;
+  font-family: "Conv_Brandon_med";
   font-weight: lighter;
   font-size: 115%;
   color: #8e8e8e;
@@ -42,7 +42,7 @@
 .right-menu>a {
   vertical-align: bottom;
   margin-top: 15px
-  padding: 0;
+  /* padding: 0; */
 }
 
 .navigation>li {
@@ -51,7 +51,7 @@
 }
 
 .navigation a {
-  padding: 0;
+  /* padding: 0; */
 }
 
 .navigation a:hover {
@@ -84,7 +84,7 @@
 /*dropdown*/
 .username1 {
   cursor: pointer;
-  font-family: Conv_Brandon_med;
+  font-family: "Conv_Brandon_med";
   font-size: 110%;
   color: black;
   /* margin-top: 10px; */
@@ -95,9 +95,7 @@
   position: absolute;
   right: -20px;
   top: 50px;
-  /* background: green; */
   border-radius: 10px;
-  /* border: 1px solid #8e8e8e; */
   box-shadow: 0 0 16px rgba(0,0,0,0.13);
 }
 

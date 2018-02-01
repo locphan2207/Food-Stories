@@ -17,15 +17,17 @@
 @font-face {
   font-family: 'Conv_Brandon_light';
   src: url('fonts/Brandon_light.eot');
-  src: local('☺'), asset-url("fonts/Brandon_light.woff") format('woff'), asset-url('fonts/Brandon_light.ttf') format('truetype'), asset-url('fonts/Brandon_light.svg') format('svg');
-  font-weight: normal;
-  font-style: normal;
+  src: local('☺'), asset-url("fonts/Brandon_light.woff") format('woff'),
+    asset-url('fonts/Brandon_light.ttf') format('truetype'),
+    asset-url('fonts/Brandon_light.svg') format('svg');
 }
 
 @font-face {
   font-family: 'Conv_Brandon_reg';
   src: url('fonts/Brandon_reg.eot');
-  src: local('☺'), asset-url("fonts/Brandon_reg.woff") format('woff'), asset-url('fonts/Brandon_reg.ttf') format('truetype'), asset-url('fonts/Brandon_reg.svg') format('svg');
+  src: local('☺'), asset-url("fonts/Brandon_reg.woff") format('woff'),
+    asset-url('fonts/Brandon_reg.ttf') format('truetype'),
+    asset-url('fonts/Brandon_reg.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -33,7 +35,9 @@
 @font-face {
   font-family: 'Conv_Brandon_med';
   src: url('fonts/Brandon_med.eot');
-  src: local('☺'), asset-url("fonts/Brandon_med.woff") format('woff'), asset-url('fonts/Brandon_med.ttf') format('truetype'), asset-url('fonts/Brandon_med.svg') format('svg');
+  src: local('☺'), asset-url("fonts/Brandon_med.woff") format('woff'),
+    asset-url('fonts/Brandon_med.ttf') format('truetype'),
+    asset-url('fonts/Brandon_med.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -41,7 +45,9 @@
 @font-face {
   font-family: 'Conv_Brandon_bld';
   src: url('fonts/Brandon_bld.eot');
-  src: local('☺'), asset-url("fonts/Brandon_bld.woff") format('woff'), asset-url('fonts/Brandon_bld.ttf') format('truetype'), asset-url('fonts/Brandon_bld.svg') format('svg');
+  src: local('☺'), asset-url("fonts/Brandon_bld.woff") format('woff'),
+    asset-url('fonts/Brandon_bld.ttf') format('truetype'),
+    asset-url('fonts/Brandon_bld.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
