@@ -6,13 +6,33 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create(username: 'loc', email: 'loc@gmail.com', password: 'chetcha')
+User.create(username: 'Beautiful Guest', email: 'guest@gmail.com', password: 'secret')
 
+difficulty = ["easy", "medium", "hard"]
+img_url = [
+  "https://www.adorama.com/alc/wp-content/uploads/2017/11/shutterstock_334602908-1060x480.jpg",
+  "http://static1.businessinsider.com/image/586d0877dd0895e1148b45f4/the-50-best-food-bloggers-to-follow-on-instagram-in-2017.jpg",
+  "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/76093/pexels-photo-76093.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/710916/pexels-photo-710916.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/247685/pexels-photo-247685.png?w=1260&h=750&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/5506/bread-food-salad-sandwich.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/72160/bbq-dinner-grilled-grill-72160.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/53121/kimchi-fried-rice-fried-rice-rice-korean-53121.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+
+  "https://images.pexels.com/photos/76784/pexels-photo-76784.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/36768/food-salmon-teriyaki-cooking.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/262897/pexels-photo-262897.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/8758/food-dinner-lemon-rice.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+]
 (0..20).each do |i|
   Recipe.create(
     title: "Testing Recipe #{i} with testing author #{i}",
     author_id: "1",
-    img_url: "http://static1.businessinsider.com/image/586d0877dd0895e1148b45f4/the-50-best-food-bloggers-to-follow-on-instagram-in-2017.jpg",
-    difficulty: "easy",
+    img_url: img_url[i%15],
+    difficulty: difficulty[rand(2)],
     ingredients: "hamburger: 1 piece, salad: 3 piece, salt: 3 lbs, garlic: 2 glove, soy sauce: 100 ml, suger: 50 g",
     baking_min: 20 + rand(40),
     preparation_min: 10 + rand(50),

@@ -55,8 +55,8 @@ class RecipeShow extends React.Component {
 
       textArray.push( //save as react element
         <div className="step">
-          <p className="sub-title">{stepTitle}</p>
-          <p>{stepBody}</p>
+          <p className="step-title">{stepTitle}</p>
+          <p className="step-body">{stepBody}</p>
         </div>
       );
     }

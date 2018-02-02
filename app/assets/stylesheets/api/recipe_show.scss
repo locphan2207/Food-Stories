@@ -185,3 +185,20 @@ canvas {
   min-width: 127px;
   min-height: 23px;
 }
+
+.step {
+  padding: 20px 0 20px 0;
+}
+
+.step-title {
+  font-family: "Conv_Brandon_med";
+  font-size: 140%;
+  padding: 0 0 10px 0;
+}
+
+.step-body {
+  // color: #060606;
+  // font-family: "Conv_Brandon_light";
+  font-size: 120%;
+  letter-spacing: 0.5px;
+}
