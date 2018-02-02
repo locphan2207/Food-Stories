@@ -62,7 +62,7 @@ class SessionForm extends React.Component {
   render() {
     //Redirect if logged in:
     if (this.props.isLoggedIn || this.state.exit) {
-      window.history.go(-1); // go back to previous page!!! LOVE IT
+      window.history.go(-1); // keep going back until not login/signup!
     }
 
     //If not logged in, start setting up form:

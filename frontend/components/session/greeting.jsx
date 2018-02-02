@@ -8,16 +8,22 @@ class Greeting extends React.Component {
     this.state = {isOpen: false};
   }
 
+  // componentWillMount() {
+  //   //idk why it opens after first render, so I do this:
+  //   this.setState({isOpen: false});
+  // }
+
   toggleDropdown() {
-    if (this.state.isOpen) this.setState({isOpen: false});
+    if (this.state.isOpen === true) this.setState({isOpen: false});
     else this.setState({isOpen: true});
   }
 
   render() {
     let userDropdown = null;
-    if (this.state.isOpen) userDropdown = (
+    if (this.state.isOpen === true) userDropdown = (
       <UserDropdown logout={this.props.logout}
-        currentUser={this.props.currentUser}/>
+        currentUser={this.props.currentUser}
+        close={this.setState.bind(this, {isOpen: false})}/>
     );
     if (this.props.currentUser) {
       return (

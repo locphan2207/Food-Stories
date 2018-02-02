@@ -4,6 +4,8 @@ class UserDropdown extends React.Component {
   render() {
     return (
       <div className="user-dropdown">
+        <img id="close" onClick={() => this.props.close()}
+          src={window.imageUrls.iconClose}></img>
         <div className="user-info">
           <img src={window.imageUrls.userDefault}>
           </img>
