@@ -1,7 +1,3 @@
-// Place all the styles related to the api/recipes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 .index-title {
   font-family: "Conv_Brandon_med";
   font-weight: normal;
@@ -12,7 +8,7 @@
   margin: 0 0 17.68px 10px;
 }
 
-.recipe-index {
+.index-index {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -20,7 +16,7 @@
 
 }
 
-.recipe-item {
+.index-item {
   padding: 0 10px;
   width: 200px;
   height: 391px;
@@ -28,11 +24,11 @@
   cursor: pointer;
 }
 
-.recipe-item>a {
+.index-item>a {
   text-decoration: none;
 }
 
-.recipe-item-pic-container {
+.index-item-pic-container {
   width: 200px;
   height: 266px;
   overflow: hidden;
@@ -41,22 +37,22 @@
   transition: all .15s ease-in-out; //to initialize transition when event happens
 }
 
-.recipe-item:hover {
-  .recipe-item-pic-container {
+.index-item:hover {
+  .index-item-pic-container {
     transform: scale(1.02);  //need to initialize in original element
     box-shadow: 0 0 10px #979797;
   }
-  .recipe-title {
+  .index-title {
     color: #464646;
     text-decoration: none;
   }
 }
 
-.recipe-item-pic {
+.index-item-pic {
   height: 266px;
   transform: translateX(-25%);
 }
-.recipe-white {
+.index-white {
   background: rgba(255,255,255,0.05);
   width: 100%;
   height: 100%;
@@ -66,7 +62,7 @@
   z-index: 2
 }
 
-.recipe-gradient {
+.index-gradient {
   position: absolute;
   top: 0;
   left: 0;
@@ -76,7 +72,7 @@
   background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.5) 100%);
 }
 
-.recipe-time {
+.index-time {
   color: white;
   font-size: 14.08px;
   font-weight: bolder;
@@ -87,7 +83,7 @@
   line-height: 1.35;
 }
 
-.recipe-title {
+.index-title {
   font-family: "Conv_Brandon_med";
   font-size: 115%;
   margin: 9px 0 0 0;

@@ -5,16 +5,16 @@ const RecipeIndexItem = (props) => {
   const duration = props.recipe.preparation_min +
     props.recipe.baking_min + props.recipe.resting_min;
   return (
-    <li className="recipe-item">
+    <li className="index-item">
       <Link to={`/recipes/${props.recipe.id}`}>
-        <div className="recipe-item-pic-container">
-          <img className="recipe-item-pic"
+        <div className="index-item-pic-container">
+          <img className="index-item-pic"
             src={props.recipe.img_url}></img>
-          <div className="recipe-white"></div>
-          <div className="recipe-gradient"></div>
-          <p className="recipe-time">{duration} min.</p>
+          <div className="index-white"></div>
+          <div className="index-gradient"></div>
+          <p className="index-time">{duration} min.</p>
         </div>
-        <p className="recipe-title">{props.recipe.title}</p>
+        <p className="index-title">{props.recipe.title}</p>
       </Link>
     </li>
   );

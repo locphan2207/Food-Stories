@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: stories
+#
+#  id         :integer          not null, primary key
+#  title      :string           not null
+#  author_id  :integer          not null
+#  img_url    :string           not null
+#  text       :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  author_id: 1
+  img_url: MyString
+  text: MyText
+
+two:
+  title: MyString
+  author_id: 1
+  img_url: MyString
+  text: MyText

@@ -1,9 +1,33 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string           not null
+#  email           :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  pic_url         :string
+#
+
 class User < ApplicationRecord
   validates :username, :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
   validates :password, length: {minimum: 6, allow_nil: true}
 
   before_validation :ensure_session_token
+
+  has_many :recipes,
+  primary_key: :id,
+  foreign_key: :author_id,
+  class_name: :Recipe
+
+  has_many :stories,
+  primary_key: :id,
+  foreign_key: :author_id,
+  class_name: :Story
 
   attr_reader :password
 
