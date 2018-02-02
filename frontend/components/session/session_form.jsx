@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
 
   componentWillUnmount() {
     window.clearInterval(this.interval);
+    this.props.clearError(); //perfect time to clear errors
   }
 
   handleFocus(e, label) {

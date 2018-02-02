@@ -10,7 +10,7 @@
   border-bottom: 1px solid rgb(216,216,216);
   padding: 0 35.2px 0 35.2px;
   margin-top: -10px;
-  z-index: 999;
+  z-index: 1;
   background: white;
   -webkit-transition: top 0.5s;
 }
@@ -91,12 +91,13 @@
 }
 
 .user-dropdown {
-  min-width: 300px;
+  /* min-width: 300px; */
   position: absolute;
   right: -20px;
   top: 50px;
   border-radius: 10px;
   box-shadow: 0 0 16px rgba(0,0,0,0.13);
+  z-index: 888;
 }
 
 .user-info {
@@ -139,4 +140,15 @@
   padding: 15px 0;
   margin: 0 0 0 50%;
   transform: translateX(-25%);
+}
+
+.triangle {
+  position: absolute;
+  top: -10px;
+  right: 14%;
+  transform: rotate(45deg);
+  width: 20px;
+  height: 20px;
+  box-shadow: -1px -1px 16px -2px rgba(0,0,0,0.13);
+  background: white;
 }

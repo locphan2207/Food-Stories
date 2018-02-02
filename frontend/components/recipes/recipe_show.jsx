@@ -10,11 +10,38 @@ class RecipeShow extends React.Component {
 
   handleHeaderImg() {
     const headerImg = document.getElementsByClassName('post-header')[0];
-    if (headerImg.width > headerImg.height) {
-      headerImg.style = "height:100%;width:auto";
-    } else {
-      headerImg.style = "height:auto%;width:100%";
+    let w = headerImg.width;
+    let h = headerImg.height;
+    if (w === 0 || h === 0) return; // need this or it freezes
+    if (w > 860 && h > 484) {
+      while (w > 860 && h > 484) {
+        w /= 1.01;
+        h /= 1.01;
+      }
+      headerImg.style = `height:${h}px;width:${w}px`;
+      return;
     }
+    if (w < 860 || h < 484) {
+      while (w < 860 || h < 484) {
+        w *= 1.01;
+        h *= 1.01;
+      }
+      headerImg.style = `height:${h}px;width:${w}px`;
+      return;
+    }
+
+  //   if ( w > 860 && h > 484) || ( w < 860 && h < 484){
+  //     if (w > h) headerImg.style = 'height:100%;width:auto';
+  //     else headerImg.style = 'width:100%;height:auto';
+  //     return;
+  //   }
+  //   if (w < 860 || h < 484) {
+  //     if (w < 860) headerImg.style = 'width:100%;height:auto';
+  //     if (h < 484) headerImg.style = 'height:100%;width:auto';
+  //   } else {  //when both < container size
+  //     if (w > h) headerImg.style = 'height:100%;width:auto';
+  //     else headerImg.style = 'width:100%;height:auto';
+  //   }
   }
 
   componentWillMount() {

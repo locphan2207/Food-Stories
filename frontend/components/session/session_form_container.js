@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {signup, login} from '../../actions/session_actions';
+import {signup, login, receiveSessionErrors} from '../../actions/session_actions';
 import SessionForm from './session_form';
 
 const mapSTP = (state, ownProps) => {
@@ -15,7 +15,8 @@ const mapDTP = (dispatch, ownProps) => {
     submit: ownProps.match.path === '/signup' ?
       (user) => dispatch(signup(user)) :
       (user) => dispatch(login(user)),
-    guestLogin: (user) => dispatch(login(user))
+    guestLogin: (user) => dispatch(login(user)),
+    clearError: () => dispatch(receiveSessionErrors([])) //empty arr
   };
 };
 
