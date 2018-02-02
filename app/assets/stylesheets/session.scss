@@ -38,6 +38,10 @@
   margin: 17.6px 0;;
 }
 
+.session-input-container {
+  position: relative;
+}
+
 .session-input {
   min-width: 100%;
   font-size: 15px;
@@ -50,8 +54,36 @@
 }
 
 .session-input:focus {
-  color: black;
   border-bottom: 1px solid black;
+}
+
+#virtual-email, #virtual-password, #virtual-username {
+  display: none;
+  background: rgba(0,0,0,0);  //transparent
+  min-width: 100%;
+  font-size: 15px;
+  font-weight: lighter;
+  border: none;
+  padding: 20px 0 7px 0;
+  color: #FF1493;
+  outline: none;
+  position: absolute;
+  left: 0;
+}
+
+#virtual-username {
+  // top: 0;
+  bottom: 92px;
+}
+
+#virtual-email {
+  // top: 46;
+  bottom: 46px;
+}
+
+#virtual-password {
+  // top: 46px;
+  bottom: 0px;
 }
 
 .session-button {
@@ -63,6 +95,7 @@
   border: none;
   border-radius: 4px;
   padding: 6px 17px;
+  cursor: pointer;
 }
 
 .modal-form>ul {
@@ -94,14 +127,20 @@
   top: 17.6px;
 }
 
-.change-form {
+.change-form, .demo {
   text-align: center;
-  font-size: 85%;
+  font-size: 90%;
   padding-top: 20px;
-  color: #999999;
+  color: #464646;
 }
 
-.change-form>a {
-  color: #999999;
+.change-form>a, .demo>span {
+  color: #404040;
+  // color: #999999;
   text-decoration: underline;
+  cursor: pointer;
+}
+
+.demo>span:hover {
+  color: pink;
 }

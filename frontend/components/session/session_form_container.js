@@ -14,7 +14,8 @@ const mapDTP = (dispatch, ownProps) => {
   return {
     submit: ownProps.match.path === '/signup' ?
       (user) => dispatch(signup(user)) :
-      (user) => dispatch(login(user))
+      (user) => dispatch(login(user)),
+    guestLogin: (user) => dispatch(login(user))
   };
 };
 

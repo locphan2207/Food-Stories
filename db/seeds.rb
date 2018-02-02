@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create(username: 'loc', email: 'loc@gmail.com', password: 'chetcha')
-User.create(username: 'Beautiful Guest', email: 'guest@gmail.com', password: 'secret')
+User.create(username: 'beautiful_guest', email: 'guest@gmail.com', password: 'secret')
 
 difficulty = ["easy", "medium", "hard"]
 img_url = [
