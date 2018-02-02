@@ -1,3 +1,7 @@
+.header-wrap {
+  height: 520px;
+}
+
 .post-header-container {
   width: 100%;
   height: 484px;
@@ -5,26 +9,31 @@
   overflow: hidden;
 }
 
+.sticky-header-container {
+  background: white;
+  border-bottom: 1px solid #d8d8d8;
+}
+
 .detail-navbar-container {
-  width: 100%;
-  height: 53px;
+  width: 860px;
+  height: 50px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #d8d8d8;
-  margin-top: 3px;
+  margin: 0 auto;
 }
 
 .sticky-header {
-  background: white;
-  position: fixed;
   width: 100%;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 999;
+  // padding-bottom: 2px;
 }
 
 .detail-button {
   font-family: "Conv_Brandon_med";
+  height: 100%;
   padding: 18px 0;
   margin: 0 35px 0 0;
   border: none;
@@ -38,8 +47,11 @@
 
 .detail-button:hover {
   cursor: pointer;
-  border-bottom: 2px solid #0a7f78;
   color: #464646;
+}
+
+.button-active {
+  border-bottom: 2px solid #0a7f78;
 }
 
 .sharing>img{

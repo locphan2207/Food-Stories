@@ -45,7 +45,7 @@ class RecipeShow extends React.Component {
   }
 
   stickyHandling() {
-    console.log($(window).scrollTop());
+    // console.log($(window).scrollTop());
     const $header1 = $('#header1');
     if ($(window).scrollTop() >= 522.7272338867188) { // I got this by checking on window console
       $header1.addClass("hidden-header");
@@ -91,10 +91,19 @@ class RecipeShow extends React.Component {
     return textArray;
   }
 
-  jumpTo(id) {
+  jumpTo(id, e) {
     const dest = document.getElementById(id);
     dest.scrollIntoView({behavior: "smooth", block: "start"});
-    // dest.scrollTop += 300;
+    const buttons = document.getElementsByClassName("detail-button");
+    console.log(buttons);
+    for (let i = 0; i < 2; i++) {
+      buttons[i].className = "detail-button"; //reset className
+    }
+    switch(id) {
+      case "ov": buttons[0].className += " button-active"; break;
+      case "st": buttons[1].className += " button-active"; break;
+      case "co": buttons[2].className += " button-active"; break;
+    }
   }
 
   render() {
@@ -122,25 +131,28 @@ class RecipeShow extends React.Component {
     //Rendering:
     return (
       <div>
-        <div className="post-header-container">
-          <img className="post-header"
-             src={recipe.img_url}></img>
-        </div>
-        <div id="header2" className="detail-navbar-container">
-          <div className="buttons">
-            <button onClick={() => this.jumpTo('ov')}
-              className="detail-button">Overview</button>
-            <button onClick={() => this.jumpTo('st')}
-              className="detail-button">Steps</button>
-            <button onClick={() => this.jumpTo('co')}
-              className="detail-button">Comments</button>
+        <div className="header-wrap">
+          <div className="post-header-container">
+            <img className="post-header" src={recipe.img_url}></img>
           </div>
-          <div className="sharing">
-            <img src={window.imageUrls.iconFB}></img>
-            <img src={window.imageUrls.iconTwitter}></img>
-            <img src={window.imageUrls.iconPin}></img>
-            <img src={window.imageUrls.iconMail}></img>
-            <img src={window.imageUrls.iconPrint}></img>
+          <div id="header2" className="sticky-header-container">
+            <div className="detail-navbar-container">
+              <div className="buttons">
+                <button onClick={(e) => this.jumpTo('ov', e)}
+                  className="detail-button">Overview</button>
+                <button onClick={(e) => this.jumpTo('st', e)}
+                  className="detail-button">Steps</button>
+                <button onClick={(e) => this.jumpTo('st', e)}
+                  className="detail-button">Comments</button>
+              </div>
+              <div className="sharing">
+                <img src={window.imageUrls.iconFB}></img>
+                <img src={window.imageUrls.iconTwitter}></img>
+                <img src={window.imageUrls.iconPin}></img>
+                <img src={window.imageUrls.iconMail}></img>
+                <img src={window.imageUrls.iconPrint}></img>
+              </div>
+            </div>
           </div>
         </div>
         <div className="row">
