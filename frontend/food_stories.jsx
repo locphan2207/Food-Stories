@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import {fetchRecipes} from './actions/recipe_actions';
 import Root from './components/root';
-// import drawCircle from './util/canvas';
+import handleSticky from './util/sticky_handle';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.fetchRecipes = fetchRecipes;
+  handleSticky();
   //
   ReactDOM.render(<Root store={store} />, root);
 });

@@ -14,6 +14,15 @@
   margin-top: 3px;
 }
 
+.sticky-header {
+  background: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
 .detail-button {
   font-family: "Conv_Brandon_med";
   padding: 18px 0;

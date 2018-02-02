@@ -19,6 +19,7 @@ class RecipeShow extends React.Component {
 
   componentWillMount() {
     this.props.fetchRecipe(this.props.match.params.recipeId);
+    window.addEventListener("scroll", this.stickyHandling);
   }
 
   componentDidUpdate() {
@@ -40,6 +41,22 @@ class RecipeShow extends React.Component {
       }
     } else {
       this.setState({servingNum: this.state.servingNum + 1});
+    }
+  }
+
+  stickyHandling() {
+    console.log($(window).scrollTop());
+    const $header1 = $('#header1');
+    if ($(window).scrollTop() >= 522.7272338867188) { // I got this by checking on window console
+      $header1.addClass("hidden-header");
+    } else {
+      $header1.removeClass("hidden-header");
+    }
+    const $header2 = $('#header2');
+    if ($(window).scrollTop() >= 585.4545288085938) { // I got this by checking on window console
+      $header2.addClass("sticky-header");
+    } else {
+      $header2.removeClass("sticky-header");
     }
   }
 
@@ -109,7 +126,7 @@ class RecipeShow extends React.Component {
           <img className="post-header"
              src={recipe.img_url}></img>
         </div>
-        <div className="detail-navbar-container">
+        <div id="header2" className="detail-navbar-container">
           <div className="buttons">
             <button onClick={() => this.jumpTo('ov')}
               className="detail-button">Overview</button>

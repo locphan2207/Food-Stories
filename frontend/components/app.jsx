@@ -7,7 +7,7 @@ import {Route, Link} from 'react-router-dom';
 
 const App = () => (
   <div>
-    <header className="header-row">
+    <header id="header1" className="header-row">
       <h2 className="logo">Food Stories</h2>
       <ul className="navigation">
         <li><Link to="/recipes">Recipes</Link></li>
