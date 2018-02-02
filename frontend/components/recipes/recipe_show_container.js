@@ -8,7 +8,6 @@ const mapSTP = (state, ownProps) => ({
 });
 
 const mapDTP = (dispatch, ownProps) => {
-  console.log(ownProps.match.params.recipeId);
   return {
     fetchRecipe: (recipeId) => dispatch(fetchRecipe(recipeId))
   };

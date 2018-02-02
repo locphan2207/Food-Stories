@@ -1,10 +1,20 @@
 import React from 'react';
 import drawCanvas from '../../util/canvas';
+import {Link} from 'react-router-dom';
 
 class RecipeShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {servingNum: 3, canvasLoaded: false};
+  }
+
+  handleHeaderImg() {
+    const headerImg = document.getElementsByClassName('post-header')[0];
+    if (headerImg.width > headerImg.height) {
+      headerImg.style = "height:100%;width:auto";
+    } else {
+      headerImg.style = "height:auto%;width:100%";
+    }
   }
 
   componentWillMount() {
@@ -18,6 +28,7 @@ class RecipeShow extends React.Component {
       this.setState({canvasLoaded: true});
       this.onload = drawCanvas(preparation_min, baking_min, resting_min);
     }
+    this.handleHeaderImg();
   }
 
   ingredientMultiply(type) {
@@ -63,6 +74,12 @@ class RecipeShow extends React.Component {
     return textArray;
   }
 
+  jumpTo(id) {
+    const dest = document.getElementById(id);
+    dest.scrollIntoView({behavior: "smooth", block: "start"});
+    // dest.scrollTop += 300;
+  }
+
   render() {
     const {recipe} = this.props;
     //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
@@ -94,9 +111,12 @@ class RecipeShow extends React.Component {
         </div>
         <div className="detail-navbar-container">
           <div className="buttons">
-            <button className="detail-button">Overview</button>
-            <button className="detail-button">Steps</button>
-            <button className="detail-button">Comments</button>
+            <button onClick={() => this.jumpTo('ov')}
+              className="detail-button">Overview</button>
+            <button onClick={() => this.jumpTo('st')}
+              className="detail-button">Steps</button>
+            <button onClick={() => this.jumpTo('co')}
+              className="detail-button">Comments</button>
           </div>
           <div className="sharing">
             <img src={window.imageUrls.iconFB}></img>
@@ -108,7 +128,7 @@ class RecipeShow extends React.Component {
         </div>
         <div className="row">
           <div className="left-col">
-            <p className="post-title">{recipe.title}</p>
+            <p id="ov" className="post-title">{recipe.title}</p>
             <p className="rating">
               <img src={window.imageUrls.iconStarEmpty}></img>
               <img src={window.imageUrls.iconStarEmpty}></img>
@@ -149,7 +169,7 @@ class RecipeShow extends React.Component {
                 {ingredientRows}
               </tbody></table>
             </div>
-            <div className="text">
+            <div id="st" className="text">
               {this.textHandling()}
             </div>
           </div>
