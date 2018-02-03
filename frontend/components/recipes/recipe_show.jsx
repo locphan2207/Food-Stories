@@ -1,6 +1,7 @@
 import React from 'react';
 import drawCanvas from '../../util/canvas';
 import {Link} from 'react-router-dom';
+import SuggesstionBoxContainer from './suggestion_box_container';
 
 class RecipeShow extends React.Component {
   constructor(props) {
@@ -127,13 +128,13 @@ class RecipeShow extends React.Component {
     //Setup:
 
     let ingredientRows = recipe.ingredients.split(", "); //split by comma
-    ingredientRows = ingredientRows.map(row => {
+    ingredientRows = ingredientRows.map((row, idx) => {
       //We split the pair by colon, and show eacg in table
       const ingreName = row.split(": ")[0];
       const amount = parseInt(row.split(": ")[1].split(" ")[0]);
       const unit = row.split(": ")[1].split(" ")[1];
       return (
-        <tr>
+        <tr key={`${idx}`}>
           <td>{amount * this.state.servingNum} {unit}</td>
           <td>{ingreName}</td>
         </tr>
@@ -164,6 +165,9 @@ class RecipeShow extends React.Component {
                 <img src={window.imageUrls.iconPin}></img>
                 <img src={window.imageUrls.iconMail}></img>
                 <img src={window.imageUrls.iconPrint}></img>
+              </div>
+              <div className="right-col">
+                <SuggesstionBoxContainer />
               </div>
             </div>
           </div>
@@ -215,8 +219,6 @@ class RecipeShow extends React.Component {
               {this.textHandling()}
             </div>
           </div>
-          <div className="right-col">
-        </div>
         </div>
       </div>
     );

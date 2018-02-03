@@ -22,3 +22,13 @@ Step 3: heroku run rake db:migrate
 Step 4: heroku run rake db:seed (if you have seed)
 
 doing nav bar( sizing position)
+
+save current path in state ?
+
+react-scroll !!
+
+remove radius for sticky buttons
+
+min width for sticky navbar ???
+
+videos: iframes video tag

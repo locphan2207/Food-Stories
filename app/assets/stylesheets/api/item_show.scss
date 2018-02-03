@@ -9,21 +9,27 @@
   overflow: hidden;
 }
 
-.post-header {
-  // transform: translate(-25%, -25%);
-}
-
 .sticky-header-container {
   background: white;
   border-bottom: 1px solid #d8d8d8;
 }
 
+
 .detail-navbar-container {
-  width: 860px;
+  width: 880px;
   height: 50px;
   display: flex;
   justify-content: space-between;
+  position: relative; //for right column
   margin: 0 auto;
+}
+
+.right-col {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  left: 605px; //+ 18 to have extra space on left
+  // background: green;
 }
 
 .sticky-header {
@@ -32,7 +38,12 @@
   top: 0;
   left: 0;
   z-index: 999;
-  // padding-bottom: 2px;
+}
+
+.right-col>p {
+  font-family: "Conv_Brandon_med";
+  font-size: 120%;
+  padding: 32px 0 16px 0;
 }
 
 .detail-button {
@@ -65,10 +76,11 @@
 
 .row {
   width: 100%;
+  display: flex;
 }
 
 .left-col {
-  width: 587px;
+  width: 587px; //user this to calculate left position for right col
 }
 
 .post-title {
@@ -205,6 +217,7 @@ canvas {
   min-height: 23px;
 }
 
+// Step is for recipe show:
 .step {
   padding: 20px 0 20px 0;
 }
@@ -216,8 +229,6 @@ canvas {
 }
 
 .step-body {
-  // color: #060606;
-  // font-family: "Conv_Brandon_light";
   font-size: 120%;
   letter-spacing: 0.5px;
 }
