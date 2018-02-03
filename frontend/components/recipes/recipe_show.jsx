@@ -167,7 +167,8 @@ class RecipeShow extends React.Component {
                 <img src={window.imageUrls.iconPrint}></img>
               </div>
               <div className="right-col">
-                <SuggesstionBoxContainer />
+
+                
               </div>
             </div>
           </div>
