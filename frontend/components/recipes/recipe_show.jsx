@@ -7,21 +7,21 @@ class RecipeShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      threeRecs: props.threeRecs,
       servingNum: 3,
-      canvasLoaded: false
     };
-    if (!this.state.threeRecs) {
-      this.state.threeRecs =
-      JSON.parse(localStorage.getItem("savedThreeRecs"));
-    }
+    this.canvasLoaded = false;
+    // if (!this.props.threeRecs) {
+    //   this.savedthreeRecs =
+    //     JSON.parse(localStorage.getItem("savedThreeRecs"));
+    // }
   }
 
   savePropsToLocalStorage() { //for when refreshing
-    localStorage.setItem("savedThreeRecs", JSON.stringify(this.state.threeRecs));
+    if (this.props.threeRecs && this.props.threeRecs[0] &&
+      this.props.threeRecs[1] && this.props.threeRecs[2]) {
+      localStorage.setItem("savedThreeRecs", JSON.stringify(this.props.threeRecs));
+    }
   }
-
-
 
   componentDidMount() {
     // I want to save data when refreshing page, so:
@@ -30,18 +30,26 @@ class RecipeShow extends React.Component {
     this.props.fetchRecipe(this.props.match.params.recipeId);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     // We need canvasLoaded to only render canvas ONCE after first load
-    if (this.props.recipe && !this.state.canvasLoaded) {
+    if (prevProps.match.params.recipeId !== this.props.match.params.recipeId) {
+      this.canvasLoaded = false; //so it will reload canvas
+      console.log('set to false');
+    }
+    if (this.props.recipe) {
       const {preparation_min, baking_min, resting_min} = this.props.recipe;
-      this.setState({canvasLoaded: true});
-      this.onload = drawCanvas(preparation_min, baking_min, resting_min);
+      if (!this.canvasLoaded) {
+        drawCanvas(preparation_min, baking_min, resting_min); //this.onload =
+        this.canvasLoaded = true;
+        console.log('set back to true');
+      }
     }
     this.handleHeaderImg();
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.recipeId !== nextProps.match.params.recipeId) {
+      window.scrollTo(0,0);
       this.props.fetchRecipe(nextProps.match.params.recipeId);
     }
   }
@@ -142,15 +150,16 @@ class RecipeShow extends React.Component {
   }
 
   render() {
-    const {recipe} = this.props;
-    const {threeRecs} = this.state;
-    console.log(recipe);
-    console.log(threeRecs);
+    let {recipe, threeRecs} = this.props;
+    // console.log(recipe);
+    // console.log(threeRecs);
+    if (!threeRecs) threeRecs = JSON.parse(localStorage.getItem("savedThreeRecs")); // if refresh, get from local storage
     //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
-    if (!threeRecs || !recipe || !recipe.ingredients) {
+    if (!recipe || !recipe.ingredients) {//check if it finishes loading all info after fetchRecipe
       return (<div>Loading</div>);
     }
 
+    console.log(this.canvasLoaded);
     //Setup:
 
     let ingredientRows = recipe.ingredients.split(", "); //split by comma
@@ -192,7 +201,7 @@ class RecipeShow extends React.Component {
                 <img src={window.imageUrls.iconPrint}></img>
               </div>
               <div className="right-col">
-                <SuggestionBox threeItems={this.state.threeRecs}/>
+                <SuggestionBox threeItems={threeRecs}/>
               </div>
             </div>
           </div>
