@@ -64,7 +64,7 @@ class RecipeShow extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.recipeId !== nextProps.match.params.recipeId) {
-      nextProps.fetchRecipe(nextProps.match.params.recipeId);
+      this.props.fetchRecipe(nextProps.match.params.recipeId);
     }
   }
 

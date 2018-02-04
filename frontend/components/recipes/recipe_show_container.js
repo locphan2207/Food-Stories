@@ -10,14 +10,7 @@ const mapSTP = (state, ownProps) => {
   if (!ids || ids.length < 4) threeRecs = undefined;  //we need at least 4 ids,
   else {
     //----I wanted to random suggestion, but it doesnt always work well----
-    // for (let i = 0; i < 3; i++) {
-    //   let randomId = Math.floor(Math.random() * ids.length);
-    //   // keep randoming if it got same id as current recipeId and already had in threeRecs
-    //   while (randomId === ownProps.match.params.recipeId ||
-    //     threeRecs.includes(state.entities.recipes[`${randomId}`])) {
-    //       randomId = Math.floor(Math.random() * ids.length);
-    //   }
-    //   threeRecs.push(state.entities.recipes[`${randomId}`]);
+    //----So, let just get the neighbors of this current recipe
     let currentRecIdx = ids.indexOf(`${currentId}`);
     if (currentRecIdx > 2) {
       for (let i = 0; i < 3; i++)

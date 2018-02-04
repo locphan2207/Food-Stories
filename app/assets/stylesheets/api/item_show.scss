@@ -27,7 +27,7 @@
 .right-col {
   position: absolute;
   right: 0;
-  top: 50px;
+  top: 80px;
   left: 605px; //+ 18 to have extra space on left
   // background: green;
 }
@@ -233,14 +233,38 @@ canvas {
   letter-spacing: 0.5px;
 }
 
+.suggest-sentence {
+  padding-bottom: 16px;
+  font-family: "Conv_Brandon_med";
+  font-size: 120%;
+}
+
+.suggest-item {
+  // width: 274px;
+  color: #464646;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
 .suggest-pic-container {
   width: 133px;
   height: 100px;
   overflow: hidden;
   border-radius: 12px;
-  position: relative;
+  // position: relative;
 }
 
 .suggest-pic {
   height: 100%;
+}
+
+.suggest-item>p {
+  font-family: "Conv_Brandon_reg";
+  font-size: 90%;
+  // margin-left: 40px;
+  width: 133px;
+  padding-left: 16px;
+  display: inline-block;
 }

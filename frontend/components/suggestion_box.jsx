@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class SuggestionBox extends React.Component {
   handleImg() {
@@ -20,15 +21,17 @@ class SuggestionBox extends React.Component {
     if (!this.props.threeItems) return (<div>Loading...</div>);
     return (
       <div>
-        <p>More delicious ideas for you</p>
+        <p className="suggest-sentence">More delicious ideas for you</p>
         {
           this.props.threeItems.map(recipe => (
-            <div key={recipe.id} className="suggest-item">
-              <p>{recipe.title}</p>
+
+            <Link to={`/recipes/${recipe.id}`} className="suggest-item"
+                key={recipe.id} >
               <div className="suggest-pic-container">
                 <img className="suggest-pic" src={recipe.img_url}></img>
               </div>
-            </div>
+              <p>{recipe.title}</p>
+            </Link>
           ))
         }
       </div>
