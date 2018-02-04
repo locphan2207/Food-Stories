@@ -21,6 +21,31 @@ class RecipeShow extends React.Component {
     localStorage.setItem("savedThreeRecs", JSON.stringify(this.state.threeRecs));
   }
 
+
+
+  componentDidMount() {
+    // I want to save data when refreshing page, so:
+    window.addEventListener("beforeunload", this.savePropsToLocalStorage());
+    window.addEventListener("scroll", this.stickyHandling);
+    this.props.fetchRecipe(this.props.match.params.recipeId);
+  }
+
+  componentDidUpdate() {
+    // We need canvasLoaded to only render canvas ONCE after first load
+    if (this.props.recipe && !this.state.canvasLoaded) {
+      const {preparation_min, baking_min, resting_min} = this.props.recipe;
+      this.setState({canvasLoaded: true});
+      this.onload = drawCanvas(preparation_min, baking_min, resting_min);
+    }
+    this.handleHeaderImg();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.recipeId !== nextProps.match.params.recipeId) {
+      this.props.fetchRecipe(nextProps.match.params.recipeId);
+    }
+  }
+
   handleHeaderImg() {
     const headerImg = document.getElementsByClassName('post-header')[0];
     if (!headerImg) return;
@@ -42,30 +67,6 @@ class RecipeShow extends React.Component {
     //also move to center:
     headerImg.style =
       `height:${h}px;width:${w}px;transform: translate(-${(w-880)/2}px, -${(h-484)/2}px)`;
-  }
-
-
-  componentDidMount() {
-    // I want to save data when refreshing page, so:
-    window.addEventListener("beforeunload", this.savePropsToLocalStorage());
-    window.addEventListener("scroll", this.stickyHandling);
-    this.props.fetchRecipe(this.props.match.params.recipeId);
-  }
-
-  componentDidUpdate() {
-    const {preparation_min, baking_min, resting_min} = this.props.recipe;
-    // We need canvasLoaded to only render canvas ONCE after first load
-    if (!this.state.canvasLoaded) {
-      this.setState({canvasLoaded: true});
-      this.onload = drawCanvas(preparation_min, baking_min, resting_min);
-    }
-    this.handleHeaderImg();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.recipeId !== nextProps.match.params.recipeId) {
-      this.props.fetchRecipe(nextProps.match.params.recipeId);
-    }
   }
 
   ingredientMultiply(type) {
