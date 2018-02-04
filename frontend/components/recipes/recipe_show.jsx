@@ -14,28 +14,23 @@ class RecipeShow extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.recipe) {
-      this.props.fetchRecipe(this.props.match.params.recipeId);
-      console.log('show is calling fetch a recipe');
-    }
+    this.props.fetchRecipe(this.props.match.params.recipeId);
     window.addEventListener("scroll", this.stickyHandling);
   }
 
   componentWillReceiveProps(nextProps) {
     console.log('props changing');
     if (this.props.match.params.recipeId !== nextProps.match.params.recipeId) {
-      console.log('route changin');
       document.getElementById('app').scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
       // clearCanvas();
       this.canvasLoaded = false;
-      console.log('set back to false');
       this.props.fetchRecipe(nextProps.match.params.recipeId);
     }
   }
 
   componentDidUpdate(prevProps) {
     // We need canvasLoaded to only render canvas ONCE after first load
-    if (this.props.recipe.id !== prevProps.match.params.recipeId) {
+    if (this.props.recipe) {
       const {preparation_min, baking_min, resting_min} = this.props.recipe;
       if (!this.canvasLoaded) {
         drawCanvas(preparation_min, baking_min, resting_min); //this.onload =
@@ -155,7 +150,7 @@ class RecipeShow extends React.Component {
     }
     console.log('show rendering');
 
-    console.log(this.canvasLoaded);
+    // console.log(this.canvasLoaded);
     //Setup:
 
     let ingredientRows = recipe.ingredients.split(", "); //split by comma
