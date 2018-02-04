@@ -1,19 +1,19 @@
 const drawCanvas = (min1, min2, min3) => {
   let canvas1 = document.getElementById('canvas1');
-  if (canvas1.getContext) {
+  if (canvas1) {
     let ctx1 = canvas1.getContext('2d');
     drawCircle(ctx1);
     drawMinute(min1, ctx1);
   }
   let canvas2 = document.getElementById('canvas2');
-  if (canvas2.getContext) {
+  if (canvas2) {
     let ctx2 = canvas2.getContext('2d');
     drawCircle(ctx2);
     drawMinute(min2, ctx2);
 
   }
   let canvas3 = document.getElementById('canvas3');
-  if (canvas3.getContext) {
+  if (canvas3) {
     let ctx3 = canvas3.getContext('2d');
     drawCircle(ctx3);
     drawMinute(min3, ctx3);

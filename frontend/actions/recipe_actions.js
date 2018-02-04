@@ -14,11 +14,11 @@ const receiveRecipe = (recipe) => ({
 });
 
 export const fetchRecipes = () => (dispatch) => {
-  RecipeAPIUtil.getRecipes()
+  return RecipeAPIUtil.getRecipes()
     .then(recipes => dispatch(receiveRecipes(recipes)));
 };
 
 export const fetchRecipe = (recipeId) => (dispatch) => {
-  RecipeAPIUtil.getRecipe(recipeId)
+  return RecipeAPIUtil.getRecipe(recipeId)
     .then(response => dispatch(receiveRecipe(response.recipe)));
 };

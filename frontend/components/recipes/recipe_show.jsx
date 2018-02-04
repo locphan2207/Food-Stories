@@ -1,16 +1,29 @@
 import React from 'react';
 import drawCanvas from '../../util/canvas';
 import {Link} from 'react-router-dom';
-import SuggesstionBoxContainer from './suggestion_box_container';
+import SuggestionBox from '../suggestion_box';
 
 class RecipeShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {servingNum: 3, canvasLoaded: false};
+    this.state = {
+      threeRecs: props.threeRecs,
+      servingNum: 3,
+      canvasLoaded: false
+    };
+    if (!this.state.threeRecs) {
+      this.state.threeRecs =
+      JSON.parse(localStorage.getItem("savedThreeRecs"));
+    }
+  }
+
+  savePropsToLocalStorage() { //for when refreshing
+    localStorage.setItem("savedThreeRecs", JSON.stringify(this.state.threeRecs));
   }
 
   handleHeaderImg() {
     const headerImg = document.getElementsByClassName('post-header')[0];
+    if (!headerImg) return;
     let w = headerImg.width;
     let h = headerImg.height;
     if (w === 0 || h === 0) return; // need this or it freezes
@@ -31,9 +44,12 @@ class RecipeShow extends React.Component {
       `height:${h}px;width:${w}px;transform: translate(-${(w-880)/2}px, -${(h-484)/2}px)`;
   }
 
-  componentWillMount() {
-    this.props.fetchRecipe(this.props.match.params.recipeId);
+
+  componentDidMount() {
+    // I want to save data when refreshing page, so:
+    window.addEventListener("beforeunload", this.savePropsToLocalStorage());
     window.addEventListener("scroll", this.stickyHandling);
+    this.props.fetchRecipe(this.props.match.params.recipeId);
   }
 
   componentDidUpdate() {
@@ -44,6 +60,12 @@ class RecipeShow extends React.Component {
       this.onload = drawCanvas(preparation_min, baking_min, resting_min);
     }
     this.handleHeaderImg();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.recipeId !== nextProps.match.params.recipeId) {
+      nextProps.fetchRecipe(nextProps.match.params.recipeId);
+    }
   }
 
   ingredientMultiply(type) {
@@ -59,7 +81,6 @@ class RecipeShow extends React.Component {
   }
 
   stickyHandling() {
-    // console.log($(window).scrollTop());
     const $header1 = $('#header1');
     if ($(window).scrollTop() >= 522.7272338867188) { // I got this by checking on window console
       $header1.addClass("hidden-header");
@@ -81,7 +102,6 @@ class RecipeShow extends React.Component {
     let startIndexOfStep = textCopy.indexOf('Step');
 
     while (startIndexOfStep !== -1) {
-      // debugger
       const endIndexOfStep = startIndexOfStep + 8;
       const stepTitle = textCopy.slice(startIndexOfStep, endIndexOfStep); //save title
       textCopy = textCopy.slice(endIndexOfStep, textCopy.length); //remove saved title
@@ -122,8 +142,13 @@ class RecipeShow extends React.Component {
 
   render() {
     const {recipe} = this.props;
+    const {threeRecs} = this.state;
+    console.log(recipe);
+    console.log(threeRecs);
     //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
-    if (!recipe || !recipe.ingredients) return (<div></div>);
+    if (!threeRecs || !recipe || !recipe.ingredients) {
+      return (<div>Loading</div>);
+    }
 
     //Setup:
 
@@ -140,7 +165,6 @@ class RecipeShow extends React.Component {
         </tr>
       );
     });
-
 
     //Rendering:
     return (
@@ -167,8 +191,7 @@ class RecipeShow extends React.Component {
                 <img src={window.imageUrls.iconPrint}></img>
               </div>
               <div className="right-col">
-
-                
+                <SuggestionBox threeItems={this.state.threeRecs}/>
               </div>
             </div>
           </div>

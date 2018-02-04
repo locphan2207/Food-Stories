@@ -4,7 +4,7 @@ import {Redirect, Link} from 'react-router-dom';
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {username: "Username", email: "E-mail", password: "Password", exit: false};
+    this.state = {username: "", email: "", password: "", exit: false};
     this.interval;
   }
 
@@ -13,19 +13,20 @@ class SessionForm extends React.Component {
     this.props.clearError(); //perfect time to clear errors
   }
 
-  handleFocus(e, label) {
-    if (e.target.value === "Password") e.target.type = "password";
-    if (e.target.value === label) e.target.value = "";
-    e.target.style = "color: black";
-  }
-
-  handleFocusOut(e, label) {
-    if (e.target.value === "") {
-      e.target.value=label;
-      e.target.type = "text";
-      e.target.style = "color: #d8d8d8";
-    }
-  }
+  //I didnt know about placeholder, that's why I did this:
+  // handleFocus(e, label) {
+  //   if (e.target.value === "Password") e.target.type = "password";
+  //   if (e.target.value === label) e.target.value = "";
+  //   e.target.style = "color: black";
+  // }
+  //
+  // handleFocusOut(e, label) {
+  //   if (e.target.value === "") {
+  //     e.target.value=label;
+  //     e.target.type = "text";
+  //     e.target.style = "color: #d8d8d8";
+  //   }
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -38,26 +39,24 @@ class SessionForm extends React.Component {
 
   demoLogin() {
     const guest = {username: "beautiful_guest", email: "guest@gmail.com", password: "secret"};
-    $('.session-input').val("");
+    $('.session-input').attr("placeholder", "");
     if (this.props.formType === 'signup') {
       let $username = $('#virtual-username');
-      $username.val(guest.username);
       $username.css('display', 'block');
-      $username.addClass("animated zoomIn");
+      $username.addClass('animated fadeInRight');
     }
 
     let $email = $('#virtual-email');
+    $email.css({'display':'block'});
+    $email.addClass('animated fadeInRight');
+
+
     let $password = $('#virtual-password');
-
-    $email.val(guest.email);
-    $email.css('display', 'block');
-    $email.addClass("animated zoomIn");
-
-    $password.val(guest.password);
     $password.css('display', 'block');
-    $password.addClass("animated zoomIn");
+    $password.addClass('animated fadeInRight');
 
-    this.interval = window.setInterval(() => this.props.guestLogin(guest), 1300);
+
+    this.interval = window.setInterval(() => this.props.guestLogin(guest), 1500);
   }
 
   render() {
@@ -70,8 +69,7 @@ class SessionForm extends React.Component {
     let buttonText = 'Sign Up';
     let usernameField = (
         <input className="session-input"
-          onFocus={e => this.handleFocus(e, "Username")}
-          onBlur={e => this.handleFocusOut(e, "Username")}
+          placeholder="Username"
           onChange={e =>this.setState({username: e.target.value})}
           type="text" value={this.state.username}/>);
     let welcomeText = 'Welcome to Food Stories';
@@ -107,23 +105,21 @@ class SessionForm extends React.Component {
           <img id="close" onClick={() => this.setState({exit: true})}
             src={window.imageUrls.iconClose}></img>
           {welcomeImg}
-          <p className="welcome1">{welcomeText}</p>
+          <p className="welcome1 ">{welcomeText}</p>
           <p className="welcome2">{subWelcomeText}</p>
           <div className="session-input-container">
             {usernameField}
             <input className="session-input"
-              onFocus={e => this.handleFocus(e, "E-mail")}
-              onBlur={e => this.handleFocusOut(e, "E-mail")}
+              placeholder="E-mail"
               onChange={e =>this.setState({email: e.target.value})}
               type="text" value={this.state.email}/>
             <input className="session-input"
-              onFocus={e => this.handleFocus(e, "Password")}
-              onBlur={e => this.handleFocusOut(e, "Password")}
+              placeholder="Password"
               onChange={e => this.setState({password: e.target.value})}
-              type="text" value={this.state.password}/>
-            <input id="virtual-username"/>
-            <input id="virtual-email"/>
-            <input id="virtual-password" type="password"/>
+              type="password" value={this.state.password}/>
+            <input id="virtual-username" value="beautiful_guest" />
+            <input id="virtual-email" value="guest@gmail.com" />
+            <input id="virtual-password" value="secret" type="password"/>
           </div>
           <ul>{errorIndex}</ul>
           <input className="session-button" type="submit" value={buttonText} />

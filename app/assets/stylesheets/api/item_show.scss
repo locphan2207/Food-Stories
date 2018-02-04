@@ -232,3 +232,15 @@ canvas {
   font-size: 120%;
   letter-spacing: 0.5px;
 }
+
+.suggest-pic-container {
+  width: 133px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+}
+
+.suggest-pic {
+  height: 100%;
+}

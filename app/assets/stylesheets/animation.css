@@ -1,0 +1,16 @@
+.typing-animation {
+  /* display: block; */
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  animation:
+    typing 3.5s steps(40, end);
+  -webkit-animation:
+    typing 3.5s steps(40, end);
+  -moz-animation:
+    typing 3.5s steps(40, end);
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
