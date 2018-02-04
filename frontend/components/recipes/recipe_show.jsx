@@ -1,7 +1,7 @@
 import React from 'react';
-import drawCanvas from '../../util/canvas';
+import {drawCanvas, clearCanvas} from '../../util/canvas';
 import {Link} from 'react-router-dom';
-import SuggestionBox from '../suggestion_box';
+import SuggestionBoxContainer from './suggestion_box_container';
 
 class RecipeShow extends React.Component {
   constructor(props) {
@@ -16,26 +16,22 @@ class RecipeShow extends React.Component {
     // }
   }
 
-  savePropsToLocalStorage() { //for when refreshing
-    if (this.props.threeRecs && this.props.threeRecs[0] &&
-      this.props.threeRecs[1] && this.props.threeRecs[2]) {
-      localStorage.setItem("savedThreeRecs", JSON.stringify(this.props.threeRecs));
-    }
-  }
+  // savePropsToLocalStorage() { //for when refreshing
+  //   if (this.props.threeRecs && this.props.threeRecs[0] &&
+  //     this.props.threeRecs[1] && this.props.threeRecs[2]) {
+  //     localStorage.setItem("savedThreeRecs", JSON.stringify(this.props.threeRecs));
+  //   }
+  // }
 
   componentDidMount() {
-    // I want to save data when refreshing page, so:
-    window.addEventListener("beforeunload", this.savePropsToLocalStorage());
-    window.addEventListener("scroll", this.stickyHandling);
+    // // I want to save data when refreshing page, so:
+    // window.addEventListener("beforeunload", this.savePropsToLocalStorage());
     this.props.fetchRecipe(this.props.match.params.recipeId);
+    window.addEventListener("scroll", this.stickyHandling);
   }
 
   componentDidUpdate(prevProps) {
     // We need canvasLoaded to only render canvas ONCE after first load
-    if (prevProps.match.params.recipeId !== this.props.match.params.recipeId) {
-      this.canvasLoaded = false; //so it will reload canvas
-      console.log('set to false');
-    }
     if (this.props.recipe) {
       const {preparation_min, baking_min, resting_min} = this.props.recipe;
       if (!this.canvasLoaded) {
@@ -43,13 +39,18 @@ class RecipeShow extends React.Component {
         this.canvasLoaded = true;
         console.log('set back to true');
       }
+      clearCanvas();
     }
     this.handleHeaderImg();
   }
 
   componentWillReceiveProps(nextProps) {
+    // const nextRecipe = this.props.allRecs[`${nextProps.match.params.recipeId}`];
+    // if (!nextRecipe || !nextRecipe.ingredients) {
     if (this.props.match.params.recipeId !== nextProps.match.params.recipeId) {
-      window.scrollTo(0,0);
+      document.getElementById('app').scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
+      clearCanvas();
+      this.canvasLoaded = false;
       this.props.fetchRecipe(nextProps.match.params.recipeId);
     }
   }
@@ -136,7 +137,7 @@ class RecipeShow extends React.Component {
 
   jumpTo(id, e) {
     const dest = document.getElementById(id);
-    dest.scrollIntoView({behavior: "smooth", block: "start"});
+    dest.scrollIntoView({behavior: "smooth", block: "start", inline: "end"});
     const buttons = document.getElementsByClassName("detail-button");
     console.log(buttons);
     for (let i = 0; i < 2; i++) {
@@ -150,11 +151,13 @@ class RecipeShow extends React.Component {
   }
 
   render() {
-    let {recipe, threeRecs} = this.props;
-    // console.log(recipe);
+    let {recipe} = this.props;
+    console.log(this.props);
+    console.log(recipe);
     // console.log(threeRecs);
-    if (!threeRecs) threeRecs = JSON.parse(localStorage.getItem("savedThreeRecs")); // if refresh, get from local storage
+    // if (!threeRecs) threeRecs = JSON.parse(localStorage.getItem("savedThreeRecs")); // if refresh, get from local storage
     //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
+    // while (!recipe && !recipe.ingredients);
     if (!recipe || !recipe.ingredients) {//check if it finishes loading all info after fetchRecipe
       return (<div>Loading</div>);
     }
@@ -201,14 +204,17 @@ class RecipeShow extends React.Component {
                 <img src={window.imageUrls.iconPrint}></img>
               </div>
               <div className="right-col">
-                <SuggestionBox threeItems={threeRecs}/>
+                <SuggestionBoxContainer />
               </div>
             </div>
           </div>
         </div>
         <div className="row">
           <div className="left-col">
-            <p id="ov" className="post-title">{recipe.title}</p>
+            <p className="post-title">
+              <div id="ov"></div>
+              {recipe.title}
+            </p>
             <p className="rating">
               <img src={window.imageUrls.iconStarEmpty}></img>
               <img src={window.imageUrls.iconStarEmpty}></img>
@@ -249,7 +255,8 @@ class RecipeShow extends React.Component {
                 {ingredientRows}
               </tbody></table>
             </div>
-            <div id="st" className="text">
+            <div className="text">
+              <div id="st"></div>
               {this.textHandling()}
             </div>
           </div>

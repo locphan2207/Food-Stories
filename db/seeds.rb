@@ -29,7 +29,7 @@ img_url = [
 
 # Recipe test seeds:
 difficulty = ["easy", "medium", "hard"]
-(0..20).each do |i|
+(1..20).each do |i|
   Recipe.create(
     title: "Testing Recipe #{i} with testing author #{i}",
     author_id: "1",
@@ -78,7 +78,7 @@ difficulty = ["easy", "medium", "hard"]
 end
 
 #Story test seeds:
-(0..20).each do |i|
+(1..20).each do |i|
   Story.create(
     title: "When you don't know what to put here, you type whatever ##{i}",
     author_id: "2",

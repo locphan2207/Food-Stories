@@ -11,7 +11,8 @@ import StoryIndexContainer from './stories/story_index_container';
 import StoryShowContainer from './stories/story_show_container';
 
 const App = () => (
-  <div>
+  <div id="app">
+    <div id="scroll-point"></div>
     <header id="header1" className="header-row">
       <h2 className="logo">Food Stories</h2>
       <ul className="navigation">

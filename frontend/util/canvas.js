@@ -1,4 +1,4 @@
-const drawCanvas = (min1, min2, min3) => {
+export const drawCanvas = (min1, min2, min3) => {
   let canvas1 = document.getElementById('canvas1');
   if (canvas1) {
     let ctx1 = canvas1.getContext('2d');
@@ -46,4 +46,21 @@ const drawMinute = (min, context) => {
   context.stroke();
 };
 
-export default drawCanvas;
+export const clearCanvas = () => {
+  let canvas1 = document.getElementById('canvas1');
+  if (canvas1) {
+    let ctx1 = canvas1.getContext('2d');
+    ctx1.clearRect(0, 0, 85, 85);
+  }
+  let canvas2 = document.getElementById('canvas2');
+  if (canvas2) {
+    let ctx2 = canvas2.getContext('2d');
+    ctx2.clearRect(0, 0, 85, 85);
+
+  }
+  let canvas3 = document.getElementById('canvas3');
+  if (canvas3) {
+    let ctx3 = canvas3.getContext('2d');
+    ctx3.clearRect(0, 0, 85, 85);
+  }
+};

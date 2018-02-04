@@ -104,7 +104,10 @@ class StoryShow extends React.Component {
         </div>
         <div className="row">
           <div className="left-col">
-            <p id="ov" className="post-title">{story.title}</p>
+            <p className="post-title">
+              <div id="ov"></div>
+              {story.title}
+            </p>
             <div className="text">
               {story.text}
             </div>
