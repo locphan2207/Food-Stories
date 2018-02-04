@@ -7,7 +7,7 @@ const recipesReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case (RECEIVE_RECIPES):
-      return action.recipes;
+      return Object.assign({}, action.recipes, state); // I want to keep old data, just get what wasnt there
     case (RECEIVE_RECIPE):
       let newState = {[action.recipe.id]: action.recipe};
       return Object.assign({}, state, newState);

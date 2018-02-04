@@ -2,6 +2,11 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 class SuggestionBox extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log('creating suggestion');
+  }
+
   handleImg() {
     let suggestPics = document.getElementsByClassName("suggest-pic");
     if (!suggestPics) return;
@@ -14,13 +19,16 @@ class SuggestionBox extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchRecipes();
+    if (!this.props.threeRecs) {
+      this.props.fetchRecipes();
+      console.log('suggestion needs call fetchAlls');
+    }
     // I want to save data when refreshing page, so:
     // window.addEventListener("beforeunload", this.savePropsToLocalStorage());
   }
 
   componentDidUpdate() {
-    // this.handleImg();
+    this.handleImg();
   }
 
   // savePropsToLocalStorage() { //for when refreshing
@@ -31,7 +39,9 @@ class SuggestionBox extends React.Component {
   // }
 
   render() {
+    console.log('suggest loading');
     if (!this.props.threeRecs) return (<div>Loading...</div>);
+    console.log('suggestiong rendering');
     // if (!threeRecs) threeRecs = JSON.parse(localStorage.getItem("savedThreeRecs")); // if refresh, get from local storage
     return (
       <div>

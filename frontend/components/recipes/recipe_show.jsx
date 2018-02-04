@@ -10,6 +10,7 @@ class RecipeShow extends React.Component {
       servingNum: 3,
     };
     this.canvasLoaded = false;
+    this.alreadyRendered = false;
     // if (!this.props.threeRecs) {
     //   this.savedthreeRecs =
     //     JSON.parse(localStorage.getItem("savedThreeRecs"));
@@ -26,7 +27,10 @@ class RecipeShow extends React.Component {
   componentDidMount() {
     // // I want to save data when refreshing page, so:
     // window.addEventListener("beforeunload", this.savePropsToLocalStorage());
-    this.props.fetchRecipe(this.props.match.params.recipeId);
+    if (!this.props.recipe) {
+      this.props.fetchRecipe(this.props.match.params.recipeId);
+      console.log('show is calling fetch a recipe');
+    }
     window.addEventListener("scroll", this.stickyHandling);
   }
 
@@ -45,6 +49,7 @@ class RecipeShow extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log('props changing');
     // const nextRecipe = this.props.allRecs[`${nextProps.match.params.recipeId}`];
     // if (!nextRecipe || !nextRecipe.ingredients) {
     if (this.props.match.params.recipeId !== nextProps.match.params.recipeId) {
@@ -54,7 +59,7 @@ class RecipeShow extends React.Component {
       this.props.fetchRecipe(nextProps.match.params.recipeId);
     }
   }
-
+  
   handleHeaderImg() {
     const headerImg = document.getElementsByClassName('post-header')[0];
     if (!headerImg) return;
@@ -139,7 +144,6 @@ class RecipeShow extends React.Component {
     const dest = document.getElementById(id);
     dest.scrollIntoView({behavior: "smooth", block: "start", inline: "end"});
     const buttons = document.getElementsByClassName("detail-button");
-    console.log(buttons);
     for (let i = 0; i < 2; i++) {
       buttons[i].className = "detail-button"; //reset className
     }
@@ -150,10 +154,11 @@ class RecipeShow extends React.Component {
     }
   }
 
+
   render() {
     let {recipe} = this.props;
-    console.log(this.props);
-    console.log(recipe);
+    console.log('show loading');
+    console.log(this.props.recipe);
     // console.log(threeRecs);
     // if (!threeRecs) threeRecs = JSON.parse(localStorage.getItem("savedThreeRecs")); // if refresh, get from local storage
     //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
@@ -161,8 +166,9 @@ class RecipeShow extends React.Component {
     if (!recipe || !recipe.ingredients) {//check if it finishes loading all info after fetchRecipe
       return (<div>Loading</div>);
     }
+    console.log('show rendering');
 
-    console.log(this.canvasLoaded);
+    // console.log(this.canvasLoaded);
     //Setup:
 
     let ingredientRows = recipe.ingredients.split(", "); //split by comma

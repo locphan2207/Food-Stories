@@ -34,4 +34,4 @@ const mapDTP = (dispatch, ownProps) => {
   };
 };
 
-export default withRouter(connect(mapSTP, mapDTP)(RecipeShow));
+export default connect(mapSTP, mapDTP)(RecipeShow);

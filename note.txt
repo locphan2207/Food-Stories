@@ -32,3 +32,9 @@ remove radius for sticky buttons
 min width for sticky navbar ???
 
 videos: iframes video tag
+
+child component shouldnt be calling an action that can cause rerender for the parent. because when parent rerender, it will recreaate the child component, and when the child component is created, it will call the action again, and cause parent rerender again -> infinite loop
+
+or, only
+
+fix back to the old way, call .then :
