@@ -11,22 +11,9 @@ class RecipeShow extends React.Component {
     };
     this.canvasLoaded = false;
     this.alreadyRendered = false;
-    // if (!this.props.threeRecs) {
-    //   this.savedthreeRecs =
-    //     JSON.parse(localStorage.getItem("savedThreeRecs"));
-    // }
   }
 
-  // savePropsToLocalStorage() { //for when refreshing
-  //   if (this.props.threeRecs && this.props.threeRecs[0] &&
-  //     this.props.threeRecs[1] && this.props.threeRecs[2]) {
-  //     localStorage.setItem("savedThreeRecs", JSON.stringify(this.props.threeRecs));
-  //   }
-  // }
-
   componentDidMount() {
-    // // I want to save data when refreshing page, so:
-    // window.addEventListener("beforeunload", this.savePropsToLocalStorage());
     if (!this.props.recipe) {
       this.props.fetchRecipe(this.props.match.params.recipeId);
       console.log('show is calling fetch a recipe');
@@ -34,32 +21,33 @@ class RecipeShow extends React.Component {
     window.addEventListener("scroll", this.stickyHandling);
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log('props changing');
+    if (this.props.match.params.recipeId !== nextProps.match.params.recipeId) {
+      console.log('route changin');
+      document.getElementById('app').scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
+      // clearCanvas();
+      this.canvasLoaded = false;
+      console.log('set back to false');
+      this.props.fetchRecipe(nextProps.match.params.recipeId);
+    }
+  }
+
   componentDidUpdate(prevProps) {
     // We need canvasLoaded to only render canvas ONCE after first load
-    if (this.props.recipe) {
+    if (this.props.recipe.id !== prevProps.match.params.recipeId) {
       const {preparation_min, baking_min, resting_min} = this.props.recipe;
       if (!this.canvasLoaded) {
         drawCanvas(preparation_min, baking_min, resting_min); //this.onload =
         this.canvasLoaded = true;
         console.log('set back to true');
       }
-      clearCanvas();
+      // clearCanvas();
     }
     this.handleHeaderImg();
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('props changing');
-    // const nextRecipe = this.props.allRecs[`${nextProps.match.params.recipeId}`];
-    // if (!nextRecipe || !nextRecipe.ingredients) {
-    if (this.props.match.params.recipeId !== nextProps.match.params.recipeId) {
-      document.getElementById('app').scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
-      clearCanvas();
-      this.canvasLoaded = false;
-      this.props.fetchRecipe(nextProps.match.params.recipeId);
-    }
-  }
-  
+
   handleHeaderImg() {
     const headerImg = document.getElementsByClassName('post-header')[0];
     if (!headerImg) return;
@@ -157,10 +145,9 @@ class RecipeShow extends React.Component {
 
   render() {
     let {recipe} = this.props;
-    console.log('show loading');
-    console.log(this.props.recipe);
-    // console.log(threeRecs);
-    // if (!threeRecs) threeRecs = JSON.parse(localStorage.getItem("savedThreeRecs")); // if refresh, get from local storage
+    // console.log('show loading');
+    // console.log(this.props.recipe);
+
     //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
     // while (!recipe && !recipe.ingredients);
     if (!recipe || !recipe.ingredients) {//check if it finishes loading all info after fetchRecipe
@@ -168,7 +155,7 @@ class RecipeShow extends React.Component {
     }
     console.log('show rendering');
 
-    // console.log(this.canvasLoaded);
+    console.log(this.canvasLoaded);
     //Setup:
 
     let ingredientRows = recipe.ingredients.split(", "); //split by comma
