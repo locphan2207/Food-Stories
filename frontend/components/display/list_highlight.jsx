@@ -10,7 +10,7 @@ class ListHighlight extends React.Component {
 
   handleArrow(direction) {
     let leftCount;
-    if (direction === 'left') leftCount = this.state.leftCount + 1;
+    if (direction === 'right') leftCount = this.state.leftCount + 1;
     else leftCount = this.state.leftCount -1;
     const slider = document.getElementsByClassName('list-highlight')[0];
     // base on the current count of left, we can calculate margin left like so:
@@ -20,6 +20,17 @@ class ListHighlight extends React.Component {
 
   render() {
     const {items, isRecipe} = this.props;
+    
+    let leftArrow = (<img onClick={() => this.handleArrow('left')}
+      className="left" src={window.imageUrls.iconArrowLeft}></img>);
+
+    let rightArrow = (<img onClick={() => this.handleArrow('right')}
+      className="right" src={window.imageUrls.iconArrowRight}></img>);
+
+    //if there are 4 items outter left, right arrow should be hidden, to not slide left anymore:
+    if (this.state.leftCount > 3) rightArrow = null;
+    //if there is 0 item outter left, left arrow should be hidden, to not slide right anymore:
+    if (this.state.leftCount < 1) leftArrow = null;
     return (
       <div className="list-highlight-container">
         <div className="list-highlight-window">
@@ -29,10 +40,8 @@ class ListHighlight extends React.Component {
             }
           </div>
         </div>
-        <img onClick={() => this.handleArrow('left')}
-          className="left" src={window.imageUrls.iconArrowLeft}></img>
-        <img onClick={() => this.handleArrow('right')}
-          className="right" src={window.imageUrls.iconArrowRight}></img>
+        {leftArrow}
+        {rightArrow}
       </div>
     );
   }
