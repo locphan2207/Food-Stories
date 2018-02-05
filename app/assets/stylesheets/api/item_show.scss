@@ -230,7 +230,7 @@ canvas {
 
 // Step is for recipe show:
 .step {
-  padding: 20px 0 20px 0;
+  padding-bottom: 20px;
 }
 
 .step-title {
@@ -311,7 +311,7 @@ canvas {
 }
 
 .text {
-  position: relative;
+  position: relative; // for scroll point #st
   padding-top: 35px;
   font-size: 110%;
   color: #303030;

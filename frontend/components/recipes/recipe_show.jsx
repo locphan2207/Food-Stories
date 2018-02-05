@@ -211,7 +211,7 @@ class RecipeShow extends React.Component {
                 {ingredientRows}
               </tbody></table>
             </div>
-            <div>
+            <div className="text">
               <div id="st"></div>
               {this.textHandling()}
             </div>
