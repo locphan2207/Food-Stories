@@ -10,11 +10,12 @@ import RecipeShowContainer from './recipes/recipe_show_container';
 import StoryIndexContainer from './stories/story_index_container';
 import StoryShowContainer from './stories/story_show_container';
 
+import HomepageContainer from './homepage_container';
+
 const App = () => (
   <div id="app">
-    <div id="scroll-point"></div>
     <header id="header1" className="header-row">
-      <h2 className="logo">Food Stories</h2>
+      <Link to="/" className="logo">Food Stories</Link>
       <ul className="navigation">
         <li><Link to="/recipes">Recipes</Link></li>
         <li><Link to="/stories">Stories</Link></li>
@@ -27,7 +28,9 @@ const App = () => (
 
     <Route path='/signup' component={SessionFormContainer} />
     <Route path='/login' component={SessionFormContainer} />
+
     <section className="main-section">
+      <Route exact path='/' component={HomepageContainer} />
       <Route exact path='/recipes' component={RecipeIndexContainer} />
       <Route exact path='/stories' component={StoryIndexContainer} />
       <Route path='/recipes/:recipeId' component={RecipeShowContainer} />

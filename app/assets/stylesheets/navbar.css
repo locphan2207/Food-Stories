@@ -26,6 +26,9 @@
   /* font-weight: bold; */
   font-size: 37px;
   padding: 10px 45px 0 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: #464646;
 }
 
 .navigation, .right-menu {
