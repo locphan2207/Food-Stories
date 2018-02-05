@@ -10,6 +10,8 @@ import RecipeShowContainer from './recipes/recipe_show_container';
 import StoryIndexContainer from './stories/story_index_container';
 import StoryShowContainer from './stories/story_show_container';
 
+import RecipeSearch from './recipes/recipe_search'; 
+
 import HomepageContainer from './homepage_container';
 
 // import {handleBigImg} from '../util/display_util';
@@ -33,6 +35,7 @@ const App = () => (
 
     <section className="main-section">
       <Route exact path='/' component={HomepageContainer} />
+      <Route exact path='/recipes' component={RecipeSearch} />
       <Route exact path='/recipes' component={RecipeIndexContainer} />
       <Route exact path='/stories' component={StoryIndexContainer} />
       <Route path='/recipes/:recipeId' component={RecipeShowContainer} />

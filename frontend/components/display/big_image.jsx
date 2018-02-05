@@ -2,10 +2,6 @@ import React from 'react';
 
 class BigImage extends React.Component {
 
-  componentDidMount() {
-    this.onload = this.handleHeaderImg();
-  }
-
   handleHeaderImg() {
     // const headerImg = document.getElementsByClassName('post-header')[0];
     const headerImg = this.refs.thisImage;
@@ -33,7 +29,8 @@ class BigImage extends React.Component {
     if (!this.props.imgUrl) return (<h1>Loading...</h1>);
     return (
       <div className="post-header-container">
-        <img ref="thisImage" className="post-header" src={this.props.imgUrl}></img>
+        <img ref="thisImage" className="post-header" src={this.props.imgUrl}
+          onLoad={() => this.handleHeaderImg()}></img>
         <div className="index-gradient"></div>
       </div>
     );
