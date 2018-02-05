@@ -16,16 +16,18 @@
 .sticky-header-container {
   background: white;
   border-bottom: 1px solid #d8d8d8;
+  margin: 0 10px;
 }
 
 
 .detail-navbar-container {
-  width: 880px;
+  width: 860px;
   height: 50px;
   display: flex;
   justify-content: space-between;
   position: relative; //for right column
   margin: 0 auto;
+  padding: 0 10px; // calculated, dont delete
 }
 
 .right-col {
@@ -71,6 +73,7 @@
 
 .button-active {
   border-bottom: 2px solid #0a7f78;
+  border-radius: none;
 }
 
 .sharing>img{
