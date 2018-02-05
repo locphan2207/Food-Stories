@@ -1,5 +1,5 @@
 import React from 'react';
-import StoryIndexItem from './story_index_item';
+import SmallImage from '../display/small_image';
 
 class StoryIndex extends React.Component {
   componentDidMount() {
@@ -13,8 +13,9 @@ class StoryIndex extends React.Component {
         <p className="item-title">Stories</p>
         <ul className="item-index">
           {stories.map(story => (
-            <StoryIndexItem key={story.id}
-              story={story}
+            <SmallImage key={story.id}
+              isRecipe={false}
+              item={story}
             />
           ))}
         </ul>

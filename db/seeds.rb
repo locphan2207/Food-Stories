@@ -9,22 +9,27 @@ User.create(username: 'loc', email: 'loc@gmail.com', password: 'chetcha')
 User.create(username: 'beautiful_guest', email: 'guest@gmail.com', password: 'secret')
 
 img_url = [
-  "https://www.adorama.com/alc/wp-content/uploads/2017/11/shutterstock_334602908-1060x480.jpg",
-  "http://static1.businessinsider.com/image/586d0877dd0895e1148b45f4/the-50-best-food-bloggers-to-follow-on-instagram-in-2017.jpg",
-  "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-  "https://images.pexels.com/photos/76093/pexels-photo-76093.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-  "https://images.pexels.com/photos/710916/pexels-photo-710916.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-  "https://images.pexels.com/photos/247685/pexels-photo-247685.png?w=1260&h=750&auto=compress&cs=tinysrgb",
-  "https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-  "https://images.pexels.com/photos/5506/bread-food-salad-sandwich.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
-  "https://images.pexels.com/photos/72160/bbq-dinner-grilled-grill-72160.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-  "https://images.pexels.com/photos/53121/kimchi-fried-rice-fried-rice-rice-korean-53121.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/132694/pexels-photo-132694.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/62097/pexels-photo-62097.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/76093/pexels-photo-76093.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/710916/pexels-photo-710916.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/247685/pexels-photo-247685.png?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/5506/bread-food-salad-sandwich.jpg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/72160/bbq-dinner-grilled-grill-72160.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/53121/kimchi-fried-rice-fried-rice-rice-korean-53121.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
 
-  "https://images.pexels.com/photos/76784/pexels-photo-76784.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-  "https://images.pexels.com/photos/36768/food-salmon-teriyaki-cooking.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
-  "https://images.pexels.com/photos/262897/pexels-photo-262897.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-  "https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-  "https://images.pexels.com/photos/8758/food-dinner-lemon-rice.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/7782/food-plate-wood-restaurant.jpg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/5928/salad-healthy-diet-spinach.jpg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/361184/asparagus-steak-veal-steak-veal-361184.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/7765/food.jpg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/76784/pexels-photo-76784.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/36768/food-salmon-teriyaki-cooking.jpg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/262897/pexels-photo-262897.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
+  "https://images.pexels.com/photos/8758/food-dinner-lemon-rice.jpg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb",
 ]
 
 # Recipe test seeds:
@@ -36,7 +41,7 @@ ingredients = ingredients.split(", ")
   Recipe.create(
     title: "Testing Recipe #{i} with testing author #{i}",
     author_id: "1",
-    img_url: img_url[i%15],
+    img_url: img_url[i-1],
     difficulty: difficulty[rand(2)],
     ingredients: ingredients.shuffle[0..5].join(", "),
     baking_min: 20 + rand(40),
@@ -68,7 +73,7 @@ end
 (1..20).each do |i|
   Story.create(
     title: "When you don't know what to put here #{i}",
-    sub_title: "you type whatever #TanLoc",
+    sub_title: "You start typing whatever #TanLoc",
     author_id: "2",
     img_url: img_url[(20-i)%15],
     text: "Lorem ipsum dolor sit amet, mauris nunc lacus, wisi ipsum convallis odio fusce pellentesque, sed lobortis, maecenas sed auctor. Ornare nihil cras ipsum ultrices metus amet. Venenatis velit, ipsum augue, sed in integer, magnis lectus in ante orci eget, montes eu urna mauris. Sit magnis at molestie at egestas donec, sem maecenas pede sollicitudin bibendum porta sed, facilisis commodo et. Vestibulum maecenas leo nunc mi ac, donec sollicitudin pellentesque sodales, consectetuer fusce     necphasellus, praesent ac magna, sed quisque risus porttitor pede imperdiet est. Maecenas malesuada consectetuer velit dolor aliquam et, platea erat turpis, vitae quis, justo sem donec rhoncus maecenas facilisis. Nunc mattis perferendis, eleifend sed ut netus mi consequat, ante pellentesque egestas arcu.

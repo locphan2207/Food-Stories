@@ -25,7 +25,7 @@ class BigImage extends React.Component {
     }
     //also move to center:
     headerImg.style =
-      `height:${h}px;width:${w}px;transform: translate(-${(w-880)/2}px, -${(h-484)/2}px)`;
+      `height:${h}px;width:${w}px;transform:translate(-${(w-880)/2}px,-${(h-484)/2}px)`;
   }
 
   render() {
@@ -33,6 +33,7 @@ class BigImage extends React.Component {
     return (
       <div className="post-header-container">
         <img className="post-header" src={this.props.imgUrl}></img>
+        <div className="index-gradient"></div>
       </div>
     );
   }

@@ -1,0 +1,49 @@
+.homepage-title {
+  font-family: "Conv_Brandon_med";
+  font-weight: normal;
+  letter-spacing: 1px;
+  font-size: 170%;
+  display: block;
+  color: #464646;
+  margin: 0 0 18px 10px;
+}
+
+.big-highlight {
+  text-decoration: none;
+  padding: 0 10px;
+}
+
+.caption1 {
+  font-size: 120%;
+  font-family: "Conv_Brandon_med";
+  color: #464646;
+  margin: 10px 10px 0 10px;
+}
+
+.caption2 {
+  font-size: 110%;
+  font-family: "Conv_Brandon_med";
+  color: #8e8e8e;
+  padding-bottom: 50px;
+  padding: 0 10px;
+}
+
+.big-highlight:hover {
+  .post-header-container {
+    transform: scale(1.02);  //need to initialize in original element
+    box-shadow: 0 0 10px #979797;
+  }
+}
+
+.list-highlight-window {
+  width: 880px;
+  // position: relative;
+  overflow: hidden;
+}
+
+.list-highlight {
+  margin-top: 5px;
+  display: flex;
+  justify-content: flex-start;
+  z-index: -1;
+}
