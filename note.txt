@@ -21,6 +21,8 @@ Step 2: heroku pg:reset DATABASE (no need to change the DATABASE)
 Step 3: heroku run rake db:migrate
 Step 4: heroku run rake db:seed (if you have seed)
 
+
+-----week1------
 doing nav bar( sizing position)
 
 save current path in state ?

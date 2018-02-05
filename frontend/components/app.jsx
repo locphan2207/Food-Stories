@@ -35,6 +35,7 @@ const App = () => (
 
     <section className="main-section">
       <Route exact path='/' component={HomepageContainer} />
+      <Route exact path='/recipes' component={RecipeSearch} />
       <Route exact path='/recipes' component={RecipeIndexContainer} />
       <Route exact path='/stories' component={StoryIndexContainer} />
       <Route path='/recipes/:recipeId' component={RecipeShowContainer} />

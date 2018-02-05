@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   #defaults is plural please!
   namespace :api, defaults: {format: :json} do
+    post 'recipes/search', to: 'recipes#search'
     resources :recipes
     resources :stories
     resources :users, only: [:create]

@@ -21,10 +21,19 @@ class Api::RecipesController < ApplicationController
     end
   end
 
+  def search
+    @recipes = Recipe.search_by_filter(recipe_params)
+    # return back to front end with search result here:
+  end
+
   private
 
   def recipe_params
     params.require(:recipe).permit(:title, :author_id, :img_url, :rating, :difficulty,
       :preparation_min, :baking_min, :resting_min, :ingredients, :text)
+  end
+
+  def recipe_search_params
+    params.require(:title, :difficulty, :maxCookingTime)
   end
 end
