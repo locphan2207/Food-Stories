@@ -12,8 +12,10 @@ import StoryShowContainer from './stories/story_show_container';
 
 import HomepageContainer from './homepage_container';
 
+import {handleBigImg} from '../util/display_util';
+
 const App = () => (
-  <div id="app">
+  <div onLoad={handleBigImg} id="app">
     <header id="header1" className="header-row">
       <Link to="/" className="logo">Food Stories</Link>
       <ul className="navigation">
