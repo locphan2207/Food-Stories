@@ -37,7 +37,6 @@
 
 .list-highlight-window {
   width: 880px;
-  // position: relative;
   overflow: hidden;
 }
 
@@ -46,4 +45,22 @@
   display: flex;
   justify-content: flex-start;
   z-index: -1;
+}
+
+.list-highlight-container {
+  position: relative; //for left right buttons
+}
+
+.left, .right {
+  position: absolute;
+  top: 25%;
+  transform: translateY(100%);
+}
+
+
+.right {
+  right: -15px;
+}
+.left {
+  left: -15px;
 }

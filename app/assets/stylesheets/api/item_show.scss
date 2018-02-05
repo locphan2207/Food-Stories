@@ -3,11 +3,12 @@
 }
 
 .post-header-container {
-  width: 100%;
+  width: 860px; //calculated
+  margin: 0 10px; //calclated
   height: 484px;
   border-radius: 12px;
   overflow: hidden;
-  margin: 0 10px;
+  // margin: 0 10px;
   transition: all 0.15s ease-in-out;
   position: relative; // for gradient
 }

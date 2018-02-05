@@ -12,8 +12,14 @@ class Homepage extends React.Component {
 
   getEightItems(items) {
     const result = [];
+    const randomedIds = [];
+    //Let's random it:
     for (let i = 0; i < 8; i++) {
-      result.push(items[`${i}`]);
+      let random = Math.floor(Math.random() * items.length);
+      while (randomedIds.includes(random)) {
+        random = Math.floor(Math.random() * items.length);
+      }
+      result.push(items[`${random}`]);
     }
     return result;
   }
@@ -35,7 +41,7 @@ class Homepage extends React.Component {
         </Link>
 
         <p className="homepage-title">Latest Recipes</p>
-        <ListHighlight items={recipes} isRecipe={true}/>
+        <ListHighlight items={this.getEightItems(recipes)} isRecipe={true}/>
       </div>
     );
   }
