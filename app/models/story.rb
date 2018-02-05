@@ -12,7 +12,7 @@
 #
 
 class Story < ApplicationRecord
-  validates :title, :author_id, :img_url, presence: true
+  validates :title, :sub_title, :author_id, :img_url, presence: true
 
   belongs_to :author,
   primary_key: :id,

@@ -15,9 +15,12 @@ class Homepage extends React.Component {
     console.log(stories[stories.length-1]);
     return (
       <div>
-        <p className="item-title">Today's Story</p>
-        <BigImage imgUrl={stories[stories.length-1].img_url} />
-
+        <div className="latest-story">
+          <p className="item-title">Today's Story</p>
+          <BigImage imgUrl={stories[stories.length-1].img_url} />
+          <p className="post-title">{stories[stories.length-1].title}</p>
+          <p className="">{stories[stories.length-1].sub_title}</p>
+        </div>
       </div>
     );
   }

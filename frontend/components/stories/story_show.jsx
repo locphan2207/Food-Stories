@@ -107,6 +107,15 @@ class StoryShow extends React.Component {
               <span id="ov"></span>
               {story.title}
             </p>
+            <p className="post-sub-title">{story.sub_title}</p>
+            <div className="post-author">
+              <img className="post-author-pic"
+                src={window.imageUrls.userDefault}></img>
+              <div>
+                <p className="post-author-username">Tan Loc</p>
+                <p className="post-author-role">Master Admin</p>
+              </div>
+            </div>
             <div className="text">
               {story.text}
             </div>

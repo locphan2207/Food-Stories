@@ -86,8 +86,18 @@
 .post-title {
   font-family: "Conv_Brandon_med";
   font-size: 160%;
-  padding: 30px 0;
+  padding: 30px 0 18px 0;
   position: relative;
+}
+
+.post-sub-title {
+  font-family: "Conv_Brandon_med";
+  font-size: 120%;
+  padding-bottom: 32px;
+  background-image: linear-gradient(to right, #909090 33%, rgba(255,255,255,0) 0%);
+  background-position: bottom;
+  background-size: 7px 2px;
+  background-repeat: repeat-x;
 }
 
 .rating {
@@ -270,8 +280,41 @@ canvas {
   display: inline-block;
 }
 
+.post-author {
+  min-height: 120px;
+  background-image: linear-gradient(to right, #909090 33%, rgba(255,255,255,0) 0%);
+  background-position: bottom;
+  background-size: 7px 2px;
+  background-repeat: repeat-x;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.post-author-pic {
+  width: 75px;
+  height: 75px;
+  margin: 24px 0;
+  display: inline-block;
+  padding-right: 17.6px;
+}
+
+.post-author-username {
+  padding-top: 24px;
+  font-family: "Conv_Brandon_med";
+  font-size: 140%;
+}
+
+.post-author-role {
+  font-family: "Conv_Brandon_reg";
+  padding-top: 5px;
+  font-size: 100%;
+}
+
 .text {
   position: relative;
+  padding-top: 35px;
+  font-size: 110%;
+  color: #303030;
 }
 
 #st {
