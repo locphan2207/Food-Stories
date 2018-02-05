@@ -1,3 +1,9 @@
+.homepage-title-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
 .homepage-title {
   font-family: "Conv_Brandon_med";
   font-weight: normal;
@@ -6,6 +12,15 @@
   display: block;
   color: #464646;
   margin: 0 0 18px 10px;
+  padding-right: 17.6px;
+}
+
+.homepage-title-container>a {
+  text-decoration: none;
+  font-family: "Conv_Brandon_med";
+  color: #0a7f78;
+  font-size: 115%;
+  letter-spacing: 0.5px;
 }
 
 .big-highlight {

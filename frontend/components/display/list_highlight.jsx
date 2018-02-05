@@ -20,7 +20,7 @@ class ListHighlight extends React.Component {
 
   render() {
     const {items, isRecipe} = this.props;
-    
+
     let leftArrow = (<img onClick={() => this.handleArrow('left')}
       className="left" src={window.imageUrls.iconArrowLeft}></img>);
 
@@ -31,6 +31,7 @@ class ListHighlight extends React.Component {
     if (this.state.leftCount > 3) rightArrow = null;
     //if there is 0 item outter left, left arrow should be hidden, to not slide right anymore:
     if (this.state.leftCount < 1) leftArrow = null;
+    
     return (
       <div className="list-highlight-container">
         <div className="list-highlight-window">

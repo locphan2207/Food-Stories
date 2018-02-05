@@ -40,7 +40,10 @@ class Homepage extends React.Component {
               {stories[stories.length-1].sub_title}</p>
         </Link>
 
-        <p className="homepage-title">Latest Recipes</p>
+        <div className="homepage-title-container">
+          <p className="homepage-title">Latest Recipes</p>
+          <Link to="/recipes">See all</Link>
+        </div>
         <ListHighlight items={this.getEightItems(recipes)} isRecipe={true}/>
       </div>
     );
