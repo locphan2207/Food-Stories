@@ -4,6 +4,10 @@
   align-items: baseline;
 }
 
+.homepage-title:first-child {
+  margin-bottom: 0;
+}
+
 .homepage-title {
   font-family: "Conv_Brandon_med";
   font-weight: normal;
@@ -23,7 +27,7 @@
   letter-spacing: 0.5px;
 }
 
-.big-highlight {
+.big-highlight>a {
   text-decoration: none;
   padding: 0 10px;
 }

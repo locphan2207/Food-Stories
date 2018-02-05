@@ -33,13 +33,14 @@ class Homepage extends React.Component {
     return (
       <div>
         <p className="homepage-title">Today's Story</p>
-        <Link to={`/stories/${stories[stories.length-1].id}`} className="big-highlight">
-            <BigImage imgUrl={stories[stories.length-1].img_url} />
-            <p className="caption1">{stories[stories.length-1].title}</p>
-            <p className="caption2">
-              {stories[stories.length-1].sub_title}</p>
-        </Link>
-
+        <div className="big-highlight">
+          <Link to={`/stories/${stories[stories.length-1].id}`}>
+              <BigImage imgUrl={stories[stories.length-1].img_url} />
+              <p className="caption1">{stories[stories.length-1].title}</p>
+              <p className="caption2">
+                {stories[stories.length-1].sub_title}</p>
+          </Link>
+        </div>
         <div className="homepage-title-container">
           <p className="homepage-title">Latest Recipes</p>
           <Link to="/recipes">See all</Link>
