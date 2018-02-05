@@ -37,31 +37,7 @@ class RecipeShow extends React.Component {
         console.log('canvas drawing');
       }
     }
-    // this.handleHeaderImg();
   }
-
-  // handleHeaderImg() {
-  //   const headerImg = document.getElementsByClassName('post-header')[0];
-  //   if (!headerImg) return;
-  //   let w = headerImg.width;
-  //   let h = headerImg.height;
-  //   if (w === 0 || h === 0) return; // need this or it freezes
-  //   if (w > 880 && h > 484) {
-  //     while (w/1.01 > 880 && h/1.01 > 484) { //check result before doing
-  //       w /= 1.01;
-  //       h /= 1.01;
-  //     }
-  //   }
-  //   if (w < 880 || h < 484) {
-  //     while (w < 880 || h < 484) {
-  //       w *= 1.01;
-  //       h *= 1.01;
-  //     }
-  //   }
-  //   //also move to center:
-  //   headerImg.style =
-  //     `height:${h}px;width:${w}px;transform: translate(-${(w-880)/2}px, -${(h-484)/2}px)`;
-  // }
 
   ingredientMultiply(type) {
     if (type === "minus") {
@@ -235,7 +211,7 @@ class RecipeShow extends React.Component {
                 {ingredientRows}
               </tbody></table>
             </div>
-            <div className="text">
+            <div>
               <div id="st"></div>
               {this.textHandling()}
             </div>
