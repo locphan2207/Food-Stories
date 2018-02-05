@@ -1,16 +1,13 @@
 import React from 'react';
-import {drawCanvas, clearCanvas} from '../../util/canvas';
+import * as Canvas from '../../util/canvas';
 import {Link} from 'react-router-dom';
 import SuggestionBoxContainer from './suggestion_box_container';
 
 class RecipeShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      servingNum: 3,
-    };
+    this.state = {servingNum: 3};
     this.canvasLoaded = false;
-    this.alreadyRendered = false;
   }
 
   componentDidMount() {
@@ -22,26 +19,25 @@ class RecipeShow extends React.Component {
     console.log('props changing');
     if (this.props.match.params.recipeId !== nextProps.match.params.recipeId) {
       document.getElementById('app').scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
-      // clearCanvas();
-      this.canvasLoaded = false;
+      console.log('set to false');
+      this.canvasLoaded =  false;
       this.props.fetchRecipe(nextProps.match.params.recipeId);
     }
   }
 
   componentDidUpdate(prevProps) {
-    // We need canvasLoaded to only render canvas ONCE after first load
-    if (this.props.recipe) {
+    if (this.props.recipe && this.props.recipe.ingredients) {
       const {preparation_min, baking_min, resting_min} = this.props.recipe;
+      // We need canvasLoaded to only render canvas ONCE after first load
+      console.log('show did update');
       if (!this.canvasLoaded) {
-        drawCanvas(preparation_min, baking_min, resting_min); //this.onload =
-        this.canvasLoaded = true;
-        console.log('set back to true');
+        Canvas.drawCanvas(preparation_min, baking_min, resting_min);
+        this.canvasLoaded =  true;
+        console.log('canvas drawing');
       }
-      // clearCanvas();
     }
     this.handleHeaderImg();
   }
-
 
   handleHeaderImg() {
     const headerImg = document.getElementsByClassName('post-header')[0];
@@ -140,8 +136,6 @@ class RecipeShow extends React.Component {
 
   render() {
     let {recipe} = this.props;
-    // console.log('show loading');
-    // console.log(this.props.recipe);
 
     //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
     // while (!recipe && !recipe.ingredients);
@@ -149,8 +143,7 @@ class RecipeShow extends React.Component {
       return (<div>Loading</div>);
     }
     console.log('show rendering');
-
-    // console.log(this.canvasLoaded);
+    console.log(`canvasLoaded=${this.canvasLoaded}`);
     //Setup:
 
     let ingredientRows = recipe.ingredients.split(", "); //split by comma

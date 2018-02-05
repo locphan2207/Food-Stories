@@ -37,3 +37,5 @@ child component shouldnt be calling an action that can cause rerender for the pa
 
 THe problem is the fetchAlls actions erase all old state shape, which make data of the show page lost, and it couldnt render,(keep loading). so we have to merge
 new state with old state in a way that it doesnt erase the old data.
+
+this.state.canvas1 (save canvas object in the state, so it wont recreate)

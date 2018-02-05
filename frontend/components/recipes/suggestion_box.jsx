@@ -19,30 +19,20 @@ class SuggestionBox extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.threeRecs) {
-      this.props.fetchRecipes();
-      console.log('suggestion needs call fetchAlls');
-    }
-    // I want to save data when refreshing page, so:
-    // window.addEventListener("beforeunload", this.savePropsToLocalStorage());
+    this.props.fetchRecipes();
+    // if (!this.props.threeRecs) {
+    //   console.log('suggestion needs call fetchAlls');
+    // }
   }
 
   componentDidUpdate() {
     this.handleImg();
   }
 
-  // savePropsToLocalStorage() { //for when refreshing
-  //   if (this.props.threeRecs && this.props.threeRecs[0] &&
-  //     this.props.threeRecs[1] && this.props.threeRecs[2]) {
-  //     localStorage.setItem("savedThreeRecs", JSON.stringify(this.props.threeRecs));
-  //   }
-  // }
-
   render() {
     console.log('suggest loading');
     if (!this.props.threeRecs) return (<div>Loading...</div>);
     console.log('suggestiong rendering');
-    // if (!threeRecs) threeRecs = JSON.parse(localStorage.getItem("savedThreeRecs")); // if refresh, get from local storage
     return (
       <div>
         <p className="suggest-sentence">More delicious ideas for you</p>

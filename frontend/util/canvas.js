@@ -2,19 +2,22 @@ export const drawCanvas = (min1, min2, min3) => {
   let canvas1 = document.getElementById('canvas1');
   if (canvas1) {
     let ctx1 = canvas1.getContext('2d');
+    ctx1.clearRect(0, 0, 500, 500);
     drawCircle(ctx1);
     drawMinute(min1, ctx1);
   }
+
   let canvas2 = document.getElementById('canvas2');
   if (canvas2) {
     let ctx2 = canvas2.getContext('2d');
+    ctx2.clearRect(0, 0, 500, 500);
     drawCircle(ctx2);
     drawMinute(min2, ctx2);
-
   }
   let canvas3 = document.getElementById('canvas3');
   if (canvas3) {
     let ctx3 = canvas3.getContext('2d');
+    ctx3.clearRect(0, 0, 500, 500);
     drawCircle(ctx3);
     drawMinute(min3, ctx3);
   }
@@ -44,23 +47,4 @@ const drawMinute = (min, context) => {
   context.strokeStyle="#ffd11a";
   context.lineWidth *= 2.5; // double line width
   context.stroke();
-};
-
-export const clearCanvas = () => {
-  let canvas1 = document.getElementById('canvas1');
-  if (canvas1) {
-    let ctx1 = canvas1.getContext('2d');
-    ctx1.clearRect(0, 0, 85, 85);
-  }
-  let canvas2 = document.getElementById('canvas2');
-  if (canvas2) {
-    let ctx2 = canvas2.getContext('2d');
-    ctx2.clearRect(0, 0, 85, 85);
-
-  }
-  let canvas3 = document.getElementById('canvas3');
-  if (canvas3) {
-    let ctx3 = canvas3.getContext('2d');
-    ctx3.clearRect(0, 0, 85, 85);
-  }
 };
