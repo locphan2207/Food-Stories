@@ -5,6 +5,17 @@ import SmallImage from './small_image';
 class ListHighlight extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {leftCount: 0};
+  }
+
+  handleArrow(direction) {
+    let leftCount;
+    if (direction === 'left') leftCount = this.state.leftCount + 1;
+    else leftCount = this.state.leftCount -1;
+    const slider = document.getElementsByClassName('list-highlight')[0];
+    // base on the current count of left, we can calculate margin left like so:
+    slider.style.marginLeft = `${-220 * leftCount}px`;
+    this.setState({leftCount});
   }
 
   render() {
@@ -12,14 +23,16 @@ class ListHighlight extends React.Component {
     return (
       <div className="list-highlight-container">
         <div className="list-highlight-window">
-          <div className="list-highlight">
+          <div ref="slider" className="list-highlight">
             {items.map(item => (
               <SmallImage key={item.id} item={item} isRecipe={isRecipe} />))
             }
           </div>
         </div>
-        <img className="left" src={window.imageUrls.iconArrowLeft}></img>
-        <img className="right" src={window.imageUrls.iconArrowRight}></img>
+        <img onClick={() => this.handleArrow('left')}
+          className="left" src={window.imageUrls.iconArrowLeft}></img>
+        <img onClick={() => this.handleArrow('right')}
+          className="right" src={window.imageUrls.iconArrowRight}></img>
       </div>
     );
   }

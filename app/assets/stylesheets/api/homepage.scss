@@ -38,13 +38,15 @@
 .list-highlight-window {
   width: 880px;
   overflow: hidden;
+  position: relative; // for ul list highlight
 }
 
 .list-highlight {
   margin-top: 5px;
   display: flex;
   justify-content: flex-start;
-  z-index: -1;
+  margin-left: 0; //this will be edited by js when arrow clicked
+  transition: margin-left .4s ease-in-out;
 }
 
 .list-highlight-container {
@@ -55,6 +57,7 @@
   position: absolute;
   top: 25%;
   transform: translateY(100%);
+  cursor: pointer;
 }
 
 
