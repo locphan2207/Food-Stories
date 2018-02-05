@@ -12,7 +12,8 @@ class ListHighlight extends React.Component {
     let leftCount;
     if (direction === 'right') leftCount = this.state.leftCount + 1;
     else leftCount = this.state.leftCount -1;
-    const slider = document.getElementsByClassName('list-highlight')[0];
+    // const slider = document.getElementsByClassName('list-highlight')[0];
+    const slider = this.refs.slider;
     // base on the current count of left, we can calculate margin left like so:
     slider.style.marginLeft = `${-220 * leftCount}px`;
     this.setState({leftCount});
@@ -31,7 +32,7 @@ class ListHighlight extends React.Component {
     if (this.state.leftCount > 3) rightArrow = null;
     //if there is 0 item outter left, left arrow should be hidden, to not slide right anymore:
     if (this.state.leftCount < 1) leftArrow = null;
-    
+
     return (
       <div className="list-highlight-container">
         <div className="list-highlight-window">
