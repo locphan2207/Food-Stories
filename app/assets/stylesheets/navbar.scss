@@ -20,16 +20,21 @@
   top: -70px;
 }
 
-.logo {
-  font-family: "Conv_Brandon_med";
-  margin: 0 17.6px 0 0;
-  /* font-weight: bold; */
-  font-size: 37px;
-  padding: 10px 45px 0 0;
-  cursor: pointer;
-  text-decoration: none;
-  color: #464646;
+.logo>img {
+  margin-top: 15px;
+  padding-right: 45px;
 }
+
+// .logo {
+//   font-family: "Conv_Brandon_med";
+//   margin: 0 17.6px 0 0;
+//   font-weight: bold;
+//   font-size: 37px;
+//   padding: 10px 45px 0 0;
+//   cursor: pointer;
+//   text-decoration: none;
+//   color: #464646;
+// }
 
 .navigation, .right-menu {
   display: flex;

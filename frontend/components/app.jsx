@@ -19,7 +19,7 @@ import HomepageContainer from './homepage_container';
 const App = () => (
   <div id="app">
     <header id="header1" className="header-row">
-      <Link to="/" className="logo">Food Stories</Link>
+      <Link to="/" className="logo"><img src={window.imageUrls.logo}></img></Link>
       <ul className="navigation">
         <li><Link to="/recipes">Recipes</Link></li>
         <li><Link to="/stories">Stories</Link></li>
