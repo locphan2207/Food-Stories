@@ -8,11 +8,6 @@ class Greeting extends React.Component {
     this.state = {isOpen: false};
   }
 
-  // componentWillMount() {
-  //   //idk why it opens after first render, so I do this:
-  //   this.setState({isOpen: false});
-  // }
-
   toggleDropdown() {
     if (this.state.isOpen === true) this.setState({isOpen: false});
     else this.setState({isOpen: true});
@@ -28,8 +23,11 @@ class Greeting extends React.Component {
     if (this.props.currentUser) {
       return (
         <div className="right-menu">
-          <img className="searchIcon"
-            src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-512.png"></img>
+          <Link to="/recipes">
+            <img className="searchIcon"
+              src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-512.png">
+            </img>
+          </Link>
           <img className="profile-pic"
             src={window.imageUrls.userDefault}>
           </img>
@@ -41,8 +39,11 @@ class Greeting extends React.Component {
     } else {
       return (
         <div className="right-menu">
-          <img className="searchIcon"
-            src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-512.png"></img>
+          <Link to="/recipes">
+            <img className="searchIcon"
+              src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-512.png">
+            </img>
+          </Link>
           <Link to="/login">Log In</Link>
           <Link to="/signup">Sign Up</Link>
         </div>

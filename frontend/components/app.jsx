@@ -44,14 +44,15 @@ const App = () => (
 
     <footer>
       <p className="my-messages">This website is a clone of &nbsp;
-        <a href="https://kitchenstories.io/en">
+        <a href="https://kitchenstories.io/en" target="_blank">
           <img height="20px" src="https://kitchenstories.io//images/logo_kitchen_stories.svg"></img>
         </a>
+        for academic project
         <br></br>
       </p>
-      <p className="thank-you">Thank you for the awesome website!</p>
+      <p className="thank-you">Thank you Kitchen Stories for the awesome website!</p>
       <div className="social-links">
-        <a href="https://github.com/locphan2207/Food-Stories">
+        <a href="https://github.com/locphan2207/Food-Stories" target="_blank">
           <img className="social-icon" src={window.imageUrls.github}></img>
         </a>
       </div>
