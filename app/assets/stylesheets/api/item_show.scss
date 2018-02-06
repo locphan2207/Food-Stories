@@ -59,7 +59,7 @@
   margin: 0 35px 0 0;
   border: none;
   background: none;
-  color: #0a7f78;
+  color: #0388ce; //0a7f78;
   font-size: 115%;
   letter-spacing: 0.7px;
   line-height: 1;
@@ -72,7 +72,7 @@
 }
 
 .button-active {
-  border-bottom: 2px solid #0a7f78;
+  border-bottom: 2px solid #0388ce;
   border-radius: 0;
 }
 
@@ -215,7 +215,7 @@ canvas {
 .serving>button {
   font-family: "Conv_Brandon_bld";
   margin: 0 7px;
-  background: #0a7f78;
+  background: #0388ce;
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -227,7 +227,7 @@ canvas {
 }
 
 .serving>button:hover {
-  background: #0da299;
+  background: #03acfa;
 }
 
 .ingredients td {

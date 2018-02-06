@@ -5,7 +5,9 @@ class Api::RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find_by_id(params[:id])
+    @recipe = Recipe.includes(:comments).find_by_id(params[:id])
+    @comment_ids = []
+    @recipe.comments.each {|comment| @comment_ids << comment.id}
     @errors = []
     render :show
   end

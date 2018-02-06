@@ -3,6 +3,7 @@ import * as Canvas from '../../util/canvas';
 import {Link} from 'react-router-dom';
 import SuggestionBoxContainer from './suggestion_box_container';
 import BigImage from '../display/big_image';
+import CommentIndex from '../comments/comment_index';
 
 class RecipeShow extends React.Component {
   constructor(props) {
@@ -113,7 +114,7 @@ class RecipeShow extends React.Component {
 
   render() {
     let {recipe} = this.props;
-
+    if (this.props.comments) console.log(this.props.comments);
     //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
     // while (!recipe && !recipe.ingredients);
     if (!recipe || !recipe.ingredients) {//check if it finishes loading all info after fetchRecipe
@@ -215,6 +216,7 @@ class RecipeShow extends React.Component {
               <div id="st"></div>
               {this.textHandling()}
             </div>
+            <CommentIndex comments={this.props.comments} />
           </div>
         </div>
       </div>

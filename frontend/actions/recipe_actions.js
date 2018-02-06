@@ -9,9 +9,10 @@ const receiveRecipes = (recipes) => ({
   recipes
 });
 
-const receiveRecipe = (recipe) => ({
+const receiveRecipe = (response) => ({
   type: RECEIVE_RECIPE,
-  recipe
+  recipe: response.recipe,
+  comments: response.comments
 });
 
 const receiveSearchResult = (recipeIds) => ({
@@ -26,7 +27,7 @@ export const fetchRecipes = () => (dispatch) => {
 
 export const fetchRecipe = (recipeId) => (dispatch) => {
   return RecipeAPIUtil.getRecipe(recipeId)
-    .then(response => dispatch(receiveRecipe(response.recipe)));
+    .then(response => dispatch(receiveRecipe(response)));
 };
 
 export const searchRecipe = (searchQuery) => (dispatch) => {
