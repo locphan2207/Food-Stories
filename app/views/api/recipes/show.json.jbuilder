@@ -10,7 +10,6 @@ json.comments do
       json.extract! comment, :id, :author_id, :body, :img_url, :parent_comment_id
     end
   end
-
 end
 
 json.errors @errors

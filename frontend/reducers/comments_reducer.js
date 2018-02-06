@@ -7,7 +7,9 @@ const commentsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case (RECEIVE_RECIPE):
-      return action.comments;
+      //need condition, in case no comment, and action.comment is undefined
+      if (action.comments) return action.comments;
+      else return state;
     default:
       return state;
   }
