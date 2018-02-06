@@ -1,7 +1,7 @@
 import {RECEIVE_SEARCH_RESULT} from '../actions/recipe_actions';
 
 const _defaultState = {
-  recipeIds: []
+  recipeIds: undefined
 };
 
 const searchResultReducer = (state = _defaultState, action) => {
