@@ -13,4 +13,9 @@ class Comment < ApplicationRecord
   primary_key: :id,
   foreign_key: :parent_comment_id,
   class_name: :Comment
+
+  belongs_to :author,
+  primary_key: :id,
+  foreign_key: :author_id,
+  class_name: :User
 end

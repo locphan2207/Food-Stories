@@ -217,6 +217,7 @@ class RecipeShow extends React.Component {
               {this.textHandling()}
             </div>
             <CommentIndex comments={this.props.comments}
+              users={this.props.users}
               postComment={this.props.postComment}
               currentUser={this.props.currentUser}/>
           </div>

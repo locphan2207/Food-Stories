@@ -10,6 +10,7 @@ const mapSTP = (state, ownProps) => {
   return {
     recipe: state.entities.recipes[`${ownProps.match.params.recipeId}`],
     comments: Object.values(state.entities.comments),
+    users: state.entities.users,  //we pass a hash object->ez to find user by key author_id
     currentUser: state.session.currentUser
   };
 };

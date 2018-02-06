@@ -12,4 +12,12 @@ json.comments do
   end
 end
 
+json.users do
+  @recipe.comments.each do |comment|
+    json.set! "#{comment.author.id}" do
+      json.extract! comment.author, :id, :username, :pic_url
+    end
+  end
+end
+
 json.errors @errors

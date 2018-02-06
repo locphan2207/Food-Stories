@@ -12,7 +12,8 @@ const receiveRecipes = (recipes) => ({
 const receiveRecipe = (response) => ({
   type: RECEIVE_RECIPE,
   recipe: response.recipe,
-  comments: response.comments
+  comments: response.comments,
+  users: response.users
 });
 
 const receiveSearchResult = (recipeIds) => ({
@@ -25,6 +26,8 @@ export const fetchRecipes = () => (dispatch) => {
     .then(recipes => dispatch(receiveRecipes(recipes)));
 };
 
+//Fetch Recipe includes comments data related to that recipes
+//also include author of comments
 export const fetchRecipe = (recipeId) => (dispatch) => {
   return RecipeAPIUtil.getRecipe(recipeId)
     .then(response => dispatch(receiveRecipe(response)));

@@ -8,11 +8,12 @@ class CommentIndex extends React.Component {
   }
 
   returnReplies(parentCommentId) {
+    const {users} = this.props;
     const replies = [];
     this.props.comments.forEach(comment => {
       if (comment.parent_comment_id === parentCommentId) {
         replies.push(<div>
-          <p>&#160;&#160;&#160;&#160;&#160;Author {comment.author_id}: {comment.body}</p>
+          <p>&#160;&#160;&#160;&#160;&#160;{users[comment.author_id].username}: {comment.body}</p>
           <img src={comment.img_url}></img>
         </div>);
       }
@@ -22,6 +23,7 @@ class CommentIndex extends React.Component {
   }
 
   returnTopLvComment() {
+    const {users} = this.props;
     const topLevelComments = [];
     this.props.comments.forEach(comment => {
       let replyForm = null;
@@ -31,7 +33,7 @@ class CommentIndex extends React.Component {
       }
       if (!comment.parent_comment_id) {
         topLevelComments.push(<div>
-          <p>Author {comment.author_id}: {comment.body}</p>
+          <p>{users[comment.author_id].username}: {comment.body}</p>
           <button onClick={e => this.setState({replyTargetId: comment.id})}>
             Reply
           </button>
