@@ -22,7 +22,7 @@
 .homepage-title-container>a {
   text-decoration: none;
   font-family: "Conv_Brandon_med";
-  color: #0a7f78;
+  color: #0388ce;
   font-size: 115%;
   letter-spacing: 0.5px;
 }
@@ -49,7 +49,7 @@
 
 .big-highlight:hover {
   .post-header-container {
-    transform: scale(1.02);  //need to initialize in original element
+    transform: scale(1.01);  //need to initialize in original element
     box-shadow: 0 0 10px #979797;
   }
 }

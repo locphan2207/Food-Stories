@@ -29,6 +29,10 @@ class Recipe < ApplicationRecord
   foreign_key: :author_id,
   class_name: :User
 
+  has_many :comments,
+  as: :commentable
+
+
   def self.search_by_filter(searchQuery)
     #Find any recipe that has the title as query title:
     filter1 = searchQuery[:title] == "" ? "" :

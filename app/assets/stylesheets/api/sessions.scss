@@ -105,7 +105,7 @@
 }
 
 .session-button {
-  background: #0a7f78;
+  background: #0388ce;
   color: white;
   margin: 0 auto;
   margin-top: 30px;
@@ -114,6 +114,10 @@
   border-radius: 4px;
   padding: 6px 17px;
   cursor: pointer;
+}
+
+.session-button:hover {
+  background: #03acfa;
 }
 
 .modal-form>ul {

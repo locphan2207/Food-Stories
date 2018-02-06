@@ -20,4 +20,6 @@ class Story < ApplicationRecord
   class_name: :User,
   dependent: :destroy
 
+  has_many :comments,
+  as: :commentable
 end
