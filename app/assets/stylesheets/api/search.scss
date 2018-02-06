@@ -67,5 +67,20 @@
 .search-info {
   margin-top: 30px;
   font-size: 120%;
-  color: deepskyblue;
+  color: royalblue;
+  display: block;
+}
+
+.search-info>div {
+  padding-top: 10px;
+}
+
+.search-tag {
+  border: 1px solid royalblue;
+  display: inline;
+  margin: 10px 20px 0 0;
+  background: aliceblue;
+  padding: 5px 10px;
+  border-radius: 30px;
+  cursor: pointer;
 }

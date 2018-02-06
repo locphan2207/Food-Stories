@@ -24,17 +24,20 @@ class RecipeSearch extends React.Component {
     properties.forEach((property, i) => {
       if (this.state[property] !== "") {
         if (i === 2) { // to display cooking time, its a lil different than others
-          filters[i] = (<p key={i} onClick={e => this.removeFilter(e, property)}>
-            {timeDisplayText[this.state[property]]}</p>);
+          filters[i] = (<span className="search-tag"
+            key={i} onClick={e => this.removeFilter(e, property)}>
+            {timeDisplayText[this.state[property]]}</span>);
         } else {
-          filters[i] = (<p key={i} onClick={e => this.removeFilter(e, property)}>
-            {this.state[property]}</p>);
+          filters[i] = (<span className="search-tag"
+            key={i} onClick={e => this.removeFilter(e, property)}>
+            {this.state[property]}</span>);
         }
       }
     });
     return (
-      <div className="search-info">Searching with: (click each to remove search query):
-        {filters}</div>
+      <div className="search-info">Searching with:
+        <div>{filters}</div>
+      </div>
     );
   }
 
@@ -77,7 +80,7 @@ class RecipeSearch extends React.Component {
             </select>
             <input className="search-button" type="submit" value="Search" />
           </div>
-          
+
           {this.generateActiveFilters()}
         </form>
       </div>
