@@ -41,6 +41,21 @@ const App = () => (
       <Route path='/recipes/:recipeId' component={RecipeShowContainer} />
       <Route path='/stories/:storyId' component={StoryShowContainer} />
     </section>
+
+    <footer>
+      <p className="my-messages">This website is a clone of &nbsp;
+        <a href="https://kitchenstories.io/en">
+          <img height="20px" src="https://kitchenstories.io//images/logo_kitchen_stories.svg"></img>
+        </a>
+        <br></br>
+      </p>
+      <p className="thank-you">Thank you for the awesome website!</p>
+      <div className="social-links">
+        <a href="https://github.com/locphan2207/Food-Stories">
+          <img className="social-icon" src={window.imageUrls.github}></img>
+        </a>
+      </div>
+    </footer>
   </div>
 );
 

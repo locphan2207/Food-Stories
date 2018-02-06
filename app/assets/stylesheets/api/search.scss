@@ -58,10 +58,12 @@
   cursor: pointer;
   font-size: 120%;
   padding: 10px;
+  outline: none;
 }
 
 .search-button:hover {
   background: #03acfa; //#0da299;
+  outline: none;
 }
 
 .search-info {
