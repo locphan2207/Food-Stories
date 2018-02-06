@@ -1,7 +1,10 @@
 import {connect} from 'react-redux';
-import {fetchRecipe} from '../../actions/recipe_actions';
-import RecipeShow from './recipe_show';
 import {withRouter} from 'react-router-dom';
+
+import RecipeShow from './recipe_show';
+
+import {fetchRecipe} from '../../actions/recipe_actions';
+import {postComment} from '../../actions/comment_actions';
 
 const mapSTP = (state, ownProps) => {
   return {
@@ -13,8 +16,10 @@ const mapSTP = (state, ownProps) => {
 
 const mapDTP = (dispatch, ownProps) => {
   return {
-    fetchRecipe: (recipeId) => dispatch(fetchRecipe(recipeId))
-    // fetchRecipes: () => dispatch(fetchRecipes())
+    fetchRecipe: (recipeId) => dispatch(fetchRecipe(recipeId)),
+    postComment: (comment) => dispatch(postComment("recipes",
+      ownProps.match.params.recipeId, comment)) // hard code 2 arguments,
+      //so, in the comment_index, they just need to call postComment(comment)
   };
 };
 

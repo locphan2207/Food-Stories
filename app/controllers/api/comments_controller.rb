@@ -8,16 +8,16 @@ class Api::CommentsController < ApplicationController
     end
 
     if @comment.update_attribute(:commentable, @item) #it will update commentable-
-      render :show, status: 200
+      render json: Comment.all.last.id, status: 200
     else
-      render :show, status: 401
+      render json: "Fail", status: 401
     end
   end
 
   def destroy
     @comment = Comment.find_by_id(params[:id])
     @comment.destroy
-    render json: {}
+    render json: "Deleted"
   end
 
   private

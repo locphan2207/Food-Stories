@@ -40,7 +40,7 @@ class CommentIndex extends React.Component {
       author_id: this.props.currentUser.id,
       body: this.refs.commentInput.value,
     };
-    //call action postComment(recipeId, newComment)
+    this.props.postComment(newComment);
   }
 
   render() {
