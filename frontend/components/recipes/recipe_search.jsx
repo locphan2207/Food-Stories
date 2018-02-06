@@ -13,13 +13,13 @@ class RecipeSearch extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const searchQuery = Object.assign({}, this.state);
-
+    this.props.searchRecipe(searchQuery);
   }
 
   render() {
     console.log(this.state);
     return (
-      <form>
+      <form onSubmit={e => this.handleSubmit(e)}>
         <input onChange={e => this.handleChange(e, 'title')}
           type="text" name="title" value={this.state.title}/>
         <select value={this.state.difficulty}
@@ -36,6 +36,7 @@ class RecipeSearch extends React.Component {
           <option value="40">Under 40</option>
           <option value="60">Under 60</option>
         </select>
+        <input type="submit" value="Search" />
       </form>
     );
   }
