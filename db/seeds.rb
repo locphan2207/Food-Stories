@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create(username: 'loc', email: 'loc@gmail.com', password: 'chetcha')
 User.create(username: 'beautiful_guest', email: 'guest@gmail.com', password: 'secret')
+User.create(username: 'master_admin', email: 'admin@gmail.com', password: 'secret')
 
 img_url = [
   "https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?w=940&h=650&dpr=2&auto=compress&cs=tinysrgb",
@@ -82,3 +83,7 @@ end
       Neque non nec nullam tincidunt, habitant diam id feugiat lacus. Hendrerit est potenti eros aliquam mauris, non vel curabitur venenatis, pulvinar hendrerit, quis eu dolor tincidunt, vel vel vestibulum diam libero nisl. Etiam nibh nulla ipsum venenatis elementum vehicula, consequat in velit pede dolor, arcu lacinia, et tincidunt arcu, imperdiet suscipit pharetra eu nibh et. Faucibus mi et libero tellus convallis lectus. Nullam cursus, in nulla augue mauris, a adipiscing donec neque, pulvinar commodo. Integer amet orci pretium lorem eu nisl, a tortor metus purus sapien, lacus augue ut vitae exercitation. Vestibulum nunc pede, nonummy fusce, id adipiscing maecenas praesent vel, lacus proin. Mauris commodo consectetuer."
   )
 end
+
+Comment.new(author_id: 1, body: "This recipe is awesome!!!").update_attribute(:commentable, Recipe.all[0])
+Comment.new(author_id: 2, body: "You are right", parent_comment_id: 1).update_attribute(:commentable, Recipe.all[0])
+Comment.new(author_id: 3, body: "I am the admin", parent_comment_id: 1).update_attribute(:commentable, Recipe.all[0])
