@@ -25,6 +25,7 @@ class CommentIndex extends React.Component {
       if (!comment.parent_comment_id) {
         topLevelComments.push(<div>
           <p>Author {comment.author_id}: {comment.body}</p>
+          <button>Reply</button>
           <img src={comment.img_url}></img>
           {this.returnReplies(comment.id)}
         </div>);
@@ -33,15 +34,30 @@ class CommentIndex extends React.Component {
     return topLevelComments;
   }
 
+  submitComment(e) {
+    e.preventDefault();
+    const newComment = {
+      author_id: this.props.currentUser.id,
+      body: this.refs.commentInput.value,
+    };
+    //call action postComment(recipeId, newComment)
+  }
+
   render() {
     if (!this.props.comments) return (<div>Loading comments...</div>);
 
     return (
-      <ul>
-        {
-          this.returnTopLvComment()
-        }
-      </ul>
+      <div>
+        <form onSubmit={e => this.submitComment(e)}>
+          <input ref="commentInput" type="text"/>
+          <input type="submit" value="Send" />
+        </form>
+        <ul>
+          {
+            this.returnTopLvComment()
+          }
+        </ul>
+      </div>
     );
   }
 }

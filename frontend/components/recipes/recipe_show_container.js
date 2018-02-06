@@ -6,7 +6,8 @@ import {withRouter} from 'react-router-dom';
 const mapSTP = (state, ownProps) => {
   return {
     recipe: state.entities.recipes[`${ownProps.match.params.recipeId}`],
-    comments: Object.values(state.entities.comments)
+    comments: Object.values(state.entities.comments),
+    currentUser: state.session.currentUser
   };
 };
 

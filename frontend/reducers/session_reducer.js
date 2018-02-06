@@ -1,6 +1,10 @@
 import {RECEIVE_CURRENT_USER} from '../actions/session_actions';
 
-const sessionReducer = (state = {}, action) => {
+const _defaultState = {
+  currentUser: undefined
+};
+
+const sessionReducer = (state = _defaultState, action) => {
   Object.freeze(state);
   switch(action.type) {
     case (RECEIVE_CURRENT_USER):
