@@ -7,29 +7,34 @@ class RecipeSearch extends React.Component {
   }
 
   generateActiveFilters() {
+    // Dodge condition:
     if (this.state.title === "" &&
       this.state.difficulty === "" && this.state.maxCookingTime === "") {
         return null;
     }
-    let titleFilter = null;
-    let difficultyFilter = null;
-    let timeFilter = null;
-    if (this.state.title !== "") {
-      titleFilter = (<p onClick={e => this.removeFilter(e, 'title')}>
-      {this.state.title}</p>);
-    }
-    if (this.state.difficulty !== "") {
-      difficultyFilter = (<p onClick={e => this.removeFilter(e, 'difficulty')}>
-      {this.state.difficulty}</p>);
-    }
-    if (this.state.maxCookingTime !== "") {
-      timeFilter = (<p onClick={e => this.removeFilter(e, 'maxCookingTime')}>
-      {this.state.maxCookingTime}</p>);
-    }
 
+    const timeDisplayText = { // for display
+      20: "under 20 min.",
+      40: "under 40 min.",
+      60: "under 60 min."
+    };
+
+    let filters = [null, null, null];
+    const properties = ['title', 'difficulty', 'maxCookingTime'];
+    properties.forEach((property, i) => {
+      if (this.state[property] !== "") {
+        if (i === 2) { // to display cooking time, its a lil different than others
+          filters[i] = (<p key={i} onClick={e => this.removeFilter(e, property)}>
+            {timeDisplayText[this.state[property]]}</p>);
+        } else {
+          filters[i] = (<p key={i} onClick={e => this.removeFilter(e, property)}>
+            {this.state[property]}</p>);
+        }
+      }
+    });
     return (
-      <div>Filters: (click on it to remove filter):
-        {[titleFilter, difficultyFilter, timeFilter]}</div>
+      <div className="search-info">Searching with: (click each to remove search query):
+        {filters}</div>
     );
   }
 
@@ -50,27 +55,31 @@ class RecipeSearch extends React.Component {
   render() {
     console.log(this.state);
     return (
-      <div>
-        <form onSubmit={e => this.handleSubmit(e)}>
-          <input onChange={e => this.handleChange(e, 'title')}
-            type="text" name="title" value={this.state.title}/>
-          <select value={this.state.difficulty}
-              onChange={e => this.handleChange(e, 'difficulty')}>
-            <option value="" disabled>Difficulty</option>
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-          </select>
-          <select value={this.state.maxCookingTime}
-              onChange={e => this.handleChange(e, 'maxCookingTime')}>
-            <option value="" disabled>Cooking Time</option>
-            <option value="20">Under 20</option>
-            <option value="40">Under 40</option>
-            <option value="60">Under 60</option>
-          </select>
-          <input type="submit" value="Search" />
+      <div className="search-container">
+        <form className="search-form" onSubmit={e => this.handleSubmit(e)}>
+          <input className="search-title"
+            onChange={e => this.handleChange(e, 'title')}
+            placeholder="Search for ..." type="text" name="title" value={this.state.title}/>
+          <div className="filters-container">
+            <select value={this.state.difficulty}
+                onChange={e => this.handleChange(e, 'difficulty')}>
+              <option value="" disabled>Difficulty</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+            <select value={this.state.maxCookingTime}
+                onChange={e => this.handleChange(e, 'maxCookingTime')}>
+              <option value="" disabled>Cooking Time</option>
+              <option value="20">Under 20</option>
+              <option value="40">Under 40</option>
+              <option value="60">Under 60</option>
+            </select>
+            <input className="search-button" type="submit" value="Search" />
+          </div>
+          
+          {this.generateActiveFilters()}
         </form>
-        {this.generateActiveFilters()}
       </div>
     );
   }

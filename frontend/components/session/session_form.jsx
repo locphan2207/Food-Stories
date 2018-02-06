@@ -39,6 +39,7 @@ class SessionForm extends React.Component {
 
   demoLogin() {
     const guest = {username: "beautiful_guest", email: "guest@gmail.com", password: "secret"};
+    $('.session-input').val("");
     $('.session-input').attr("placeholder", "");
     if (this.props.formType === 'signup') {
       let $username = $('#virtual-username');
