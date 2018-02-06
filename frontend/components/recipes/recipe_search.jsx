@@ -7,24 +7,34 @@ class RecipeSearch extends React.Component {
   }
 
   generateActiveFilters() {
-    if (this.state.difficulty === "" && this.state.maxCookingTime === "") {
-      return null;
+    if (this.state.title === "" &&
+      this.state.difficulty === "" && this.state.maxCookingTime === "") {
+        return null;
     }
+    let titleFilter = null;
     let difficultyFilter = null;
     let timeFilter = null;
+    if (this.state.title !== "") {
+      titleFilter = (<p onClick={e => this.removeFilter(e, 'title')}>
+      {this.state.title}</p>);
+    }
     if (this.state.difficulty !== "") {
-      difficultyFilter = (<p onClick={e => this.setState({difficulty: ""})}>
+      difficultyFilter = (<p onClick={e => this.removeFilter(e, 'difficulty')}>
       {this.state.difficulty}</p>);
     }
     if (this.state.maxCookingTime !== "") {
-      timeFilter = (<p onClick={e => this.setState({maxCookingTime: ""})}>
+      timeFilter = (<p onClick={e => this.removeFilter(e, 'maxCookingTime')}>
       {this.state.maxCookingTime}</p>);
     }
 
     return (
-      <div>Active Filters: (click on it to remove filter):
-        {[difficultyFilter, timeFilter]}</div>
+      <div>Filters: (click on it to remove filter):
+        {[titleFilter, difficultyFilter, timeFilter]}</div>
     );
+  }
+
+  removeFilter(e, property) {
+    this.setState({[property]: ""});
   }
 
   handleChange(e, property) {
