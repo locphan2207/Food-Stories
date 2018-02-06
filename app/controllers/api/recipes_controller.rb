@@ -22,8 +22,15 @@ class Api::RecipesController < ApplicationController
   end
 
   def search
-    @recipes = Recipe.search_by_filter(recipe_params)
-    # return back to front end with search result here:
+    recipes = Recipe.search_by_filter(recipe_search_params)
+    puts recipe_search_params
+    # return back to front end with search result IDs here:
+    @search_result = []; #for jbuilder
+    recipes.each do |recipe|
+      @search_result << recipe.id
+    end
+    p @search_result
+    render :search_result, status: 200
   end
 
   private
@@ -34,6 +41,6 @@ class Api::RecipesController < ApplicationController
   end
 
   def recipe_search_params
-    params.require(:title, :difficulty, :maxCookingTime)
+    params.permit(:title, :difficulty, :maxCookingTime)
   end
 end

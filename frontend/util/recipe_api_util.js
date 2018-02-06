@@ -11,3 +11,11 @@ export const getRecipe = (recipeId) => {
     url: `/api/recipes/${recipeId}`
   });
 };
+
+export const postSearchRecipe = (searchQuery) => {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/search',
+    data: searchQuery
+  });
+};

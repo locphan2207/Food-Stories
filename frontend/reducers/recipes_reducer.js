@@ -1,6 +1,6 @@
 import {
   RECEIVE_RECIPES,
-  RECEIVE_RECIPE
+  RECEIVE_RECIPE,
 } from '../actions/recipe_actions';
 import _ from 'lodash';
 
