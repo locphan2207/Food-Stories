@@ -9,7 +9,7 @@ const commentsReducer = (state = {}, action) => {
     case (RECEIVE_RECIPE):
       //need condition, in case no comment, and action.comment is undefined
       if (action.comments) return action.comments;
-      else return state;
+      else return {}; //clear ccomment when swtiching other items
     default:
       return state;
   }
