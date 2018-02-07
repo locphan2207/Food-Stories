@@ -29,7 +29,7 @@ class Greeting extends React.Component {
             </img>
           </Link>
           <img className="profile-pic"
-            src={window.imageUrls.userDefault}>
+            src={this.props.currentUser.pic_url}>
           </img>
           <p onClick={() => this.toggleDropdown()}
             className="username1">{this.props.currentUser.username}</p>

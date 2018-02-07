@@ -69,7 +69,9 @@ class CommentIndex extends React.Component {
     // If it has arg, it is a reply comment
     if (this.props.currentUser) {
       commentForm = (
-        <form onSubmit={e => this.submitComment(e, parentCommentId)}>
+        <form className="comment-form"
+          onSubmit={e => this.submitComment(e, parentCommentId)}>
+          <img width="50px" src={this.props.currentUser.pic_url}></img>
           <input ref="commentBodyInput" type="text"/>
           <input ref="commentImgInput" onChange={e => this.reviewFile(e)} type="file"/>
           <input type="submit" value="Send" />
@@ -124,6 +126,7 @@ class CommentIndex extends React.Component {
           <span>Gallery ({this.generatePicCount()})</span>
         </div>
         <div id="co"></div>
+
         {this.generateCommentForm(false)}
         <ul>
           {

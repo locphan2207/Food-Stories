@@ -8,7 +8,7 @@ class UserDropdown extends React.Component {
           <img id="close" onClick={() => this.props.close()}
             src={window.imageUrls.iconClose}></img>
           <div className="user-info">
-            <img src={window.imageUrls.userDefault}>
+            <img src={this.props.currentUser.pic_url}>
             </img>
             <div className="user-text">
               <p className="username2">{this.props.currentUser.username}</p>

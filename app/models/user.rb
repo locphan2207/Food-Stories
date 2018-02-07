@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
   validates :password, length: {minimum: 6, allow_nil: true}
 
-  before_validation :ensure_session_token
+  before_validation :ensure_session_token, :ensure_pic_url
 
   has_many :comments,
   primary_key: :id,
@@ -44,5 +44,9 @@ class User < ApplicationRecord
   private
   def ensure_session_token
     self.session_token ||= SecureRandom::urlsafe_base64
+  end
+
+  def ensure_pic_url
+    self.pic_url ||= "default_chef_pic.svg"
   end
 end
