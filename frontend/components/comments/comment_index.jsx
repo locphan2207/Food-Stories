@@ -178,8 +178,8 @@ class CommentIndex extends React.Component {
 
     return (
       <div className="comment-index">
-        <div><span>Comments ({comments.length})</span>
-          <span>Gallery ({this.generatePicCount()})</span>
+        <div className="sub-title"><span>Comments ({comments.length})</span>
+          <span>&#160; Pictures ({this.generatePicCount()})</span>
         </div>
         <div id="co"></div>
 
