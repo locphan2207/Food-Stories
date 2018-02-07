@@ -8,6 +8,13 @@
   width: 570px;
 }
 
+.comment-reply-box {
+  position: relative; // for reply
+  padding: 20px 0 0 0;
+  width: 1px;
+  display: table;
+}
+
 .comment-container {
   display: flex;
   justify-content: flex-start;
@@ -128,19 +135,33 @@
   // border: 1px solid #8e8e8e;
   background: aliceblue;
   border-radius: 14px;
-  display: flex;
+}
+
+.comment-body>p:first-child {
+  margin: 5px 20px;
+  font-size: 115%;
+}
+
+.comment-body>p:last-child {
+  margin: 0 15px 10px 25px;
+  font-size: 110%;
 }
 
 .reply {
   position: absolute;
-  left: 70px;
+  left: 75px;
   cursor: pointer;
   font-family: "Conv_Brandon_med";
-  padding-top: 10px;
+  margin-top: 10px;
+  border: 1px solid #0388ce;
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 90%;
 }
 
 .reply:hover {
   color: #0388ce;
+  // border: 1px solid #0388ce;
 }
 
 .comment-pic {

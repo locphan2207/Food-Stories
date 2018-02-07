@@ -17,12 +17,18 @@ class CommentIndex extends React.Component {
     this.props.comments.forEach(comment => {
       if (comment.parent_comment_id === parentCommentId) {
         replies.push(
-        <div>
-          <img className="comment-avatar"
-            src={users[comment.author_id].pic_url}></img>
-          <p>{users[comment.author_id].username}: {comment.body}</p>
-          {this.generatePic(comment.img_url)}
-        </div>);
+          <div className="comment-reply-box">
+            <div className="comment-container">
+              <img className="comment-avatar"
+                src={users[comment.author_id].pic_url}></img>
+              <div className="comment-body">
+                <p><b>{users[comment.author_id].username}</b></p>
+                <p>{comment.body}</p>
+              </div>
+            </div>
+            {this.generatePic(comment.img_url)}
+          </div>
+        );
       }
     });
     if (replies === []) return null;
@@ -45,7 +51,7 @@ class CommentIndex extends React.Component {
               <img className="comment-avatar"
                 src={users[comment.author_id].pic_url}></img>
               <div className="comment-body">
-                <p>{users[comment.author_id].username} </p>
+                <p><b>{users[comment.author_id].username}</b></p>
                 <p>{comment.body}</p>
               </div>
             </div>
