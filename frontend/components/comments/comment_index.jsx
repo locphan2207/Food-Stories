@@ -32,24 +32,31 @@ class CommentIndex extends React.Component {
   returnTopLvComment() {
     const {users} = this.props;
     const topLevelComments = [];
-    this.props.comments.forEach(comment => {
+    this.props.comments.reverse().forEach(comment => {
       let replyForm = null;
       if (this.state.replyTargetId === comment.id) {
         // pass the target id to let form know parent_comment_id
         replyForm = this.generateCommentForm(comment.id);
       }
       if (!comment.parent_comment_id) {
-        topLevelComments.push(<div>
-          <img className="comment-avatar"
-            src={users[comment.author_id].pic_url}></img>
-          <p>{users[comment.author_id].username}: {comment.body}</p>
-          <button onClick={e => this.toggleReplyForm(comment.id)}>
-            Reply
-          </button>
-          {this.generatePic(comment.img_url)}
-          {replyForm}
-          {this.returnReplies(comment.id)}
-        </div>);
+        topLevelComments.push(
+          <div className="comment-box">
+            <div className="comment-container">
+              <img className="comment-avatar"
+                src={users[comment.author_id].pic_url}></img>
+              <div className="comment-body">
+                <p>{users[comment.author_id].username} </p>
+                <p>{comment.body}</p>
+                <div className="reply" onClick={e => this.toggleReplyForm(comment.id)}>
+                  Reply
+                </div>
+              </div>
+            </div>
+            {this.generatePic(comment.img_url)}
+            {replyForm}
+            {this.returnReplies(comment.id)}
+          </div>
+        );
       }
     });
     return topLevelComments;
@@ -62,30 +69,36 @@ class CommentIndex extends React.Component {
 
   generateCommentForm(parentCommentId) {
     let commentForm = (
-      <div>
-        <Link to="/signup">Sign Up</Link>
-        <p>or</p>
-        <Link to="/login">Log In</Link>
-        <p>To comment and share your experience</p>
+      <div className="comment-container">
+        <div className="comment-blank-avatar"></div>
+        <div className="comment-form">
+          <Link to="/signup">Sign Up</Link>
+          <i>&#160;or&#160; </i>
+          <Link to="/login">Log In</Link>
+        </div>
       </div>
     );
     // If dont pass parentCommentId arg, we can understand this is top LV comment
     // If it has arg, it is a reply comment
     if (this.props.currentUser) {
       commentForm = (
-        <div className="comment-form-container">
+        <div className="comment-container">
           <img className="comment-avatar" src={this.props.currentUser.pic_url}></img>
           <form className="comment-form"
             onSubmit={e => this.submitComment(e, parentCommentId)}>
             <input ref="commentBodyInput" className="comment-body-input"
               contenteditable="true" type="text" placeholder="Your reply..."/>
+
             <label><img onMouseEnter={(e) => {e.target.src = window.imageUrls.imgIconHv;}}
               onMouseLeave={(e) => {e.target.src = window.imageUrls.imgIcon;}}
               className="img-icon" src={window.imageUrls.imgIcon} />
               <input ref="commentImgInput" className="hidden-input"
                 onChange={e => this.reviewFile(e)} type="file"/>
             </label>
-            <label><img className="send-icon" src={window.imageUrls.sendIcon} />
+
+            <label><img onMouseEnter={(e) => {e.target.src = window.imageUrls.sendIconHv;}}
+              onMouseLeave={(e) => {e.target.src = window.imageUrls.sendIcon;}}
+              className="send-icon" src={window.imageUrls.sendIcon} />
               <input className="hidden-input" type="submit" value="Send" />
             </label>
             <img src={this.state.imgUrl}></img>
