@@ -74,6 +74,7 @@ class CommentIndex extends React.Component {
           <input onChange={e => this.updateFile(e)} type="file"/>
           <input type="submit" value="Send" />
           <img src={this.state.imgUrl}></img>
+          <img id="review" width="200px" src={this.state.imgUrl} />
         </form>
       );
     }
@@ -82,11 +83,12 @@ class CommentIndex extends React.Component {
 
   updateFile(e) {
     let file = e.target.files[0];
-    let fileReader = new FileReader();
-    fileReader.onloadend = () => { //on LOANDED
-      this.setState({ imageFile: file, imgUrl: fileReader.url });
-    };
     if (file) {
+      let fileReader = new FileReader();
+      fileReader.onload = (e2) => { //on LOANDED
+        this.setState({ imageFile: file});
+        document.getElementById('review').src = e2.target.result;
+      };
       fileReader.readAsDataURL(file);
     }
   }
@@ -119,7 +121,6 @@ class CommentIndex extends React.Component {
             this.returnTopLvComment()
           }
         </ul>
-        <img src={this.state.imgUrl} />
       </div>
     );
   }
