@@ -3,7 +3,7 @@ export const postComment = (itemType, itemId, formData) => {
     method: 'POST',
     url: `/api/${itemType}/${itemId}/comments`,
     data: formData,
-    contentType: false,
+    contentType: false, //need these 2 lines
     processData: false
   });
 };

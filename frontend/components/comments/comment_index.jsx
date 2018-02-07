@@ -42,8 +42,8 @@ class CommentIndex extends React.Component {
           <button onClick={e => this.setState({replyTargetId: comment.id})}>
             Reply
           </button>
-          {replyForm}
           {this.generatePic(comment.img_url)}
+          {replyForm}
           {this.returnReplies(comment.id)}
         </div>);
       }
@@ -71,7 +71,7 @@ class CommentIndex extends React.Component {
       commentForm = (
         <form onSubmit={e => this.submitComment(e, parentCommentId)}>
           <input ref="commentBodyInput" type="text"/>
-          <input onChange={e => this.updateFile(e)} type="file"/>
+          <input ref="commentImgInput" onChange={e => this.reviewFile(e)} type="file"/>
           <input type="submit" value="Send" />
           <img src={this.state.imgUrl}></img>
           <img id="review" width="200px" src={this.state.imgUrl} />
@@ -81,40 +81,49 @@ class CommentIndex extends React.Component {
     return commentForm;
   }
 
-  updateFile(e) {
+  generatePicCount() {
+    let count = 0;
+    this.props.comments.forEach(comment => {
+      if (comment.img_url !== "missing.png") count++;
+    });
+    return count;
+  }
+
+  //Use built in FileReader
+  reviewFile(e) {
     let file = e.target.files[0];
     if (file) {
       let fileReader = new FileReader();
-      fileReader.onload = (e2) => { //on LOANDED
-        this.setState({ imageFile: file});
+      fileReader.onload = (e2) => {
         document.getElementById('review').src = e2.target.result;
       };
       fileReader.readAsDataURL(file);
     }
   }
 
+  //Use built-in FormData
   submitComment(e, parentCommentId) {
     e.preventDefault();
     const formData = new FormData();
     formData.append("comment[author_id]", this.props.currentUser.id);
     formData.append("comment[body]", this.refs.commentBodyInput.value);
     formData.append("comment[parent_comment_id]", parentCommentId);
-    formData.append("comment[image]", this.state.imageFile);
-
-    // const newComment = {
-    //   author_id: this.props.currentUser.id,
-    //   body: this.refs.commentBodyInput.value, //i dont want live update, so i use refs
-    //   parent_comment_id: parentCommentId,
-    //   file: this.state.imageFile
-    // };
+    if (this.refs.commentImgInput.files[0]) {
+      formData.append("comment[image]", this.refs.commentImgInput.files[0]);
+    }
     this.props.postComment(formData);
   }
 
   render() {
-    if (!this.props.comments) return (<div>Loading comments...</div>);
-    console.log(this.state);
+    const {comments} = this.props;
+    if (!comments) return (<div>Loading comments...</div>);
+
     return (
-      <div>
+      <div className="comment-index">
+        <div><span>Comments ({comments.length})</span>
+          <span>Gallery ({this.generatePicCount()})</span>
+        </div>
+        <div id="co"></div>
         {this.generateCommentForm(false)}
         <ul>
           {

@@ -150,7 +150,7 @@ class RecipeShow extends React.Component {
                   className="detail-button">Overview</button>
                 <button onClick={(e) => this.jumpTo('st', e)}
                   className="detail-button">Steps</button>
-                <button onClick={(e) => this.jumpTo('st', e)}
+                <button onClick={(e) => this.jumpTo('co', e)}
                   className="detail-button">Comments</button>
               </div>
               <div className="sharing">
@@ -216,6 +216,7 @@ class RecipeShow extends React.Component {
               <div id="st"></div>
               {this.textHandling()}
             </div>
+
             <CommentIndex comments={this.props.comments}
               users={this.props.users}
               postComment={this.props.postComment}
