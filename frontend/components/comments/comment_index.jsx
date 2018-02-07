@@ -79,7 +79,9 @@ class CommentIndex extends React.Component {
             onSubmit={e => this.submitComment(e, parentCommentId)}>
             <input ref="commentBodyInput" className="comment-body-input"
               contenteditable="true" type="text" placeholder="Your reply..."/>
-            <label><img className="img-icon" src={window.imageUrls.imgIcon} />
+            <label><img onMouseEnter={(e) => {e.target.src = window.imageUrls.imgIconHv;}}
+              onMouseLeave={(e) => {e.target.src = window.imageUrls.imgIcon;}}
+              className="img-icon" src={window.imageUrls.imgIcon} />
               <input ref="commentImgInput" className="hidden-input"
                 onChange={e => this.reviewFile(e)} type="file"/>
             </label>
@@ -92,6 +94,11 @@ class CommentIndex extends React.Component {
       );
     }
     return commentForm;
+  }
+
+  iconHover(e, imgUrl) {
+    console.log("hovering");
+    e.target.src = imgUrl;
   }
 
   generatePicCount() {
@@ -110,17 +117,17 @@ class CommentIndex extends React.Component {
     }
   }
 
-  // //Use built in FileReader
-  // reviewFile(e) {
-  //   let file = e.target.files[0];
-  //   if (file) {
-  //     let fileReader = new FileReader();
-  //     fileReader.onload = (e2) => {
-  //       document.getElementById('review').src = e2.target.result;
-  //     };
-  //     fileReader.readAsDataURL(file);
-  //   }
-  // }
+  //Use built in FileReader
+  reviewFile(e) {
+    let file = e.target.files[0];
+    if (file) {
+      let fileReader = new FileReader();
+      fileReader.onload = (e2) => {
+        // document.getElementById('review').src = e2.target.result;
+      };
+      fileReader.readAsDataURL(file);
+    }
+  }
 
   //Use built-in FormData
   submitComment(e, parentCommentId) {
