@@ -16,7 +16,8 @@ end
 json.users do
   @recipe.comments.each do |comment|
     json.set! "#{comment.author.id}" do
-      json.extract! comment.author, :id, :username, :pic_url
+      json.extract! comment.author, :id, :username
+      json.pic_url asset_url(comment.author.pic_url)
     end
   end
 end

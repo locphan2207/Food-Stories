@@ -16,9 +16,11 @@ class CommentIndex extends React.Component {
     const replies = [];
     this.props.comments.forEach(comment => {
       if (comment.parent_comment_id === parentCommentId) {
-        console.log(comment.img_url);
-        replies.push(<div>
-          <p>&#160;&#160;&#160;&#160;&#160;{users[comment.author_id].username}: {comment.body}</p>
+        replies.push(
+        <div>
+          <img className="comment-avatar"
+            src={users[comment.author_id].pic_url}></img>
+          <p>{users[comment.author_id].username}: {comment.body}</p>
           {this.generatePic(comment.img_url)}
         </div>);
       }
@@ -38,8 +40,10 @@ class CommentIndex extends React.Component {
       }
       if (!comment.parent_comment_id) {
         topLevelComments.push(<div>
+          <img className="comment-avatar"
+            src={users[comment.author_id].pic_url}></img>
           <p>{users[comment.author_id].username}: {comment.body}</p>
-          <button onClick={e => this.setState({replyTargetId: comment.id})}>
+          <button onClick={e => this.toggleReplyForm(comment.id)}>
             Reply
           </button>
           {this.generatePic(comment.img_url)}
@@ -69,15 +73,22 @@ class CommentIndex extends React.Component {
     // If it has arg, it is a reply comment
     if (this.props.currentUser) {
       commentForm = (
-        <form className="comment-form"
-          onSubmit={e => this.submitComment(e, parentCommentId)}>
-          <img width="50px" src={this.props.currentUser.pic_url}></img>
-          <input ref="commentBodyInput" type="text"/>
-          <input ref="commentImgInput" onChange={e => this.reviewFile(e)} type="file"/>
-          <input type="submit" value="Send" />
-          <img src={this.state.imgUrl}></img>
-          <img id="review" width="200px" src={this.state.imgUrl} />
-        </form>
+        <div className="comment-form-container">
+          <img className="comment-avatar" src={this.props.currentUser.pic_url}></img>
+          <form className="comment-form"
+            onSubmit={e => this.submitComment(e, parentCommentId)}>
+            <input ref="commentBodyInput" className="comment-body-input"
+              contenteditable="true" type="text" placeholder="Your reply..."/>
+            <label><img className="img-icon" src={window.imageUrls.imgIcon} />
+              <input ref="commentImgInput" className="hidden-input"
+                onChange={e => this.reviewFile(e)} type="file"/>
+            </label>
+            <label><img className="send-icon" src={window.imageUrls.sendIcon} />
+              <input className="hidden-input" type="submit" value="Send" />
+            </label>
+            <img src={this.state.imgUrl}></img>
+          </form>
+        </div>
       );
     }
     return commentForm;
@@ -91,17 +102,25 @@ class CommentIndex extends React.Component {
     return count;
   }
 
-  //Use built in FileReader
-  reviewFile(e) {
-    let file = e.target.files[0];
-    if (file) {
-      let fileReader = new FileReader();
-      fileReader.onload = (e2) => {
-        document.getElementById('review').src = e2.target.result;
-      };
-      fileReader.readAsDataURL(file);
+  toggleReplyForm(commentId) {
+    if (!this.state.replyTargetId) {
+      this.setState({replyTargetId: commentId});
+    } else {
+      this.setState({replyTargetId: undefined});
     }
   }
+
+  // //Use built in FileReader
+  // reviewFile(e) {
+  //   let file = e.target.files[0];
+  //   if (file) {
+  //     let fileReader = new FileReader();
+  //     fileReader.onload = (e2) => {
+  //       document.getElementById('review').src = e2.target.result;
+  //     };
+  //     fileReader.readAsDataURL(file);
+  //   }
+  // }
 
   //Use built-in FormData
   submitComment(e, parentCommentId) {
@@ -114,6 +133,7 @@ class CommentIndex extends React.Component {
       formData.append("comment[image]", this.refs.commentImgInput.files[0]);
     }
     this.props.postComment(formData);
+    this.setState({replyTargetId: undefined});
   }
 
   render() {
@@ -127,7 +147,7 @@ class CommentIndex extends React.Component {
         </div>
         <div id="co"></div>
 
-        {this.generateCommentForm(false)}
+        {this.generateCommentForm()}
         <ul>
           {
             this.returnTopLvComment()
