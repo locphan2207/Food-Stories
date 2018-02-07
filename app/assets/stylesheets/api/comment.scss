@@ -3,12 +3,19 @@
 }
 
 .comment-box {
+  position: relative; // for reply
+  padding: 20px 0 0 0;
+  width: 570px;
 }
 
 .comment-container {
-  width: 570px;
-  padding: 30px 0;
   display: flex;
+  justify-content: flex-start;
+}
+
+.comment-form-container {
+  display: flex;
+  padding: 20px 0;
   justify-content: flex-start;
 }
 
@@ -39,10 +46,13 @@
 .comment-form>a {
   text-decoration: none;
   margin: auto 10px;
-  margin-right: 0;
   color: #0388ce;
   font-size: 110%;
   transition: all .5s ease-in;
+  font-family: "Conv_Brandon_med";
+}
+.comment-form>a:first-child {
+  margin-left: 30px;
 }
 
 .comment-form>a:hover {
@@ -71,14 +81,13 @@
 }
 
 .comment-form>i {
-  padding: 0 10px;
+  // padding: 0 10px;
   margin: 9px 0;
 }
 
 .comment-body-input {
   height: 50px;
-  min-width: 80%;
-  max-width: 80%;
+  width: 100%;
   padding: 5px;
   font-size: 120%;
   border: none;
@@ -120,16 +129,28 @@
   background: aliceblue;
   border-radius: 14px;
   display: flex;
-  position: relative; //for reply
 }
 
 .reply {
   position: absolute;
-  left: 0;
-  bottom: -25px;
+  left: 70px;
   cursor: pointer;
+  font-family: "Conv_Brandon_med";
+  padding-top: 10px;
 }
 
 .reply:hover {
   color: #0388ce;
+}
+
+.comment-pic {
+  width: 150px;
+  height: auto;
+  border-radius: 14px;
+  margin: 10px 0 0 70px;
+}
+
+.reply-area {
+  margin: 50px 0 0 70px;
+  width: 500px; //dont change
 }

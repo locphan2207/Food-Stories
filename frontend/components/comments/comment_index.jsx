@@ -32,7 +32,7 @@ class CommentIndex extends React.Component {
   returnTopLvComment() {
     const {users} = this.props;
     const topLevelComments = [];
-    this.props.comments.reverse().forEach(comment => {
+    this.props.comments.forEach(comment => {
       let replyForm = null;
       if (this.state.replyTargetId === comment.id) {
         // pass the target id to let form know parent_comment_id
@@ -47,14 +47,16 @@ class CommentIndex extends React.Component {
               <div className="comment-body">
                 <p>{users[comment.author_id].username} </p>
                 <p>{comment.body}</p>
-                <div className="reply" onClick={e => this.toggleReplyForm(comment.id)}>
-                  Reply
-                </div>
               </div>
             </div>
             {this.generatePic(comment.img_url)}
-            {replyForm}
-            {this.returnReplies(comment.id)}
+            <div className="reply" onClick={e => this.toggleReplyForm(comment.id)}>
+              Reply
+            </div>
+            <div className="reply-area">
+              {replyForm}
+              {this.returnReplies(comment.id)}
+            </div>
           </div>
         );
       }
@@ -63,13 +65,21 @@ class CommentIndex extends React.Component {
   }
 
   generatePic(imgUrl) {
-    if (imgUrl === 'missing.png') return (<div></div>);
-    return (<img width="200px" src={imgUrl}></img>);
+    if (imgUrl === 'missing.png') return null;
+    return (<img class="comment-pic" src={imgUrl}></img>);
+  }
+
+  generateReplyForm(parentCommentId) {
+    return (
+      <div className="reply-area">
+        {this.generateCommentForm(parentCommentId)}
+      </div>
+    );
   }
 
   generateCommentForm(parentCommentId) {
     let commentForm = (
-      <div className="comment-container">
+      <div className="comment-form-container">
         <div className="comment-blank-avatar"></div>
         <div className="comment-form">
           <Link to="/signup">Sign Up</Link>
@@ -82,7 +92,7 @@ class CommentIndex extends React.Component {
     // If it has arg, it is a reply comment
     if (this.props.currentUser) {
       commentForm = (
-        <div className="comment-container">
+        <div className="comment-form-container">
           <img className="comment-avatar" src={this.props.currentUser.pic_url}></img>
           <form className="comment-form"
             onSubmit={e => this.submitComment(e, parentCommentId)}>
@@ -123,7 +133,7 @@ class CommentIndex extends React.Component {
   }
 
   toggleReplyForm(commentId) {
-    if (!this.state.replyTargetId) {
+    if (this.state.replyTargetId !== commentId) {
       this.setState({replyTargetId: commentId});
     } else {
       this.setState({replyTargetId: undefined});
