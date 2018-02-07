@@ -84,6 +84,6 @@ end
   )
 end
 
-Comment.new(author_id: 1, body: "This recipe is awesome!!!").update_attribute(:commentable, Recipe.all[0])
-Comment.new(author_id: 2, body: "You are right", parent_comment_id: 1).update_attribute(:commentable, Recipe.all[0])
-Comment.new(author_id: 3, body: "I am the admin", parent_comment_id: 1).update_attribute(:commentable, Recipe.all[0])
+# Comment.new(author_id: 1, body: "This recipe is awesome!!!").update_attribute(:commentable, Recipe.all[0])
+# Comment.new(author_id: 2, body: "You are right", parent_comment_id: 1).update_attribute(:commentable, Recipe.all[0])
+# Comment.new(author_id: 3, body: "I am the admin", parent_comment_id: 1).update_attribute(:commentable, Recipe.all[0])

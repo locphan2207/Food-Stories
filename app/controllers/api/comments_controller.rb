@@ -23,6 +23,6 @@ class Api::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:author_id, :body, :img_url, :parent_comment_id)
+    params.require(:comment).permit(:author_id, :body, :image, :parent_comment_id)
   end
 end

@@ -7,7 +7,8 @@ end
 json.comments do
   @recipe.comments.each do |comment|
     json.set! "#{comment.id}" do
-      json.extract! comment, :id, :author_id, :body, :img_url, :parent_comment_id
+      json.extract! comment, :id, :author_id, :body, :parent_comment_id
+      json.img_url comment.image.url  #paperclip stuff
     end
   end
 end

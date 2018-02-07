@@ -12,9 +12,9 @@ class CommentIndex extends React.Component {
     const replies = [];
     this.props.comments.forEach(comment => {
       if (comment.parent_comment_id === parentCommentId) {
+        console.log(comment.img_url);
         replies.push(<div>
           <p>&#160;&#160;&#160;&#160;&#160;{users[comment.author_id].username}: {comment.body}</p>
-          <img src={comment.img_url}></img>
         </div>);
       }
     });
@@ -38,12 +38,17 @@ class CommentIndex extends React.Component {
             Reply
           </button>
           {replyForm}
-          <img src={comment.img_url}></img>
+          {this.generatePic(comment.img_url)}
           {this.returnReplies(comment.id)}
         </div>);
       }
     });
     return topLevelComments;
+  }
+
+  generatePic(imgUrl) {
+    if (imgUrl === 'missing.png') return (<div></div>);
+    return (<img src={"http:" + imgUrl}></img>);
   }
 
   generateCommentForm(parentCommentId) {
