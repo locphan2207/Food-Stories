@@ -358,6 +358,9 @@ canvas {
 
 .like-area {
   display: flex;
+  position: absolute;
+  left: 350px;
+  top: 9px;
 }
 
 .like:hover {

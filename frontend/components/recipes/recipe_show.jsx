@@ -186,6 +186,11 @@ class RecipeShow extends React.Component {
                 <button onClick={(e) => this.jumpTo('co', e)}
                   className="detail-button">Comments ({this.props.comments.length})</button>
               </div>
+              <div className="like-area">
+                <img className="like" src={this.generateLike(recipe)}
+                  onClick={e => this.toggleLike("recipes", recipe, e)}/>
+                <div className="like-count">{recipe.likeIds.length}</div>
+              </div>
               <div className="sharing">
                 <img src={window.imageUrls.iconFB}></img>
                 <img src={window.imageUrls.iconTwitter}></img>
@@ -212,11 +217,7 @@ class RecipeShow extends React.Component {
               <img src={window.imageUrls.iconStarEmpty}></img>
               <img src={window.imageUrls.iconStarEmpty}></img>
               <span>Too few ratings</span>
-              <div className="like-area">
-                <img className="like" src={this.generateLike(recipe)}
-                  onClick={e => this.toggleLike("recipes", recipe, e)}/>
-                <div className="like-count">{recipe.likeIds.length}</div>
-              </div>
+
             </p>
             <div className="difficulty">
               <span className="sub-title">Difficulty</span>
