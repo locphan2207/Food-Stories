@@ -10,6 +10,16 @@ class User < ApplicationRecord
   foreign_key: :author_id,
   class_name: :Comment
 
+  has_many :likes,
+  primary_key: :id,
+  foreign_key: :author_id,
+  class_name: :Like
+
+  has_many :liked_recipes,
+  through: :likes,
+  source: :likeable,
+  source_type: :Recipe  #this is how we do through association with polymorphic
+
   has_many :recipes,
   primary_key: :id,
   foreign_key: :author_id,

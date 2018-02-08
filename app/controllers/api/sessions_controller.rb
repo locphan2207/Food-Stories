@@ -1,7 +1,10 @@
 class Api::SessionsController < ApplicationController
   def create
     @user = User.find_by_credentials(params[:user][:email],
-      params[:user][:password]);
+      params[:user][:password])
+
+    @liked_recipes = @user.liked_recipes
+    @liked_recipe_ids = @liked_recipes.map {|recipe| recipe.id}
     @errors = []
     if @user
       session[:session_token] = @user.session_token

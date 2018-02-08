@@ -1,6 +1,7 @@
 class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
+    @liked_recipe_ids = []
     @errors = []
     if @user.save
       session[:session_token] = User.last.session_token
