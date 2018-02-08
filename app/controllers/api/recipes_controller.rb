@@ -44,6 +44,14 @@ class Api::RecipesController < ApplicationController
     render :search_result, status: 200
   end
 
+  def search_by_ids
+    @recipes = []
+    params[:ids].each do |id|
+      @recipes << Recipe.find_by_id(id)
+    end
+    render :index, status: 200  #it returns liked recipes
+  end
+
   private
 
   def recipe_params

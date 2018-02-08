@@ -19,3 +19,11 @@ export const postSearchRecipe = (searchQuery) => {
     data: searchQuery
   });
 };
+
+export const postSearchByIds = (ids) => {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/search_by_ids',
+    data: {ids}
+  });
+};

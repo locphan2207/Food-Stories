@@ -1,14 +1,14 @@
 import React from 'react';
 import SmallImage from '../display/small_image';
 
-class RecipeIndex extends React.Component {
+class LikedRecipeIndex extends React.Component {
   componentDidMount() {
-    this.props.fetchRecipes();
+    this.props.fetchLikedRecipes(this.props.likedRecipeIds);
   }
 
   render() {
+    console.log(this.props);
     const {recipes} = this.props;
-    if (recipes.length < 1) return (<div>Sorry mate! No result found........</div>)
     return (
       <div>
         <p className="item-title">Recipes</p>
@@ -25,4 +25,4 @@ class RecipeIndex extends React.Component {
   }
 }
 
-export default RecipeIndex;
+export default LikedRecipeIndex;

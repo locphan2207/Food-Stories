@@ -11,8 +11,10 @@ import StoryIndexContainer from './stories/story_index_container';
 import StoryShowContainer from './stories/story_show_container';
 
 import RecipeSearchContainer from './recipes/recipe_search_container';
+import LikedRecipeIndexContainer from './recipes/liked_recipe_index_container';
 
 import HomepageContainer from './homepage_container';
+
 
 // import {handleBigImg} from '../util/display_util';
 
@@ -40,6 +42,8 @@ const App = () => (
       <Route exact path='/stories' component={StoryIndexContainer} />
       <Route path='/recipes/:recipeId' component={RecipeShowContainer} />
       <Route path='/stories/:storyId' component={StoryShowContainer} />
+
+      <Route path='/liked_recipes' component={LikedRecipeIndexContainer} />
     </section>
 
     <footer>

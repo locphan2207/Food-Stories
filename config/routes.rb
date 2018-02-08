@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   #defaults is plural please!
   namespace :api, defaults: {format: :json} do
     post 'search', to: 'recipes#search'
-
+    post 'search_by_ids', to: 'recipes#search_by_ids'
     resources :recipes, only: [:index, :show] do
       resources :comments, only: [:create]
       resources :likes, only: [:create]
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:destroy] do
       resources :likes, only: [:create]
     end
-    
+
     resources :likes, only: [:destroy]
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy]

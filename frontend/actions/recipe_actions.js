@@ -1,11 +1,17 @@
 import * as RecipeAPIUtil from '../util/recipe_api_util';
 
 export const RECEIVE_RECIPES = "RECEIVE_RECIPES";
+export const RECEIVE_LIKED_RECIPES = "RECEIVE_LIKED_RECIPES";
 export const RECEIVE_RECIPE = "RECEIVE_RECIPE";
 export const RECEIVE_SEARCH_RESULT = "RECEIVE_SEARCH_RESULT";
 
 const receiveRecipes = (recipes) => ({
   type: RECEIVE_RECIPES,
+  recipes
+});
+
+const receiveLikedRecipes = (recipes) => ({
+  type: RECEIVE_LIKED_RECIPES,
   recipes
 });
 
@@ -37,4 +43,9 @@ export const fetchRecipe = (recipeId) => (dispatch) => {
 export const searchRecipe = (searchQuery) => (dispatch) => {
   return RecipeAPIUtil.postSearchRecipe(searchQuery)
     .then(result => dispatch(receiveSearchResult(result.recipeIds)));
+};
+
+export const fetchLikedRecipes = (ids) => (dispatch) => {
+  return RecipeAPIUtil.postSearchByIds(ids)
+    .then(recipes => dispatch(receiveLikedRecipes(recipes)));
 };
