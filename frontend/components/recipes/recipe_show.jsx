@@ -212,11 +212,10 @@ class RecipeShow extends React.Component {
               <img src={window.imageUrls.iconStarEmpty}></img>
               <img src={window.imageUrls.iconStarEmpty}></img>
               <span>Too few ratings</span>
-              <div>
+              <div className="like-area">
                 <img className="like" src={this.generateLike(recipe)}
-                  onClick={e => this.toggleLike("recipes", recipe, e)}
-                />
-                <span>{recipe.likeIds.length}</span>
+                  onClick={e => this.toggleLike("recipes", recipe, e)}/>
+                <div className="like-count">{recipe.likeIds.length}</div>
               </div>
             </p>
             <div className="difficulty">
@@ -259,7 +258,10 @@ class RecipeShow extends React.Component {
             <CommentIndex comments={this.props.comments}
               users={this.props.users}
               postComment={this.props.postComment}
-              currentUser={this.props.currentUser}/>
+              currentUser={this.props.currentUser}
+              generateLike={this.generateLike.bind(this)}
+              toggleLike={this.toggleLike.bind(this)}
+            />
           </div>
         </div>
       </div>

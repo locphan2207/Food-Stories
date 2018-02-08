@@ -59,6 +59,11 @@ class CommentIndex extends React.Component {
             <div className="reply" onClick={e => this.toggleReplyForm(comment.id)}>
               Reply
             </div>
+            <div className="comment-like-area">
+              <img className="like" src={this.props.generateLike(comment)}
+                onClick={e => this.props.toggleLike("comments", comment, e)}/>
+              <div className="like-count">{comment.likeIds.length}</div>
+            </div>
             <div className="reply-area">
               {replyForm}
               {this.returnReplies(comment.id)}

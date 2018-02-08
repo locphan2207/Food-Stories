@@ -352,13 +352,19 @@ canvas {
 
 .like {
   width: 35px;
+  height: 35px;
   cursor: pointer;
+}
+
+.like-area {
+  display: flex;
 }
 
 .like:hover {
   animation: small-bounce 0.5s;
 }
 
-.like>span {
-  
+.like-count {
+  font-size: 140%;
+  padding-left: 5px;
 }
