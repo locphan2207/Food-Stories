@@ -14,9 +14,7 @@ class UserDropdown extends React.Component {
             <div className="user-text">
               <p className="username2">{this.props.currentUser.username}</p>
               <p className="email">{this.props.currentUser.email}</p>
-            </div>
-            <div className="liked-recipes-link">
-              <Link to="/liked_items">Likes</Link>
+              <Link className="liked-items-link" to="/liked_items">Likes</Link>
             </div>
           </div>
           <p className="logout" onClick={() => this.props.logout()}>Logout</p>

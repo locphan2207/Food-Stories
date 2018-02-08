@@ -124,14 +124,15 @@
 .user-text {
   line-height: 0.9;
   font-size: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 10px 60px 0 0;
+  padding: 10px 60px 0 0;
 }
 
 .username2 {
-  font-size: 120%;
+  font-size: 125%;
   font-weight: bold;
   margin: 0 0 10px 0;
 }
@@ -144,7 +145,32 @@
 }
 
 .email {
-  font-size: 80%;
+  font-size: 85%;
+}
+
+.liked-items-link {
+  text-align: center;
+  padding: 10px 15px;
+  color: #464646;
+  text-decoration: none;
+  border: 1px solid #0388ce;
+  margin-top: 20px;
+  border-radius: 8px;
+  font-size: 120%;
+  font-family: "Conv_Brandon_med";
+  box-shadow: 0 1px 0 0 darkblue;
+}
+
+.liked-items-link:hover {
+  color: white;
+  background: #03acfa;
+}
+
+.liked-items-link:active {
+  color: white;
+  background: #03acfa;
+  transform: scale(0.98);
+  box-shadow: none;
 }
 
 .logout {
