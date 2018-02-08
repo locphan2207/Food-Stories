@@ -11,10 +11,12 @@ class Recipe < ApplicationRecord
   class_name: :User
 
   has_many :comments,
-  as: :commentable
+  as: :commentable,
+  dependent: :destroy
 
   has_many :likes,
-  as: :likeable
+  as: :likeable,
+  dependent: :destroy
 
 
   def self.search_by_filter(searchQuery)

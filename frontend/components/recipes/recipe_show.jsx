@@ -111,17 +111,50 @@ class RecipeShow extends React.Component {
     }
   }
 
+  //The idea: Take the item object, look through likeIds, check if the current user
+  // is in the list (if he or she already liked the item or not)
+  // then show the heart icon according to the status
+  generateLike(itemObject) {
+    const {likes} = this.props;
+    const {currentUser} = this.props;
+    let imgSrc = window.imageUrls.heartIcon;
+    if (currentUser) {
+      itemObject.likeIds.forEach(likeId => {
+        if (likes[`${likeId}`].author_id === currentUser.id) {
+          imgSrc = window.imageUrls.heartIconLiked;
+          return imgSrc;
+        }
+      });
+    }
+    return imgSrc;
+  }
+
+  toggleLike(itemType, itemObject) {
+    const {currentUser} = this.props;
+    const {likes} = this.props;
+    let quit = false;
+    if (currentUser) {
+      itemObject.likeIds.forEach(likeId => {
+        if (likes[`${likeId}`].author_id === currentUser.id) {
+          this.props.deleteLike(itemObject.id, likeId);
+          quit = true; //cant use break on forEach
+        }
+      });
+      if (quit === true) return;
+      this.props.postLike( itemType, itemObject.id, {author_id: currentUser.id});
+    }
+  }
+
 
   render() {
     let {recipe} = this.props;
-    if (this.props.comments) console.log(this.props.comments);
     //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
     // while (!recipe && !recipe.ingredients);
     if (!recipe || !recipe.ingredients) {//check if it finishes loading all info after fetchRecipe
       return (<div>Loading</div>);
     }
-    console.log('show rendering');
-    console.log(`canvasLoaded=${this.canvasLoaded}`);
+    // console.log('show rendering');
+    // console.log(`canvasLoaded=${this.canvasLoaded}`);
     //Setup:
 
     let ingredientRows = recipe.ingredients.split(", "); //split by comma
@@ -151,7 +184,7 @@ class RecipeShow extends React.Component {
                 <button onClick={(e) => this.jumpTo('st', e)}
                   className="detail-button">Steps</button>
                 <button onClick={(e) => this.jumpTo('co', e)}
-                  className="detail-button">Comments</button>
+                  className="detail-button">Comments ({this.props.comments.length})</button>
               </div>
               <div className="sharing">
                 <img src={window.imageUrls.iconFB}></img>
@@ -179,6 +212,12 @@ class RecipeShow extends React.Component {
               <img src={window.imageUrls.iconStarEmpty}></img>
               <img src={window.imageUrls.iconStarEmpty}></img>
               <span>Too few ratings</span>
+              <div>
+                <img className="like" src={this.generateLike(recipe)}
+                  onClick={e => this.toggleLike("recipes", recipe, e)}
+                />
+                <span>{recipe.likeIds.length}</span>
+              </div>
             </p>
             <div className="difficulty">
               <span className="sub-title">Difficulty</span>

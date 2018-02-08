@@ -11,7 +11,8 @@ class Comment < ApplicationRecord
   has_many :replies,
   primary_key: :id,
   foreign_key: :parent_comment_id,
-  class_name: :Comment
+  class_name: :Comment,
+  dependent: :destroy
 
   belongs_to :parent_comment,
   primary_key: :id,
@@ -25,5 +26,6 @@ class Comment < ApplicationRecord
   class_name: :User
 
   has_many :likes,
-  as: :likeable
+  as: :likeable,
+  dependent: :destroy
 end

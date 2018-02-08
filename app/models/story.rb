@@ -4,12 +4,13 @@ class Story < ApplicationRecord
   belongs_to :author,
   primary_key: :id,
   foreign_key: :author_id,
-  class_name: :User,
-  dependent: :destroy
+  class_name: :User
 
   has_many :comments,
-  as: :commentable
+  as: :commentable,
+  dependent: :destroy
 
   has_many :likes,
-  as: :likeable
+  as: :likeable,
+  dependent: :destroy
 end

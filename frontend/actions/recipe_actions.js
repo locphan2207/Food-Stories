@@ -13,6 +13,7 @@ const receiveRecipe = (response) => ({
   type: RECEIVE_RECIPE,
   recipe: response.recipe,
   comments: response.comments,
+  likes: response.likes,
   users: response.users
 });
 
@@ -26,7 +27,7 @@ export const fetchRecipes = () => (dispatch) => {
     .then(recipes => dispatch(receiveRecipes(recipes)));
 };
 
-//Fetch Recipe includes comments data related to that recipes
+//Fetch Recipe includes comments data and like data related to that recipes
 //also include author of comments
 export const fetchRecipe = (recipeId) => (dispatch) => {
   return RecipeAPIUtil.getRecipe(recipeId)

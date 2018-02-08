@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207220625) do
+ActiveRecord::Schema.define(version: 20180208004949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20180207220625) do
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id", unique: true
+    t.index ["author_id", "likeable_type", "likeable_id"], name: "index_likes_on_author_id_and_likeable_type_and_likeable_id", unique: true
   end
 
   create_table "recipes", force: :cascade do |t|

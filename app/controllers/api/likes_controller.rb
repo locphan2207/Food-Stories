@@ -1,6 +1,6 @@
 class Api::LikesController < ApplicationController
   def create
-    @like = Comment.new(like_params)
+    @like = Like.new(like_params)
     if params[:story_id]
       @item = Story.find_by(id: params[:story_id])
     elsif params[:recipe_id]
@@ -12,14 +12,14 @@ class Api::LikesController < ApplicationController
     if @like.update_attribute(:likeable, @item) #if it will update likeable-
       render json: Like.all.last.id, status: 200
     else
-      render json: "Fail", status: 401
+      render json: {}, status: 401
     end
   end
 
   def destroy
     @like = Like.find_by_id(params[:id])
-    @like.destroy
-    render json: "Deleted"
+    @like.destroy!
+    render json: {} #YOU HAVE TO RETURN {}!!!
   end
 
   private

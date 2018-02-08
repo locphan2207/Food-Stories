@@ -349,3 +349,16 @@ canvas {
   top: -35px;
   z-index: -1;
 }
+
+.like {
+  width: 35px;
+  cursor: pointer;
+}
+
+.like:hover {
+  animation: small-bounce 0.5s;
+}
+
+.like>span {
+  
+}

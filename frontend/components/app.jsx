@@ -47,7 +47,7 @@ const App = () => (
         <a href="https://kitchenstories.io/en" target="_blank">
           <img height="20px" src="https://kitchenstories.io//images/logo_kitchen_stories.svg"></img>
         </a>
-        for academic project
+        &#160; for academic project
         <br></br>
       </p>
       <p className="thank-you">Thank you Kitchen Stories for the awesome website!</p>
