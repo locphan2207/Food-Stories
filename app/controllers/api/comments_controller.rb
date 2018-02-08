@@ -1,6 +1,7 @@
 class Api::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
+
     if (params[:story_id])
       @item = Story.find_by(id: params[:story_id])
     else

@@ -8,17 +8,20 @@ const receiveStories = (stories) => ({
   stories
 });
 
-const receiveStory = (story) => ({
+const receiveStory = (response) => ({
   type: RECEIVE_STORY,
-  story
+  story: response.story,
+  comments: response.comments,
+  likes: response.likes,
+  users: response.users
 });
 
 export const fetchStories = () => (dispatch) => {
-  StoryAPIUtil.getStories()
+  return StoryAPIUtil.getStories()
     .then(stories => dispatch(receiveStories(stories)));
 };
 
 export const fetchStory = (storyId) => (dispatch) => {
-  StoryAPIUtil.getStory(storyId)
-    .then(response => dispatch(receiveStory(response.story)));
+  return StoryAPIUtil.getStory(storyId)
+    .then(response => dispatch(receiveStory(response)));
 };

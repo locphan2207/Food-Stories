@@ -45,3 +45,6 @@ this.state.canvas1 (save canvas object in the state, so it wont recreate)
 -----week2----
 search: 2 approaches, search on frontend, or search on backend.
 ---> choose search on backend with SQL language and ActiveRecord
+
+this.refs.commentBodyInput should be refers two different things
+a

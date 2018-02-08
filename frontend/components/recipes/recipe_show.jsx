@@ -99,7 +99,7 @@ class RecipeShow extends React.Component {
 
   jumpTo(id, e) {
     const dest = document.getElementById(id);
-    dest.scrollIntoView({behavior: "smooth", block: "start", inline: "end"});
+    dest.scrollIntoView({behavior: "smooth", block: "start"});
     const buttons = document.getElementsByClassName("detail-button");
     for (let i = 0; i < 2; i++) {
       buttons[i].className = "detail-button"; //reset className
@@ -151,7 +151,7 @@ class RecipeShow extends React.Component {
     //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
     // while (!recipe && !recipe.ingredients);
     if (!recipe || !recipe.ingredients || !this.props.comments) {//check if it finishes loading all info after fetchRecipe
-      return (<div>Loading</div>);
+      return (<div>Loading...</div>);
     }
     // console.log('show rendering');
     // console.log(`canvasLoaded=${this.canvasLoaded}`);

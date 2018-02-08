@@ -3,9 +3,12 @@ import {fetchRecipe} from './recipe_actions';
 import {fetchStory} from './story_actions';
 
 export const postComment = (itemType, itemId, formData) => (dispatch) => {
+  console.log(itemType);
+  console.log(itemId);
+  console.log(formData);
   return CommentAPIUtil.postComment(itemType, itemId, formData)
     .then(() => {
       if (itemType === "recipes") dispatch(fetchRecipe(itemId));
-      else dispatch(fetchStory(itemId));
+      else if (itemType === "stories") dispatch(fetchStory(itemId));
     });
 };
