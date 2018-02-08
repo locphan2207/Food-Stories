@@ -32,6 +32,14 @@ class Api::StoriesController < ApplicationController
     end
   end
 
+  def search_by_ids
+    @stories = []
+    params[:ids].each do |id|
+      @stories << Story.find_by_id(id)
+    end
+    render :index, status: 200  #it returns liked stories
+  end
+
   private
 
   def story_params

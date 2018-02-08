@@ -20,6 +20,11 @@ class User < ApplicationRecord
   source: :likeable,
   source_type: :Recipe  #this is how we do through association with polymorphic
 
+  has_many :liked_stories,
+  through: :likes,
+  source: :likeable,
+  source_type: :Story  #this is how we do through association with polymorphic
+
   has_many :recipes,
   primary_key: :id,
   foreign_key: :author_id,

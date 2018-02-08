@@ -3,8 +3,6 @@ class Recipe < ApplicationRecord
   validates :difficulty, inclusion: {in: %w(easy medium hard)}
   before_validation :ensure_cooking_duration
 
-  private
-
   belongs_to :author,
   primary_key: :id,
   foreign_key: :author_id,

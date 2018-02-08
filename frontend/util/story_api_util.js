@@ -11,3 +11,11 @@ export const getStory = (storyId) => {
     url: `/api/stories/${storyId}`
   });
 };
+
+export const postSearchByIds = (ids) => {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/stories/search_by_ids',
+    data: {ids}
+  });
+};

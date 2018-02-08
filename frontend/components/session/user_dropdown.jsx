@@ -1,8 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import LikedRecipeIndexContainer from '../recipes/liked_recipe_index_container';
-
 class UserDropdown extends React.Component {
   render() {
     return (
@@ -18,7 +16,7 @@ class UserDropdown extends React.Component {
               <p className="email">{this.props.currentUser.email}</p>
             </div>
             <div className="liked-recipes-link">
-              <Link to="/liked_recipes">Likes</Link>
+              <Link to="/liked_items">Likes</Link>
             </div>
           </div>
           <p className="logout" onClick={() => this.props.logout()}>Logout</p>

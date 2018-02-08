@@ -5,6 +5,10 @@ class Api::SessionsController < ApplicationController
 
     @liked_recipes = @user.liked_recipes
     @liked_recipe_ids = @liked_recipes.map {|recipe| recipe.id}
+
+    @liked_stories = @user.liked_stories
+    @liked_story_ids = @liked_stories.map {|story| story.id}
+
     @errors = []
     if @user
       session[:session_token] = @user.session_token

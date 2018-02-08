@@ -15,7 +15,7 @@ export const getRecipe = (recipeId) => {
 export const postSearchRecipe = (searchQuery) => {
   return $.ajax({
     method: 'POST',
-    url: '/api/search',
+    url: '/api/recipes/search',
     data: searchQuery
   });
 };
@@ -23,7 +23,7 @@ export const postSearchRecipe = (searchQuery) => {
 export const postSearchByIds = (ids) => {
   return $.ajax({
     method: 'POST',
-    url: '/api/search_by_ids',
+    url: '/api/recipes/search_by_ids',
     data: {ids}
   });
 };

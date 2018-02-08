@@ -11,7 +11,8 @@ import StoryIndexContainer from './stories/story_index_container';
 import StoryShowContainer from './stories/story_show_container';
 
 import RecipeSearchContainer from './recipes/recipe_search_container';
-import LikedRecipeIndexContainer from './recipes/liked_recipe_index_container';
+
+import LikedItemIndexContainer from './users_stuff/liked_item_index_container';
 
 import HomepageContainer from './homepage_container';
 
@@ -43,7 +44,7 @@ const App = () => (
       <Route path='/recipes/:recipeId' component={RecipeShowContainer} />
       <Route path='/stories/:storyId' component={StoryShowContainer} />
 
-      <Route path='/liked_recipes' component={LikedRecipeIndexContainer} />
+      <Route path='/liked_items' component={LikedItemIndexContainer} />
     </section>
 
     <footer>
