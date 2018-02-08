@@ -6,8 +6,14 @@ import SmallImage from '../display/small_image';
 
 class LikedItemIndex extends React.Component {
   componentDidMount() {
-    this.props.fetchLikedRecipes(this.props.currentUser.likedRecipeIds);
-    this.props.fetchLikedStories(this.props.currentUser.likedStoryIds);
+    console.log("likes did mounting");
+    this.props.fetchLikedRecipes(this.props.currentUser.likedRecipeIds)
+      .then(() => this.props.fetchLikedStories(this.props.currentUser.likedStoryIds));
+  }
+
+  componentWillUnmount() {
+    console.log("likes unmounting");
+    // location.reload();
   }
 
   render() {

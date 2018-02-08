@@ -10,6 +10,7 @@ const recipesReducer = (state = {}, action) => {
   switch(action.type) {
     case (RECEIVE_RECIPES):
       return _.merge({}, action.recipes, state); // I want to keep old data, just get what wasnt there
+      // return action.recipes;
     case (RECEIVE_LIKED_RECIPES):
       return action.recipes; //replace entire recipes with liked recipes
     case (RECEIVE_RECIPE):

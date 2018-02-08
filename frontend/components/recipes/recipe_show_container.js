@@ -23,20 +23,10 @@ const mapDTP = (dispatch, ownProps) => {
     fetchRecipe: (recipeId) => dispatch(fetchRecipe(recipeId)),
 
     postLike: (itemType, itemId, like) => postLike(itemType, itemId, like)
-      .then(() => dispatch(fetchRecipe(ownProps.match.params.recipeId))) //need for refetch current item id
-      .then(() => {
-        if (itemType === "recipes") {
-          dispatch(receiveLikedRecipeId(ownProps.match.params.recipeId));
-        }
-      }),
+      .then(() => dispatch(fetchRecipe(ownProps.match.params.recipeId))), //need for refetch current item id
 
     deleteLike: (itemType, likeId) => deleteLike(likeId) //fix for story too, added item type
-      .then(() => dispatch(fetchRecipe(ownProps.match.params.recipeId))) //need for refetch current item id
-      .then(() => {
-        if (itemType === "recipes") {
-          dispatch(deleteLikedRecipeId(ownProps.match.params.recipeId));
-        }
-      }),
+      .then(() => dispatch(fetchRecipe(ownProps.match.params.recipeId))), //need for refetch current item id
 
     postComment: (formData) => dispatch(postComment("recipes",
       ownProps.match.params.recipeId, formData)) // hard code 2 arguments,

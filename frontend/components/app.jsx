@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Link} from 'react-router-dom';
+import {Route, Link, Switch} from 'react-router-dom';
 
 import GreetingContainer from './session/greeting_container';
 import SessionFormContainer from './session/session_form_container';
@@ -38,13 +38,13 @@ const App = () => (
 
     <section className="main-section">
       <Route exact path='/' component={HomepageContainer} />
+      <Route exact path='/liked_items' component={LikedItemIndexContainer} />
+
       <Route exact path='/recipes' component={RecipeSearchContainer} />
       <Route exact path='/recipes' component={RecipeIndexContainer} />
       <Route exact path='/stories' component={StoryIndexContainer} />
       <Route path='/recipes/:recipeId' component={RecipeShowContainer} />
       <Route path='/stories/:storyId' component={StoryShowContainer} />
-
-      <Route path='/liked_items' component={LikedItemIndexContainer} />
     </section>
 
     <footer>

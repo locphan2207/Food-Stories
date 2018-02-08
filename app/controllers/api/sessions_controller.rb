@@ -3,11 +3,11 @@ class Api::SessionsController < ApplicationController
     @user = User.find_by_credentials(params[:user][:email],
       params[:user][:password])
 
-    @liked_recipes = @user.liked_recipes
-    @liked_recipe_ids = @liked_recipes.map {|recipe| recipe.id}
-
-    @liked_stories = @user.liked_stories
-    @liked_story_ids = @liked_stories.map {|story| story.id}
+    # @liked_recipes = @user.liked_recipes
+    # @liked_recipe_ids = @liked_recipes.map {|recipe| recipe.id}
+    #
+    # @liked_stories = @user.liked_stories
+    # @liked_story_ids = @liked_stories.map {|story| story.id}
 
     @errors = []
     if @user
