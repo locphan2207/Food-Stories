@@ -9,8 +9,7 @@ const mapSTP = (state) => {
   return {
     recipes: Object.values(state.entities.recipes),
     stories: Object.values(state.entities.stories),
-    likedRecipeIds: state.session.currentUser.likedRecipeIds, // current user's liked recipes
-    likedStoryIds: state.session.currentUser.likedStoryIds // current user's liked stories
+    currentUser: state.session.currentUser
   };
 };
 

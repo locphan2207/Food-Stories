@@ -22,6 +22,10 @@ class StoryShow extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.stickyHandling);  //make top navbar stable again
+  }
+
   stickyHandling() {
     // console.log($(window).scrollTop());
     const $header1 = $('#header1');

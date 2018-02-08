@@ -33,10 +33,7 @@ class Api::StoriesController < ApplicationController
   end
 
   def search_by_ids
-    @stories = []
-    params[:ids].each do |id|
-      @stories << Story.find_by_id(id)
-    end
+    @stories = current_user.liked_stories
     render :index, status: 200  #it returns liked stories
   end
 

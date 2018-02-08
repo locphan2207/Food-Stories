@@ -10,6 +10,10 @@ class Homepage extends React.Component {
     this.props.fetchStories();
   }
 
+  componentWillReceiveProps() {
+
+  }
+
   getDuration(recipe) {
     return recipe.preparation_min + recipe.baking_min + recipe.resting_min;
   }
@@ -35,7 +39,7 @@ class Homepage extends React.Component {
     // console.log(stories);
     // console.log(recipes);
     if (stories.length < 1 || recipes.length < 1) return (<h1>Loading...</h1>);
-    console.log(stories[stories.length-1]);
+    // console.log(stories[stories.length-1]);
     return (
       <div>
         <p className="homepage-title">Today's Story</p>

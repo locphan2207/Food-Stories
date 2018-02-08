@@ -40,6 +40,10 @@ class RecipeShow extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.stickyHandling);  //make top navbar stable again
+  }
+
   ingredientMultiply(type) {
     if (type === "minus") {
       if (this.state.servingNum > 1) {
