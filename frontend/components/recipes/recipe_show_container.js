@@ -5,7 +5,7 @@ import RecipeShow from './recipe_show';
 
 import {fetchRecipe} from '../../actions/recipe_actions';
 import {postComment} from '../../actions/comment_actions';
-import {postLike, deleteLike} from '../../actions/like_actions';
+import {postLike, deleteLike} from '../../util/like_api_util'; //get api to create actions here!!!
 
 const mapSTP = (state, ownProps) => {
   return {
@@ -20,10 +20,14 @@ const mapSTP = (state, ownProps) => {
 const mapDTP = (dispatch, ownProps) => {
   return {
     fetchRecipe: (recipeId) => dispatch(fetchRecipe(recipeId)),
-    postLike: (itemType, itemId, like) => dispatch(postLike(itemType,
-      itemId, "recipeShow", ownProps.match.params.recipeId, like)),
-    deleteLike: (itemId, likeId) => dispatch(deleteLike(itemId,
-      "recipeShow", ownProps.match.params.recipeId, likeId)), //need for refetch current item id
+
+    postLike: (itemType, itemId, like) => postLike(itemType, itemId, like)
+      .then(() => dispatch(fetchRecipe(ownProps.match.params.recipeId))),
+
+    deleteLike: (likeId) => deleteLike(likeId)
+      .then(() => dispatch(fetchRecipe(ownProps.match.params.recipeId))),
+      //need for refetch current item id
+
     postComment: (formData) => dispatch(postComment("recipes",
       ownProps.match.params.recipeId, formData)) // hard code 2 arguments,
       //so, in the comment_index, they just need to call postComment(comment)

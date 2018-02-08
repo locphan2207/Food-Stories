@@ -171,8 +171,8 @@ class CommentIndex extends React.Component {
   //Use built-in FormData
   submitComment(e, parentCommentId) {
     e.preventDefault();
-    if (this.refs.commentBodyInput.value === "" &&
-        !this.refs.commentImgInput.files[0]) {
+    if (!this.refs.commentBodyInput || (this.refs.commentBodyInput.value === "" &&
+        !this.refs.commentImgInput.files[0])) {
       return;
     }
     const formData = new FormData();
@@ -183,6 +183,7 @@ class CommentIndex extends React.Component {
       formData.append("comment[image]", this.refs.commentImgInput.files[0]);
     }
     this.props.postComment(formData);
+    this.refs.commentBodyInput.value = "";
     this.setState({replyTargetId: undefined});
   }
 

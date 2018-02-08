@@ -5,7 +5,18 @@ class Api::StoriesController < ApplicationController
   end
 
   def show
-    @story = Story.find_by_id(params[:id])
+    @story = Story.includes(:likes, comments: [:author, :likes]).find_by_id(params[:id])
+
+    @comment_ids = []
+    @story.comments.each do |comment|
+      @comment_ids << comment.id
+    end
+
+    @like_ids = []
+    @story.likes.each do |like|
+      @like_ids << like.id
+    end
+
     @errors = []
     render :show
   end
