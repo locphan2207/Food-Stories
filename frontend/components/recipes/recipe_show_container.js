@@ -21,9 +21,9 @@ const mapDTP = (dispatch, ownProps) => {
   return {
     fetchRecipe: (recipeId) => dispatch(fetchRecipe(recipeId)),
     postLike: (itemType, itemId, like) => dispatch(postLike(itemType,
-      itemId, "recipeShow", like)),
+      itemId, "recipeShow", ownProps.match.params.recipeId, like)),
     deleteLike: (itemId, likeId) => dispatch(deleteLike(itemId,
-      "recipeShow", likeId)),
+      "recipeShow", ownProps.match.params.recipeId, likeId)), //need for refetch current item id
     postComment: (formData) => dispatch(postComment("recipes",
       ownProps.match.params.recipeId, formData)) // hard code 2 arguments,
       //so, in the comment_index, they just need to call postComment(comment)

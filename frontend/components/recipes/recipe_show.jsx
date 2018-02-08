@@ -150,7 +150,7 @@ class RecipeShow extends React.Component {
     let {recipe} = this.props;
     //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
     // while (!recipe && !recipe.ingredients);
-    if (!recipe || !recipe.ingredients) {//check if it finishes loading all info after fetchRecipe
+    if (!recipe || !recipe.ingredients || !this.props.comments) {//check if it finishes loading all info after fetchRecipe
       return (<div>Loading</div>);
     }
     // console.log('show rendering');

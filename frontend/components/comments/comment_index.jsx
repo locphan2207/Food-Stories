@@ -198,6 +198,7 @@ class CommentIndex extends React.Component {
         <div id="co"></div>
 
         {this.generateCommentForm()}
+
         <ul>
           {
             this.returnTopLvComment()
