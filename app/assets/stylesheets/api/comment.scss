@@ -1,5 +1,5 @@
 .comment-index {
-  padding-top: 27px;
+  padding: 27px 0 60px 0;
   transition: height 1s ease-in-out;
   // background: red;
 }
@@ -182,5 +182,12 @@
   display: flex;
   position: absolute;
   left: 130px;
+  margin-top: 5px;
+}
+
+.reply-comment-like-area {
+  display: flex;
+  position: absolute;
+  left: 70px;
   margin-top: 5px;
 }
