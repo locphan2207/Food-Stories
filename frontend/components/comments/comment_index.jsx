@@ -26,12 +26,12 @@ class CommentIndex extends React.Component {
                 <p>{comment.body}</p>
               </div>
             </div>
+            {this.generatePic(comment.img_url)}
             <div className="reply-comment-like-area">
               <img className="like" src={this.props.generateLike(comment)}
                 onClick={e => this.props.toggleLike("comments", comment, e)}/>
               <div className="like-count">{comment.likeIds.length}</div>
             </div>
-            {this.generatePic(comment.img_url)}
           </div>
         );
       }
