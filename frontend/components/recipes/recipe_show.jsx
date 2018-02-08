@@ -136,7 +136,7 @@ class RecipeShow extends React.Component {
     if (currentUser) {
       itemObject.likeIds.forEach(likeId => {
         if (likes[`${likeId}`].author_id === currentUser.id) {
-          this.props.deleteLike(likeId);
+          this.props.deleteLike(itemType, likeId);
           quit = true; //cant use break on forEach
         }
       });

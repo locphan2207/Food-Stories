@@ -5,6 +5,7 @@ import RecipeShow from './recipe_show';
 
 import {fetchRecipe} from '../../actions/recipe_actions';
 import {postComment} from '../../actions/comment_actions';
+import {receiveLikedRecipeId, deleteLikedRecipeId} from '../../actions/session_actions';
 import {postLike, deleteLike} from '../../util/like_api_util'; //get api to create actions here!!!
 
 const mapSTP = (state, ownProps) => {
@@ -22,11 +23,20 @@ const mapDTP = (dispatch, ownProps) => {
     fetchRecipe: (recipeId) => dispatch(fetchRecipe(recipeId)),
 
     postLike: (itemType, itemId, like) => postLike(itemType, itemId, like)
-      .then(() => dispatch(fetchRecipe(ownProps.match.params.recipeId))),
+      .then(() => dispatch(fetchRecipe(ownProps.match.params.recipeId))) //need for refetch current item id
+      .then(() => {
+        if (itemType === "recipes") {
+          dispatch(receiveLikedRecipeId(ownProps.match.params.recipeId));
+        }
+      }),
 
-    deleteLike: (likeId) => deleteLike(likeId)
-      .then(() => dispatch(fetchRecipe(ownProps.match.params.recipeId))),
-      //need for refetch current item id
+    deleteLike: (itemType, likeId) => deleteLike(likeId) //fix for story too, added item type
+      .then(() => dispatch(fetchRecipe(ownProps.match.params.recipeId))) //need for refetch current item id
+      .then(() => {
+        if (itemType === "recipes") {
+          dispatch(deleteLikedRecipeId(ownProps.match.params.recipeId));
+        }
+      }),
 
     postComment: (formData) => dispatch(postComment("recipes",
       ownProps.match.params.recipeId, formData)) // hard code 2 arguments,

@@ -1,7 +1,9 @@
 import * as SessionAPIUtil from '../util/session_api_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-export const RECEIVE_SESSION_ERRORS = 'RECEIVE_ERRORS';
+export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const RECEIVE_LIKED_RECIPE_ID = 'RECEIVE_LIKED_RECIPE_ID';
+export const DELETE_LIKED_RECIPE_ID = 'DELETE_LIKED_RECIPE_ID';
 
 const receiveCurrentUser = (currentUser) => ({
   type: RECEIVE_CURRENT_USER,
@@ -11,6 +13,16 @@ const receiveCurrentUser = (currentUser) => ({
 export const receiveSessionErrors = (errors) => ({
   type: RECEIVE_SESSION_ERRORS,
   errors
+});
+
+export const receiveLikedRecipeId = (likedRecipeId) => ({
+  type: RECEIVE_LIKED_RECIPE_ID,
+  likedRecipeId
+});
+
+export const deleteLikedRecipeId = (likedRecipeId) => ({
+  type: DELETE_LIKED_RECIPE_ID,
+  likedRecipeId
 });
 
 export const signup = (user) => (dispatch) => {
