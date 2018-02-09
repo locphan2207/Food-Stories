@@ -63,7 +63,7 @@ recipe_name = [
 ]
 (1..20).each do |i|
   Recipe.create(
-    title: recipe_name[i-1],
+    title: "Testing recipe #{i}",
     author_id: "1",
     img_url: img_url[i-1],
     difficulty: difficulty[rand(2)],
