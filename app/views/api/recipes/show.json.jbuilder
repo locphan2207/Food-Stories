@@ -48,7 +48,7 @@ json.steps do
   @recipe.steps.each do |step|
     json.set! "#{step.id}" do
       json.extract! step, :id, :body, :step_order
-      json.img_url asset_url(step.image.url)
+      json.img_url step.image.url
     end
   end
 end

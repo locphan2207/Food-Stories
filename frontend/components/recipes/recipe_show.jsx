@@ -149,6 +149,11 @@ class RecipeShow extends React.Component {
     }
   }
 
+  generatePic(imgUrl) {
+    if (imgUrl === 'missing.png') return null;
+    return (<img width="200px" src={imgUrl}></img>);
+  }
+
   generateSteps() {
     const {steps} = this.props;
     const maximum = steps.length;
@@ -160,7 +165,7 @@ class RecipeShow extends React.Component {
             <div>
               <div>Step {i}/{maximum}</div>
               <p>{step.body}</p>
-              <img width="200px" src={step.img_url}></img>
+              {this.generatePic(step.img_url)}
             </div>
           );
         }
@@ -170,6 +175,9 @@ class RecipeShow extends React.Component {
   }
 
   generateStepForm() {
+    if (!this.props.currentUser || this.props.currentUser.id !== this.props.recipe.author_id) {
+      return null;
+    }
     return (
       <form onSubmit={e => this.submitStep(e)}>
         <input ref="stepOrderInput" type="number" placeholder="order"/>
@@ -185,8 +193,10 @@ class RecipeShow extends React.Component {
     const formData = new FormData();
     formData.append("step[body]", this.refs.stepBodyInput.value);
     formData.append("step[step_order]", this.refs.stepOrderInput.value);
-    formData.append("step[image]", this.refs.stepImgInput.files[0]);
     formData.append("step[recipe_id]", this.props.recipe.id);
+    if (this.refs.stepImgInput.files[0]) {
+      formData.append("step[image]", this.refs.stepImgInput.files[0]);
+    }
     this.props.postStep(formData);
   }
 
