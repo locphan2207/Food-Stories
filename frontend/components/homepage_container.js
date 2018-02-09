@@ -6,10 +6,15 @@ import Homepage from './homepage';
 const mapSTP = (state) => {
   let stories = Object.values(state.entities.stories);
   let recipes = Object.values(state.entities.recipes);
-  // if (stories.length < 10 || recipes < 10) {
-  //   stories = [];
-  //   recipes = [];
-  // }
+  // In React, componentWillUnmount() happens after the next componentDidMount(),
+  // which causes the issue, where it does not reset the state, make homepage think
+  // items were loaded and tries to render, and it fails
+  // So, we have to make a condition here to make sure we have enough items to random when render,
+  // (same fix in suggestion_container)
+  if (stories.length < 10 || recipes < 10) {
+    stories = [];
+    recipes = [];
+  }
   return {
     stories: stories,
     recipes: recipes

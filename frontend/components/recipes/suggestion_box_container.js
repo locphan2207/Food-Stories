@@ -7,7 +7,7 @@ const mapSTP = (state, ownProps) => {
   const ids = Object.keys(state.entities.recipes);
   const currentId = ownProps.match.params.recipeId;
   let threeRecs = [];
-  if (!ids || ids.length < 10) threeRecs = [];  //we need at least 4 ids,
+  if (!ids || ids.length < 10) threeRecs = [];  //we need at least 10 ids, to make sure we dodge the render
   else {
     //----I wanted to random suggestion, but it doesnt always work well----
     //----So, let just get the neighbors of this current recipe
