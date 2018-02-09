@@ -40,6 +40,10 @@ json.users do
       json.pic_url asset_url(comment.author.pic_url)
     end
   end
+  json.set! "#{@story.author_id}" do
+    json.extract! @story.author, :id, :username
+    json.pic_url asset_url(@story.author.pic_url)
+  end
 end
 
 json.errors @errors

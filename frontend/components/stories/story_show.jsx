@@ -148,10 +148,10 @@ class StoryShow extends React.Component {
             <p className="post-sub-title">{story.sub_title}</p>
             <div className="post-author">
               <img className="post-author-pic"
-                src={window.imageUrls.userDefault}></img>
+                src={this.props.users[`${story.author_id}`].pic_url}></img>
               <div>
-                <p className="post-author-username">Tan Loc</p>
-                <p className="post-author-role">Master Admin</p>
+                <p className="post-author-username">{this.props.users[`${story.author_id}`].username}</p>
+                <p className="post-author-role">Contributor</p>
               </div>
             </div>
             <div className="text">

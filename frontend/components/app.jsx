@@ -30,7 +30,6 @@ const App = () => (
         <li><Link to="/categories">Categories</Link></li>
         <li><Link to="/how-tos">How-tos</Link></li>
         <li><Link to="/videos">Videos</Link></li>
-        <li><Link to="/recipes/new">Make your own recipe!</Link></li>
       </ul>
       <Route path='/' component={GreetingContainer} />
     </header>
