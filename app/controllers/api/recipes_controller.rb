@@ -30,7 +30,7 @@ class Api::RecipesController < ApplicationController
       render :show
     else
       @errors += @recipe.errors.full_messages
-      render :show, status: 420
+      render :show, status: 401
     end
   end
 
