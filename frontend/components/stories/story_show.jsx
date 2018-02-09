@@ -88,8 +88,24 @@ class StoryShow extends React.Component {
 
   render() {
     const {story} = this.props;
+    const {likes} = this.props;
+    const {comments} = this.props;
     //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
-    if (!story || !story.text || !this.props.comments) return (<div>Loading...</div>);
+    if (!story || !story.text || !comments) return (<div>Loading...</div>);
+
+    //another dodge render case:
+    let quit = false;
+    story.likeIds.forEach(likeId => {
+      if (!likes[`${likeId}`] || !likes[`${likeId}`].author_id) quit = true;
+    });
+
+    comments.forEach(comment => {
+      comment.likeIds.forEach(likeId => {
+        if (!likes[`${likeId}`] || !likes[`${likeId}`].author_id) quit = true;
+      });
+    });
+
+    if (quit === true) return (<div>Loading</div>);
 
     //Setup:
 

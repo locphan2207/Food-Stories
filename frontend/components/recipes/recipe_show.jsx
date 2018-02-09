@@ -152,13 +152,28 @@ class RecipeShow extends React.Component {
 
   render() {
     let {recipe} = this.props;
+    let {likes} = this.props;
+    let {comments} = this.props;
     //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
     // while (!recipe && !recipe.ingredients);
-    if (!recipe || !recipe.ingredients || !this.props.comments) {//check if it finishes loading all info after fetchRecipe
+    if (!recipe || !recipe.ingredients || !comments) {//check if it finishes loading all info after fetchRecipe
       return (<div>Loading...</div>);
     }
-    // console.log('show rendering');
-    // console.log(`canvasLoaded=${this.canvasLoaded}`);
+
+    //another dodge render case:
+    let quit = false;
+    recipe.likeIds.forEach(likeId => {
+      if (!likes[`${likeId}`] || !likes[`${likeId}`].author_id) quit = true;
+    });
+
+    comments.forEach(comment => {
+      comment.likeIds.forEach(likeId => {
+        if (!likes[`${likeId}`] || !likes[`${likeId}`].author_id) quit = true;
+      });
+    });
+
+    if (quit === true) return (<div>Loading</div>);
+
     //Setup:
 
     let ingredientRows = recipe.ingredients.split(", "); //split by comma
