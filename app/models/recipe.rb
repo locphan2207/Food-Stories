@@ -1,7 +1,7 @@
 class Recipe < ApplicationRecord
   validates :title, :author_id, :img_url, :difficulty, :ingredients, :text, presence: true
   validates :difficulty, inclusion: {in: %w(easy medium hard)}
-  
+
   before_validation :ensure_cooking_duration, :ensure_text
 
   belongs_to :author,
@@ -15,6 +15,12 @@ class Recipe < ApplicationRecord
 
   has_many :likes,
   as: :likeable,
+  dependent: :destroy
+
+  has_many :steps,
+  primary_key: :id,
+  foreign_key: :recipe_id,
+  class_name: :Step,
   dependent: :destroy
 
 

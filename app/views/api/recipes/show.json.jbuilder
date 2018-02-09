@@ -3,6 +3,7 @@ json.recipe do
     :preparation_min, :baking_min, :resting_min, :ingredients, :text
   json.commentIds @comment_ids
   json.likeIds @like_ids
+  json.stepIds @step_ids
 end
 
 json.comments do
@@ -39,6 +40,15 @@ json.users do
     json.set! "#{comment.author.id}" do
       json.extract! comment.author, :id, :username
       json.pic_url asset_url(comment.author.pic_url)
+    end
+  end
+end
+
+json.steps do
+  @recipe.steps.each do |step|
+    json.set! "#{step.id}" do
+      json.extract! step, :id, :body, :step_order
+      json.img_url asset_url(step.image.url)
     end
   end
 end

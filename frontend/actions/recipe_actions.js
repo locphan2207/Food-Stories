@@ -26,7 +26,8 @@ const receiveRecipe = (response) => ({
   recipe: response.recipe,
   comments: response.comments,
   likes: response.likes,
-  users: response.users
+  users: response.users,
+  steps: response.steps
 });
 
 const receiveRecipeErrors = (errors) => ({

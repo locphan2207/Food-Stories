@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :recipes, only: [:index, :show, :create] do
       resources :comments, only: [:create]
       resources :likes, only: [:create]
+      resources :steps, only: [:create]
     end
 
     resources :stories, only: [:index, :show] do

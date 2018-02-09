@@ -5,7 +5,7 @@ class Api::RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.includes(:likes, comments: [:author, :likes]).find_by_id(params[:id])
+    @recipe = Recipe.includes(:likes, :steps, comments: [:author, :likes]).find_by_id(params[:id])
 
     @comment_ids = []
     @recipe.comments.each do |comment|
@@ -15,6 +15,11 @@ class Api::RecipesController < ApplicationController
     @like_ids = []
     @recipe.likes.each do |like|
       @like_ids << like.id
+    end
+
+    @step_ids = []
+    @recipe.steps.each do |step|
+      @step_ids << step.id
     end
 
     @errors = []
