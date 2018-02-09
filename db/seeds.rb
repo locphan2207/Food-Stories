@@ -40,9 +40,30 @@ difficulty = ["easy", "medium", "hard"]
 ingredients = "hamburger: 1 piece, salad: 3 piece, salt: 3 lbs, garlic: 2 glove, soy sauce: 100 ml, suger: 50 g, Swiss cheese: 40g, spring onions: 2, dill pickles: 2, smoked ham: 3, pulled pork shoulder: 150g, garlic: 1 clove, toast: 2 slices, butter: 1 tbsp, cheese: 4 tbsp, spinach: 25g"
 ingredients = ingredients.split(", ")
 
+recipe_name = [
+  'Vegatable stir-fry with ginger-lime sauce',
+  'Sweet cake with chocolate strawberry',
+  'Fries for the morning',
+  'Sweet desert for your lover',
+  'Stir-fryyy',
+  'Pizza that you can make it way better',
+  'Fruits for life',
+  'Egg is your reason to cook',
+  'How to really make the best sandwhich for him',
+  'Grilled Grilled Grilled',
+  'Kim Chi fried rice you cannot skip',
+  'Fryssss',
+  'Vegatable salad avocado',
+  'Steak for the morning',
+  'Fruits for the night',
+  'Sandwhich sandwhich',
+  'Fish with vegatable',
+  'Night food for food lover',
+  'Fish with egg'
+]
 (1..20).each do |i|
   Recipe.create(
-    title: "Testing Recipe #{i} with testing author #{i}",
+    title: recipe_name[(i-1)%19],
     author_id: "1",
     img_url: img_url[i-1],
     difficulty: difficulty[rand(2)],
@@ -55,6 +76,7 @@ ingredients = ingredients.split(", ")
 end
 
 loremString = "Lorem ipsum dolor sit amet, mauris nunc lacus, wisi ipsum convallis odio fusce pellentesque, sed lobortis, maecenas sed auctor. Ornare nihil cras ipsum ultrices metus amet. Venenatis velit, ipsum augue, sed in integer, magnis lectus in ante orci eget, montes eu urna mauris. Sit magnis at molestie at egestas donec, sem maecenas pede sollicitudin bibendum porta sed, facilisis commodo et. Vestibulum maecenas leo nunc mi ac, donec sollicitudin pellentesque sodales, consectetuer fusce nec etium lorem eu nisl, a tortor metus purus sapien, lacus augue ut vitae exercitation. Vestibulum nunc pede, nonummy fusce, id adipiscing maecenas praesent vel, lacus proin. Mauris commodo consectetuer."
+
 
 (1..20).each do |i|
   random = rand(3..6)
@@ -69,7 +91,7 @@ end
     title: "A story of #{i}",
     sub_title: "My Story ##{i}",
     author_id: "2",
-    img_url: img_url[(20-i)%15],
+    img_url: img_url[(20-i)%19],
     text: "Lorem ipsum dolor sit amet, mauris nunc lacus, wisi ipsum convallis odio fusce pellentesque, sed lobortis, maecenas sed auctor. Ornare nihil cras ipsum ultrices metus amet. Venenatis velit, ipsum augue, sed in integer, magnis lectus in ante orci eget, montes eu urna mauris. Sit magnis at molestie at egestas donec, sem maecenas pede sollicitudin bibendum porta sed, facilisis commodo et. Vestibulum maecenas leo nunc mi ac, donec sollicitudin pellentesque sodales, consectetu         necphasellus, praesent ac magna, sed quisque risus porttitor pede imperdiet est. Maecenas malesuada consectetuer velit dolor aliquam et, platea erat turpis, vitae quis, justo sem donec rhoncus maecenas facilisis. Nunc mattis perferendis, eleifend sed ut netus mi consequat, ante pellentesque egestas arcu.
       Nibh aliquet in ultrices, tellus at non tellus a aliquam, fames vestibulum dapibus curabitur vestibulum, pede integer porttitor ut donec. Praesent quis nullam odio mi vel nullam. Dui suscipit metus consectetuer mauris dignissim praesent, suspendisse aenean mauris, eu commodo metus cras elementum, at duis ut, id eget dolor ut pede. Asperiores facilisis risus eu, et pede tempus a, etiam gravida dui justo urna tenetur et, vehicula rutrum tincidunt. Vel gravida dolor accusamus magnis non, curabitur imperdiet metus tempus turpis nulla vitae. Metus cursus eget egestas semper ut mauris, eros sit, dapibus malesuada tincidunt tellus ridiculus feugiat pellentesque, aliquam diam et arcu dignissim. Vehicula vitae phasellus, fringilla id fugiat mi non ante elit, nec ligula pharetra mauris ac, auctor vel nullam magna, augue at nisl sociosqu. Wisi ac aliquam nulla sed faucibus laoreet, viverra phasellus augue, non bibendum. Eget vehicula semper vestibulum ligula. Faucibus elit a pede non viverra. Quam nulla nec ultrices in, suscipit donec et ipsum, platea elementum, urna pellentesque.
       Neque non nec nullam tincidunt, habitant diam id feugiat lacus. Hendrerit est potenti eros aliquam mauris, non vel curabitur venenatis, pulvinar hendrerit, quis eu dolor tincidunt, vel vel vestibulum diam libero nisl. Etiam nibh nulla ipsum venenatis elementum vehicula, consequat in velit pede dolor, arcu lacinia, et tincidunt arcu, imperdiet suscipit pharetra eu nibh et. Faucibus mi et libero tellus convallis lectus. Nullam cursus, in nulla augue mauris, a adipiscing donec neque, pulvinar commodo. Integer amet orci pretium lorem eu nisl, a tortor metus purus sapien, lacus augue ut vitae exercitation. Vestibulum nunc pede, nonummy fusce, id adipiscing maecenas praesent vel, lacus proin. Mauris commodo consectetuer."

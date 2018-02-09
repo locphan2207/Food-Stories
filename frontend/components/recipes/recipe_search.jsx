@@ -46,7 +46,7 @@ class RecipeSearch extends React.Component {
   }
 
   handleChange(e, property) {
-    this.setState({[property]: e.target.value});
+    this.setState({[property]: e.target.value.toLowerCase()});
   }
 
   handleSubmit(e) {

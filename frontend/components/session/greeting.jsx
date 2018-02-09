@@ -5,7 +5,7 @@ import UserDropdown from './user_dropdown';
 class Greeting extends React.Component {
   constructor(props) {
     super();
-    this.state = {isOpen: false};
+    this.state = {isOpen: true};
   }
 
   toggleDropdown() {

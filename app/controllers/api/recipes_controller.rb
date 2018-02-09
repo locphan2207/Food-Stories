@@ -1,3 +1,4 @@
+require 'byebug'
 class Api::RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
@@ -67,13 +68,14 @@ class Api::RecipesController < ApplicationController
   def search
     recipes = Recipe.search_by_filter(recipe_search_params)
     puts recipe_search_params
+    # debugger
     # return back to front end with search result IDs here:
     @search_result = []; #for jbuilder
     recipes.each do |recipe|
       @search_result << recipe.id
     end
     p @search_result
-    render :search_result, status: 401
+    render :search_result
   end
 
   def search_by_ids

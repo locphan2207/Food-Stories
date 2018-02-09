@@ -27,7 +27,7 @@ class Recipe < ApplicationRecord
   def self.search_by_filter(searchQuery)
     #Find any recipe that has the title as query title:
     filter1 = searchQuery[:title] == "" ? "" :
-      "title LIKE '%#{searchQuery[:title]}%'"
+      "lower(title) LIKE '%#{searchQuery[:title]}%'"
     #Find any recipe that has the difficulty as query difficulty:
     filter2 = searchQuery[:difficulty] == "" ? "" :
       "difficulty = '#{searchQuery[:difficulty]}'"
