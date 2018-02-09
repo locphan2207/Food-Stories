@@ -71,35 +71,35 @@ class RecipeShow extends React.Component {
     }
   }
 
-  textHandling() {
-    let textCopy = this.props.recipe.text; //copy text
-    let textArray = [];
-    // find "Step" and save to title:
-    let startIndexOfStep = textCopy.indexOf('Step');
-
-    while (startIndexOfStep !== -1) {
-      const endIndexOfStep = startIndexOfStep + 8;
-      const stepTitle = textCopy.slice(startIndexOfStep, endIndexOfStep); //save title
-      textCopy = textCopy.slice(endIndexOfStep, textCopy.length); //remove saved title
-
-      let stepBody;
-      startIndexOfStep = textCopy.indexOf('Step'); //search for next "Step"
-      if (startIndexOfStep < 0) {
-        stepBody = textCopy.slice(0, textCopy.length);
-      }
-      else {
-        stepBody = textCopy.slice(0, startIndexOfStep);
-      }
-
-      textArray.push( //save as react element
-        <div className="step">
-          <p className="step-title">{stepTitle}</p>
-          <p className="step-body">{stepBody}</p>
-        </div>
-      );
-    }
-    return textArray;
-  }
+  // textHandling() {
+  //   let textCopy = this.props.recipe.text; //copy text
+  //   let textArray = [];
+  //   // find "Step" and save to title:
+  //   let startIndexOfStep = textCopy.indexOf('Step');
+  //
+  //   while (startIndexOfStep !== -1) {
+  //     const endIndexOfStep = startIndexOfStep + 8;
+  //     const stepTitle = textCopy.slice(startIndexOfStep, endIndexOfStep); //save title
+  //     textCopy = textCopy.slice(endIndexOfStep, textCopy.length); //remove saved title
+  //
+  //     let stepBody;
+  //     startIndexOfStep = textCopy.indexOf('Step'); //search for next "Step"
+  //     if (startIndexOfStep < 0) {
+  //       stepBody = textCopy.slice(0, textCopy.length);
+  //     }
+  //     else {
+  //       stepBody = textCopy.slice(0, startIndexOfStep);
+  //     }
+  //
+  //     textArray.push( //save as react element
+  //       <div className="step">
+  //         <p className="step-title">{stepTitle}</p>
+  //         <p className="step-body">{stepBody}</p>
+  //       </div>
+  //     );
+  //   }
+  //   return textArray;
+  // }
 
   jumpTo(id, e) {
     const dest = document.getElementById(id);
@@ -149,6 +149,46 @@ class RecipeShow extends React.Component {
     }
   }
 
+  generateSteps() {
+    const {steps} = this.props;
+    const maximum = steps.length;
+    let result = [];
+    for (let i = 1; i <= maximum; i++) {
+      steps.forEach(step => {
+        if (step.step_order === i) {
+          result.push(
+            <div>
+              <div>Step {i}/{maximum}</div>
+              <p>{step.body}</p>
+              <img width="200px" src={step.img_url}></img>
+            </div>
+          );
+        }
+      });
+    }
+    return result;
+  }
+
+  generateStepForm() {
+    return (
+      <form onSubmit={e => this.submitStep(e)}>
+        <input ref="stepOrderInput" type="number" placeholder="order"/>
+        <input ref="stepBodyInput" type="text" placeholder="body"/>
+        <input ref="stepImgInput" type="file" />
+        <input type="submit" />
+      </form>
+    );
+  }
+
+  submitStep(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("step[body]", this.refs.stepBodyInput.value);
+    formData.append("step[step_order]", this.refs.stepOrderInput.value);
+    formData.append("step[image]", this.refs.stepImgInput.files[0]);
+    formData.append("step[recipe_id]", this.props.recipe.id);
+    this.props.postStep(formData);
+  }
 
   render() {
     let {recipe} = this.props;
@@ -272,9 +312,9 @@ class RecipeShow extends React.Component {
             </div>
             <div className="text">
               <div id="st"></div>
-              {recipe.text}
+              {this.generateSteps()}
+              {this.generateStepForm()}
             </div>
-
             <CommentIndex comments={this.props.comments}
               users={this.props.users}
               postComment={this.props.postComment}

@@ -165,7 +165,7 @@ class CommentIndex extends React.Component {
   //Use built-in FormData
   submitComment(e, parentCommentId) {
     e.preventDefault();
-    console.log(this.refs.commentBodyInput);
+    // console.log(this.refs.commentBodyInput);
     if (!this.refs.commentBodyInput || (this.refs.commentBodyInput.value === "" &&
         !this.refs.commentImgInput.files[0])) {
       return;

@@ -48,3 +48,5 @@ search: 2 approaches, search on frontend, or search on backend.
 
 this.refs.commentBodyInput should be refers two different things
 a
+
+WORKING on RECIPE SHOW

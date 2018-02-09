@@ -8,6 +8,7 @@ class Api::StepsController < ApplicationController
     else
       @errors += @step.errors.full_messages
       render :show, status: 401
+    end
   end
 
   private
