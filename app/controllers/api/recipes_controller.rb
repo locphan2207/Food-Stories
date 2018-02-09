@@ -25,10 +25,11 @@ class Api::RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @errors = []
     if @recipe.save
+      @recipe = Recipe.last
       render :show
     else
       @errors += @recipe.errors.full_messages
-      render :show
+      render :show, status: 420
     end
   end
 
@@ -41,7 +42,7 @@ class Api::RecipesController < ApplicationController
       @search_result << recipe.id
     end
     p @search_result
-    render :search_result, status: 200
+    render :search_result, status: 401
   end
 
   def search_by_ids
@@ -52,8 +53,8 @@ class Api::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :author_id, :img_url, :rating, :difficulty,
-      :preparation_min, :baking_min, :resting_min, :ingredients, :text)
+    params.require(:recipe).permit(:title, :author_id, :img_url, :difficulty,
+      :preparation_min, :baking_min, :resting_min, :ingredients)
   end
 
   def recipe_search_params

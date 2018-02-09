@@ -6,6 +6,7 @@ import SessionFormContainer from './session/session_form_container';
 
 import RecipeIndexContainer from './recipes/recipe_index_container';
 import RecipeShowContainer from './recipes/recipe_show_container';
+import RecipeFormContainer from './recipes/recipe_form_container';
 
 import StoryIndexContainer from './stories/story_index_container';
 import StoryShowContainer from './stories/story_show_container';
@@ -29,6 +30,7 @@ const App = () => (
         <li><Link to="/categories">Categories</Link></li>
         <li><Link to="/how-tos">How-tos</Link></li>
         <li><Link to="/videos">Videos</Link></li>
+        <li><Link to="/recipes/new">Make your own recipe!</Link></li>
       </ul>
       <Route path='/' component={GreetingContainer} />
     </header>
@@ -38,12 +40,16 @@ const App = () => (
 
     <section className="main-section">
       <Route exact path='/' component={HomepageContainer} />
-      <Route exact path='/liked_items' component={LikedItemIndexContainer} />
+      <Route path='/liked_items' component={LikedItemIndexContainer} />
 
       <Route exact path='/recipes' component={RecipeSearchContainer} />
       <Route exact path='/recipes' component={RecipeIndexContainer} />
+      <Switch>
+        <Route path='/recipes/new' component={RecipeFormContainer} />
+        <Route path='/recipes/:recipeId' component={RecipeShowContainer} />
+      </Switch>
+
       <Route exact path='/stories' component={StoryIndexContainer} />
-      <Route path='/recipes/:recipeId' component={RecipeShowContainer} />
       <Route path='/stories/:storyId' component={StoryShowContainer} />
     </section>
 

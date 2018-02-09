@@ -1,7 +1,8 @@
 class Recipe < ApplicationRecord
   validates :title, :author_id, :img_url, :difficulty, :ingredients, :text, presence: true
   validates :difficulty, inclusion: {in: %w(easy medium hard)}
-  before_validation :ensure_cooking_duration
+  
+  before_validation :ensure_cooking_duration, :ensure_text
 
   belongs_to :author,
   primary_key: :id,
@@ -41,5 +42,9 @@ class Recipe < ApplicationRecord
     self.preparation_min ||= 0;
     self.baking_min ||= 0;
     self.resting_min ||= 0;
+  end
+
+  def ensure_text
+    self.text ||= "No text yet"
   end
 end

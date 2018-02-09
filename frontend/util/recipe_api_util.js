@@ -27,3 +27,11 @@ export const postSearchByIds = (ids) => {
     data: {ids}
   });
 };
+
+export const postRecipe = (recipe) => {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/recipes',
+    data: {recipe}
+  });
+};

@@ -5,6 +5,7 @@ export const RECEIVE_LIKED_RECIPES = "RECEIVE_LIKED_RECIPES";
 export const RECEIVE_RECIPE = "RECEIVE_RECIPE";
 export const RECEIVE_SEARCH_RESULT = "RECEIVE_SEARCH_RESULT";
 export const CLEAR_ALL_RECIPES = "CLEAR_ALL_RECIPES";
+export const RECEIVE_RECIPE_ERRORS = "RECEIVE_RECIPE_ERRORS";
 
 const receiveRecipes = (recipes) => ({
   type: RECEIVE_RECIPES,
@@ -28,6 +29,11 @@ const receiveRecipe = (response) => ({
   users: response.users
 });
 
+const receiveRecipeErrors = (errors) => ({
+  type: RECEIVE_RECIPE_ERRORS,
+  errors
+});
+
 const receiveSearchResult = (recipeIds) => ({
   type: RECEIVE_SEARCH_RESULT,
   recipeIds
@@ -43,6 +49,12 @@ export const fetchRecipes = () => (dispatch) => {
 export const fetchRecipe = (recipeId) => (dispatch) => {
   return RecipeAPIUtil.getRecipe(recipeId)
     .then(response => dispatch(receiveRecipe(response)));
+};
+
+export const createRecipe = (recipe) => (dispatch) => {
+  return RecipeAPIUtil.postRecipe(recipe)
+    .then(response => dispatch(receiveRecipe(response)))
+    .fail(promise => dispatch(receiveRecipeErrors(promise.responseJSON.errors)));
 };
 
 export const searchRecipe = (searchQuery) => (dispatch) => {
