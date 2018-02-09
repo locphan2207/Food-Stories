@@ -49,7 +49,7 @@ class RecipeForm extends React.Component {
           <label>Difficulty:
             <select onChange={e => this.handleChange(e, 'difficulty')}
               value={this.state.difficulty}>
-              <option value="easy">Easy</option>
+              <option value="easy" default>Easy</option>
               <option value="medium">Medium</option>
               <option value="hard">Hard</option>
             </select>

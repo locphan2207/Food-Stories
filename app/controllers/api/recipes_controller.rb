@@ -23,6 +23,7 @@ class Api::RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @like_ids = []
     @errors = []
     if @recipe.save
       @recipe = Recipe.last

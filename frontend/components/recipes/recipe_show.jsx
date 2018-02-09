@@ -272,7 +272,7 @@ class RecipeShow extends React.Component {
             </div>
             <div className="text">
               <div id="st"></div>
-              {this.textHandling()}
+              {recipe.text}
             </div>
 
             <CommentIndex comments={this.props.comments}
