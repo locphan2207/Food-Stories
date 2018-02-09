@@ -11,7 +11,7 @@ const mapSTP = (state) => {
   // items were loaded and tries to render, and it fails
   // So, we have to make a condition here to make sure we have enough items to random when render,
   // (same fix in suggestion_container)
-  if (stories.length < 10 || recipes < 10) {
+  if (stories.length < 10 || recipes.length < 10) {
     stories = [];
     recipes = [];
   }
