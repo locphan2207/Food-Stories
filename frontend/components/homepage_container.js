@@ -6,10 +6,10 @@ import Homepage from './homepage';
 const mapSTP = (state) => {
   let stories = Object.values(state.entities.stories);
   let recipes = Object.values(state.entities.recipes);
-  if (stories.length < 10 || recipes < 10) {
-    stories = [];
-    recipes = [];
-  }
+  // if (stories.length < 10 || recipes < 10) {
+  //   stories = [];
+  //   recipes = [];
+  // }
   return {
     stories: stories,
     recipes: recipes

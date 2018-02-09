@@ -12,8 +12,9 @@ class LikedItemIndex extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log("likes unmounting");
-    // location.reload();
+    console.log("likes clearing slices");
+    this.props.clearRecipes();
+    this.props.clearStories();
   }
 
   render() {

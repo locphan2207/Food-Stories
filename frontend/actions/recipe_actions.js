@@ -4,10 +4,15 @@ export const RECEIVE_RECIPES = "RECEIVE_RECIPES";
 export const RECEIVE_LIKED_RECIPES = "RECEIVE_LIKED_RECIPES";
 export const RECEIVE_RECIPE = "RECEIVE_RECIPE";
 export const RECEIVE_SEARCH_RESULT = "RECEIVE_SEARCH_RESULT";
+export const CLEAR_ALL_RECIPES = "CLEAR_ALL_RECIPES";
 
 const receiveRecipes = (recipes) => ({
   type: RECEIVE_RECIPES,
   recipes
+});
+
+export const clearRecipes = () => ({
+  type: CLEAR_ALL_RECIPES
 });
 
 const receiveLikedRecipes = (recipes) => ({

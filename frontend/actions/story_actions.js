@@ -3,10 +3,15 @@ import * as StoryAPIUtil from '../util/story_api_util';
 export const RECEIVE_STORIES = "RECEIVE_STORIES";
 export const RECEIVE_LIKED_STORIES = "RECEIVE_LIKED_STORIES";
 export const RECEIVE_STORY = "RECEIVE_STORY";
+export const CLEAR_ALL_STORIES = "CLEAR_ALL_STORIES";
 
 const receiveStories = (stories) => ({
   type: RECEIVE_STORIES,
   stories
+});
+
+export const clearStories = () => ({
+  type: CLEAR_ALL_STORIES
 });
 
 const receiveLikedStories = (stories) => ({

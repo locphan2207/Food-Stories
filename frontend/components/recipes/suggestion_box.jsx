@@ -31,7 +31,7 @@ class SuggestionBox extends React.Component {
 
   render() {
     console.log('suggest loading');
-    if (!this.props.threeRecs) return (<div>Loading...</div>);
+    if (this.props.threeRecs.length < 3) return (<div>Loading...</div>);
     console.log('suggestiong rendering');
     return (
       <div>

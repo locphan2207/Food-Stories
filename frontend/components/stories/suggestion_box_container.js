@@ -7,7 +7,7 @@ const mapSTP = (state, ownProps) => {
   const ids = Object.keys(state.entities.stories);
   const currentId = ownProps.match.params.storyId;
   let threeStos = [];
-  if (!ids || ids.length < 4) threeStos = undefined;  //we need at least 4 ids,
+  if (!ids || ids.length < 10) threeStos = [];  //we need at least 4 ids,
   else {
     //----I wanted to random suggestion, but it doesnt always work well----
     //----So, let just get the neighbors of this current story
