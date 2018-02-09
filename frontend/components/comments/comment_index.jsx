@@ -51,7 +51,7 @@ class CommentIndex extends React.Component {
         // pass the target id to let form know parent_comment_id
         replyForm = this.generateCommentForm(comment.id);
       }
-      if (comment.parent_comment_id === 0) {
+      if (!comment.parent_comment_id || comment.parent_comment_id === 0) {
         topLevelComments.push(
           <div className="comment-box">
             <div className="comment-container">

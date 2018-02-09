@@ -8,6 +8,8 @@
 User.create(username: 'loc', email: 'loc@gmail.com', password: 'chetcha')
 User.create(username: 'beautiful_guest', email: 'guest@gmail.com', password: 'secret')
 User.create(username: 'master_admin', email: 'admin@gmail.com', password: 'secret')
+User.create(username: 'Mr_handsome', email: 'handsome@gmail.com', password: 'secret')
+User.create(username: 'kush_patel', email: 'kush_patel@gmail.com', password: 'secret')
 
 img_url = [
   "https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?w=940&h=650&dpr=2&auto=compress&cs=tinysrgb",
@@ -74,13 +76,71 @@ end
     sub_title: "You start typing whatever #TanLoc",
     author_id: "2",
     img_url: img_url[(20-i)%15],
-    text: "Lorem ipsum dolor sit amet, mauris nunc lacus, wisi ipsum convallis odio fusce pellentesque, sed lobortis, maecenas sed auctor. Ornare nihil cras ipsum ultrices metus amet. Venenatis velit, ipsum augue, sed in integer, magnis lectus in ante orci eget, montes eu urna mauris. Sit magnis at molestie at egestas donec, sem maecenas pede sollicitudin bibendum porta sed, facilisis commodo et. Vestibulum maecenas leo nunc mi ac, donec sollicitudin pellentesque sodales, consectetuer fusce     necphasellus, praesent ac magna, sed quisque risus porttitor pede imperdiet est. Maecenas malesuada consectetuer velit dolor aliquam et, platea erat turpis, vitae quis, justo sem donec rhoncus maecenas facilisis. Nunc mattis perferendis, eleifend sed ut netus mi consequat, ante pellentesque egestas arcu.
+    text: "Lorem ipsum dolor sit amet, mauris nunc lacus, wisi ipsum convallis odio fusce pellentesque, sed lobortis, maecenas sed auctor. Ornare nihil cras ipsum ultrices metus amet. Venenatis velit, ipsum augue, sed in integer, magnis lectus in ante orci eget, montes eu urna mauris. Sit magnis at molestie at egestas donec, sem maecenas pede sollicitudin bibendum porta sed, facilisis commodo et. Vestibulum maecenas leo nunc mi ac, donec sollicitudin pellentesque sodales, consectetu         necphasellus, praesent ac magna, sed quisque risus porttitor pede imperdiet est. Maecenas malesuada consectetuer velit dolor aliquam et, platea erat turpis, vitae quis, justo sem donec rhoncus maecenas facilisis. Nunc mattis perferendis, eleifend sed ut netus mi consequat, ante pellentesque egestas arcu.
       Nibh aliquet in ultrices, tellus at non tellus a aliquam, fames vestibulum dapibus curabitur vestibulum, pede integer porttitor ut donec. Praesent quis nullam odio mi vel nullam. Dui suscipit metus consectetuer mauris dignissim praesent, suspendisse aenean mauris, eu commodo metus cras elementum, at duis ut, id eget dolor ut pede. Asperiores facilisis risus eu, et pede tempus a, etiam gravida dui justo urna tenetur et, vehicula rutrum tincidunt. Vel gravida dolor accusamus magnis non, curabitur imperdiet metus tempus turpis nulla vitae. Metus cursus eget egestas semper ut mauris, eros sit, dapibus malesuada tincidunt tellus ridiculus feugiat pellentesque, aliquam diam et arcu dignissim. Vehicula vitae phasellus, fringilla id fugiat mi non ante elit, nec ligula pharetra mauris ac, auctor vel nullam magna, augue at nisl sociosqu. Wisi ac aliquam nulla sed faucibus laoreet, viverra phasellus augue, non bibendum. Eget vehicula semper vestibulum ligula. Faucibus elit a pede non viverra. Quam nulla nec ultrices in, suscipit donec et ipsum, platea elementum, urna pellentesque.
-      Nulla sed ut ac. Nonummy wisi nam elementum tortor, tincidunt volutpat nibh erat porta, imperdiet amet id vestibulum, eleifend ac, facilisis lorem porta. Dolor a eu vehicula dolor neque, tortor luctus qui nec sem, nisl erat. Ipsum arcu risus amet odio libero at, ornare pellentesque et, sed fermentum interdum malesuada justo etiam id, at accumsan. Quis justo iaculis sed sodales odio, cras vel morbi, aenean vitae vitae integer phasellus egestas, luctus a. Dolor nam sem at tellus. Pretium eros bibendum orci lectus convallis, duis ipsum sit ac alias vestibulum risus. Dapibus nisi erat vel, penatibus euismod metus consectetuer est, orci sit placerat volutpat id, ante sit molestias nulla magnis eleifend vel. Magna neque orci arcu lacus augue, ultrices nec praesent, auctor maecenas aliquam lectus quisque sed. Duis pede.
       Neque non nec nullam tincidunt, habitant diam id feugiat lacus. Hendrerit est potenti eros aliquam mauris, non vel curabitur venenatis, pulvinar hendrerit, quis eu dolor tincidunt, vel vel vestibulum diam libero nisl. Etiam nibh nulla ipsum venenatis elementum vehicula, consequat in velit pede dolor, arcu lacinia, et tincidunt arcu, imperdiet suscipit pharetra eu nibh et. Faucibus mi et libero tellus convallis lectus. Nullam cursus, in nulla augue mauris, a adipiscing donec neque, pulvinar commodo. Integer amet orci pretium lorem eu nisl, a tortor metus purus sapien, lacus augue ut vitae exercitation. Vestibulum nunc pede, nonummy fusce, id adipiscing maecenas praesent vel, lacus proin. Mauris commodo consectetuer."
   )
 end
 
-# Comment.new(author_id: 1, body: "This recipe is awesome!!!").update_attribute(:commentable, Recipe.all[0])
-# Comment.new(author_id: 2, body: "You are right", parent_comment_id: 1).update_attribute(:commentable, Recipe.all[0])
-# Comment.new(author_id: 3, body: "I am the admin", parent_comment_id: 1).update_attribute(:commentable, Recipe.all[0])
+random_phrases = [
+  'lovely!',
+  'deliciousss',
+  'cool',
+  'I am hungry!',
+  'I am interested',
+  'Love it',
+  'like it',
+  'intesting',
+  'so cool',
+  'babyyyy',
+  'awesome',
+  'you are great',
+  'super good',
+  'sooooooo gooooood',
+  'I am Kush',
+  'I love app academy'
+]
+
+(0..19).each do |i|
+  if i%2 == 0
+    (0..rand(1..2)).each do |j|
+      c1= Comment.new(author_id: rand(1..5), body: random_phrases[rand(random_phrases.length-1)], parent_comment_id: 0)
+      c1.update_attribute(:commentable, Recipe.all[i])
+      c= Comment.new(author_id: rand(1..5), body: random_phrases[rand(random_phrases.length-1)], parent_comment_id: c1.id)
+      c.update_attribute(:commentable, Recipe.all[i])
+      c= Comment.new(author_id: rand(1..5), body: random_phrases[rand(random_phrases.length-1)], parent_comment_id: 0)
+      c.update_attribute(:commentable, Recipe.all[i])
+    end
+  else
+    (0..rand(1..3)).each do |j|
+      c1= Comment.new(author_id: rand(1..5), body: random_phrases[rand(random_phrases.length-1)], parent_comment_id: 0)
+      c1.update_attribute(:commentable, Recipe.all[i])
+      c= Comment.new(author_id: rand(1..5), body: random_phrases[rand(random_phrases.length-1)], parent_comment_id: c1.id)
+      c.update_attribute(:commentable, Recipe.all[i])
+      c= Comment.new(author_id: rand(1..5), body: random_phrases[rand(random_phrases.length-1)], parent_comment_id: c1.id)
+      c.update_attribute(:commentable, Recipe.all[i])
+    end
+  end
+end
+
+(0..19).each do |i|
+  if i%2 == 0
+    (0..rand(1..2)).each do |j|
+      c1= Comment.new(author_id: rand(1..5), body: random_phrases[rand(random_phrases.length-1)], parent_comment_id: 0)
+      c1.update_attribute(:commentable, Story.all[i])
+      c= Comment.new(author_id: rand(1..5), body: random_phrases[rand(random_phrases.length-1)], parent_comment_id: c1.id)
+      c.update_attribute(:commentable, Story.all[i])
+      c= Comment.new(author_id: rand(1..5), body: random_phrases[rand(random_phrases.length-1)], parent_comment_id: 0)
+      c.update_attribute(:commentable, Story.all[i])
+    end
+  else
+    (0..rand(1..3)).each do |j|
+      c1= Comment.new(author_id: rand(1..5), body: random_phrases[rand(random_phrases.length-1)], parent_comment_id: 0)
+      c1.update_attribute(:commentable, Story.all[i])
+      c= Comment.new(author_id: rand(1..5), body: random_phrases[rand(random_phrases.length-1)], parent_comment_id: c1.id)
+      c.update_attribute(:commentable, Story.all[i])
+      c= Comment.new(author_id: rand(1..5), body: random_phrases[rand(random_phrases.length-1)], parent_comment_id: c1.id)
+      c.update_attribute(:commentable, Story.all[i])
+    end
+  end
+end
