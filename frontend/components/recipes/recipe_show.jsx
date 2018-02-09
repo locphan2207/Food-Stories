@@ -162,10 +162,9 @@ class RecipeShow extends React.Component {
       steps.forEach(step => {
         if (step.step_order === i) {
           result.push(
-            <div>
-              <div>Step {i}/{maximum}</div>
-              <p>{step.body}</p>
-              {this.generatePic(step.img_url)}
+            <div className="step">
+              <div className="step-title">Step {i}/{maximum}</div>
+              <p className="step-body">{step.body}</p>
             </div>
           );
         }
