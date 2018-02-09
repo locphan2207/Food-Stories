@@ -59,7 +59,7 @@ recipe_name = [
   'Sandwhich sandwhich',
   'Fish with vegatable',
   'Night food for food lover',
-  'Fish with egg'
+  'Fish with eggggggggg'
 ]
 (1..20).each do |i|
   Recipe.create(
