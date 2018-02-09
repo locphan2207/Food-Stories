@@ -46,7 +46,8 @@ const App = () => (
       <Route exact path='/recipes' component={RecipeIndexContainer} />
       <Switch>
         <Route path='/recipes/new' component={RecipeFormContainer} />
-        <Route path='/recipes/:recipeId' component={RecipeShowContainer} />
+        <Route exact path='/recipes/:recipeId' component={RecipeShowContainer} />
+        <Route path='/recipes/:recipeId/edit' component={RecipeFormContainer} />
       </Switch>
 
       <Route exact path='/stories' component={StoryIndexContainer} />

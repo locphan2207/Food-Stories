@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post '/recipes/search_by_ids', to: 'recipes#search_by_ids'
     post '/stories/search_by_ids', to: 'stories#search_by_ids'
 
-    resources :recipes, only: [:index, :show, :create] do
+    resources :recipes, only: [:index, :show, :create, :update] do
       resources :comments, only: [:create]
       resources :likes, only: [:create]
       resources :steps, only: [:create]

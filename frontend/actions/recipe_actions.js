@@ -30,7 +30,7 @@ const receiveRecipe = (response) => ({
   steps: response.steps
 });
 
-const receiveRecipeErrors = (errors) => ({
+export const receiveRecipeErrors = (errors) => ({
   type: RECEIVE_RECIPE_ERRORS,
   errors
 });
@@ -54,6 +54,12 @@ export const fetchRecipe = (recipeId) => (dispatch) => {
 
 export const createRecipe = (recipe) => (dispatch) => {
   return RecipeAPIUtil.postRecipe(recipe)
+    .then(response => dispatch(receiveRecipe(response)))
+    .fail(promise => dispatch(receiveRecipeErrors(promise.responseJSON.errors)));
+};
+
+export const updateRecipe = (recipeId, recipe) => (dispatch) => {
+  return RecipeAPIUtil.patchRecipe(recipeId, recipe)
     .then(response => dispatch(receiveRecipe(response)))
     .fail(promise => dispatch(receiveRecipeErrors(promise.responseJSON.errors)));
 };

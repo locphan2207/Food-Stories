@@ -174,6 +174,15 @@ class RecipeShow extends React.Component {
     return result;
   }
 
+  generateEditButton() {
+    if (!this.props.currentUser || this.props.currentUser.id !== this.props.recipe.author_id) {
+      return null;
+    }
+    return (
+      <Link to={`/recipes/${this.props.recipe.id}/edit`}>Edit</Link>
+    );
+  }
+
   generateStepForm() {
     if (!this.props.currentUser || this.props.currentUser.id !== this.props.recipe.author_id) {
       return null;
@@ -206,7 +215,8 @@ class RecipeShow extends React.Component {
     let {comments} = this.props;
     //THIS IS WEIRD but it takes extra 1 react cycle to get params, so:
     // while (!recipe && !recipe.ingredients);
-    if (!recipe || !recipe.ingredients || !comments) {//check if it finishes loading all info after fetchRecipe
+    if (!recipe || !recipe.ingredients || typeof recipe.ingredients !== "string"
+      || !comments) {//check if it finishes loading all info after fetchRecipe
       return (<div>Loading...</div>);
     }
 
@@ -324,6 +334,7 @@ class RecipeShow extends React.Component {
               <div id="st"></div>
               {this.generateSteps()}
               {this.generateStepForm()}
+              {this.generateEditButton()}
             </div>
             <CommentIndex comments={this.props.comments}
               users={this.props.users}

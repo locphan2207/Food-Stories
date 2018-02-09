@@ -4,16 +4,20 @@ import {Redirect} from 'react-router-dom';
 class RecipeForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: "",
-      img_url: "",
-      difficulty: "easy",
-      preparation_min: undefined,
-      baking_min: undefined,
-      resting_min: undefined,
-      ingredients: {}
-    };
+    this.state = this.props.recipe;
   }
+
+  // convertStringToIngre(ingreString) {
+  //   let ingreHash = {};
+  //   let ingredientPairs = ingreString.split(", "); //split by comma
+  //   ingredientPairs = ingredientPairs.map((row, idx) => {
+  //     //We split the pair by colon, and show add to hash
+  //     const ingreName = row.split(": ")[0];
+  //     const ingreQuan = row.split(": ")[1];
+  //     ingreHash[`${ingreName}`] = ingreQuan;
+  //   });
+  //   return ingreHash;
+  // }
 
   //Add ingredient pair as key-value into state
   addIngre(e) {
@@ -39,14 +43,19 @@ class RecipeForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const recipe = Object.assign({}, this.state);
+    let recipe = Object.assign({}, this.state);
     recipe.author_id = this.props.currentUser.id;
     recipe.ingredients = this.convertIngreToString();
+    console.log(recipe);
     this.props.submit(recipe);
   }
 
   componentWillReceiveProps(nextProps) {
     this.props.history.push(`/recipes/${nextProps.latestId}`); //this works
+  }
+
+  componentWillUnmount() {
+    this.props.clearError();
   }
 
   render() {

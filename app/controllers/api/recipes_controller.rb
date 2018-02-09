@@ -39,6 +39,31 @@ class Api::RecipesController < ApplicationController
     end
   end
 
+  def update
+    @recipe = Recipe.find_by_id(params[:id])
+    @errors = []
+    if @recipe && @recipe.update(recipe_params)
+      @comment_ids = []
+      @recipe.comments.each do |comment|
+        @comment_ids << comment.id
+      end
+
+      @like_ids = []
+      @recipe.likes.each do |like|
+        @like_ids << like.id
+      end
+
+      @step_ids = []
+      @recipe.steps.each do |step|
+        @step_ids << step.id
+      end
+      render :show
+    else
+      @errors += @recipe.errors.full_messages
+      render :show, status: 401
+    end
+  end
+
   def search
     recipes = Recipe.search_by_filter(recipe_search_params)
     puts recipe_search_params

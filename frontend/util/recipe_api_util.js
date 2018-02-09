@@ -35,3 +35,11 @@ export const postRecipe = (recipe) => {
     data: {recipe}
   });
 };
+
+export const patchRecipe = (recipeId, recipe) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `api/recipes/${recipeId}`,
+    data: {recipe}
+  });
+};
