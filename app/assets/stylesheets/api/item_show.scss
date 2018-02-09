@@ -350,6 +350,10 @@ canvas {
   z-index: -1;
 }
 
+.buttons {
+  position: relative;
+}
+
 .like {
   width: 35px;
   height: 35px;
@@ -359,7 +363,7 @@ canvas {
 .like-area {
   display: flex;
   position: absolute;
-  left: 350px;
+  right: -40px;
   top: 9px;
 }
 

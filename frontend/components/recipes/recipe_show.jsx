@@ -264,11 +264,11 @@ class RecipeShow extends React.Component {
                   className="detail-button">Steps</button>
                 <button onClick={(e) => this.jumpTo('co', e)}
                   className="detail-button">Comments ({this.props.comments.length})</button>
-              </div>
-              <div className="like-area">
-                <img className="like" src={this.generateLike(recipe)}
-                  onClick={e => this.toggleLike("recipes", recipe, e)}/>
-                <div className="like-count">{recipe.likeIds.length}</div>
+                <div className="like-area">
+                  <img className="like" src={this.generateLike(recipe)}
+                    onClick={e => this.toggleLike("recipes", recipe, e)}/>
+                  <div className="like-count">{recipe.likeIds.length}</div>
+                </div>
               </div>
               <div className="sharing">
                 <img src={window.imageUrls.iconFB}></img>

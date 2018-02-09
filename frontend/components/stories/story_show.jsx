@@ -121,11 +121,11 @@ class StoryShow extends React.Component {
                   className="detail-button">Article</button>
                 <button onClick={(e) => this.jumpTo('co', e)}
                   className="detail-button">Comments ({this.props.comments.length})</button>
-              </div>
-              <div className="like-area">
-                <img className="like" src={this.generateLike(story)}
-                  onClick={e => this.toggleLike("stories", story, e)}/>
-                <div className="like-count">{story.likeIds.length}</div>
+                <div className="like-area">
+                  <img className="like" src={this.generateLike(story)}
+                    onClick={e => this.toggleLike("stories", story, e)}/>
+                  <div className="like-count">{story.likeIds.length}</div>
+                </div>
               </div>
               <div className="sharing">
                 <img src={window.imageUrls.iconFB}></img>
