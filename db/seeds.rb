@@ -45,9 +45,9 @@ ingredients = ingredients.split(", ")
     img_url: img_url[i-1],
     difficulty: difficulty[rand(2)],
     ingredients: ingredients.shuffle[0..5].join(", "),
-    baking_min: 20 + rand(40),
-    preparation_min: 10 + rand(50),
-    resting_min: rand(30),
+    baking_min: 10 + rand(30),
+    preparation_min: 10 + rand(30),
+    resting_min: rand(15),
     text: "Step 1/7
       Lorem ipsum dolor sit amet, mauris nunc lacus, wisi ipsum convallis odio fusce pellentesque, sed lobortis, maecenas sed auctor. Ornare nihil cras ipsum ultrices metus amet. Venenatis velit, ipsum augue, sed in integer, magnis lectus in ante orci eget, montes eu urna mauris. Sit magnis at molestie at egestas donec, sem maecenas pede sollicitudin bibendum porta sed, facilisis commodo et. Vestibulum maecenas leo nunc mi ac, donec sollicitudin pellentesque sodales, consectetuer fusce nec phasellus, praesent ac magna, sed quisque risus porttitor pede imperdiet est. Maecenas malesuada consectetuer velit dolor aliquam et, platea erat turpis, vitae quis, justo sem donec rhoncus maecenas facilisis. Nunc mattis perferendis, eleifend sed ut netus mi consequat, ante pellentesque egestas arcu.
       Step2/7
