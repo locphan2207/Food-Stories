@@ -1,6 +1,6 @@
 # Food Stories
 
-<img style="margin-left: 50%;transform:translateX(-50%)" src="photos/screenshot:gifs/homepage.png" width=300 />
+<img style="margin-left: 50%;transform:translateX(-50%)" src="photos/screenshot:gifs/homepage.png"/>
 
 [Food Stories](https://food-stories.herokuapp.com/) is a full-stack web application that is inspired by [Kitchen Stories](https://kitchenstories.io/en)). The project is built entirely on Ruby on Rails backend and with React-Redux frontend.   
 
