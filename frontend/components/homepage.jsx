@@ -12,7 +12,7 @@ class Homepage extends React.Component {
   }
 
   componentWillUnmount() {
-    document.getElementById('app').scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
+    document.getElementById('app').scrollIntoView({behavior: "smooth"});
   }
 
   getDuration(recipe) {

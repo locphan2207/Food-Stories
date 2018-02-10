@@ -19,7 +19,9 @@ The user authentication is built with BCrypt ruby gem technology. Therefore, the
 Food stories can display a wide list of recipes created by users. User can easily navigate through the list and view the one they are interested. Once they click on the list item, they will be provided with all information about the recipe such as difficulty, cooking time, ingredients and the cooking steps.   
 Beside that, users can upload their food photos through the comment sections of the post. They also can like the post, and the recipe will be saved in the user's **Likes** page.
 
-
+![recipe](photos/screenshot:gifs/recipe.gif)
 
 ### Stories
 This is another type of posts that user can enjoy reading while exploring the website. Stories are supposed to be written by contributors. Therefore, users cannot create their own story post. However, like and comment functions are also available here.
+
+![story](photos/screenshot:gifs/story.png)
