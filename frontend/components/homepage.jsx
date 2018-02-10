@@ -12,7 +12,7 @@ class Homepage extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log("homepage ummounting");
+    document.getElementById('app').scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
   }
 
   getDuration(recipe) {

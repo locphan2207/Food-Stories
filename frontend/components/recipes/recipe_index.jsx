@@ -6,9 +6,13 @@ class RecipeIndex extends React.Component {
     this.props.fetchRecipes();
   }
 
+  componentWillUnmount() {
+    document.getElementById('app').scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
+  }
+
   render() {
     const {recipes} = this.props;
-    if (recipes.length < 1) return (<div>Sorry mate! No result found........</div>)
+    if (recipes.length < 1) return (<div>Sorry! No result found...</div>);
     return (
       <div>
         <p className="item-title">Recipes</p>

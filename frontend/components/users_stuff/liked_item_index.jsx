@@ -11,11 +11,9 @@ class LikedItemIndex extends React.Component {
       .then(() => this.props.fetchLikedStories(this.props.currentUser.likedStoryIds));
   }
 
-  // componentWillUnmount() {
-  //   console.log("likes clearing slices");
-  //   this.props.clearRecipes();
-  //   this.props.clearStories();
-  // }
+  componentWillUnmount() {
+    document.getElementById('app').scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
+  }
 
   render() {
     console.log(this.props);
