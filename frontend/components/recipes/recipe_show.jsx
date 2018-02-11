@@ -18,10 +18,8 @@ class RecipeShow extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('props changing');
     if (this.props.match.params.recipeId !== nextProps.match.params.recipeId) {
       document.getElementById('app').scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
-      console.log('set to false');
       this.canvasLoaded =  false;
       this.props.fetchRecipe(nextProps.match.params.recipeId);
     }
@@ -31,11 +29,9 @@ class RecipeShow extends React.Component {
     if (this.props.recipe && this.props.recipe.ingredients) {
       const {preparation_min, baking_min, resting_min} = this.props.recipe;
       // We need canvasLoaded to only render canvas ONCE after first load
-      console.log('show did update');
       if (!this.canvasLoaded) {
         Canvas.drawCanvas(preparation_min, baking_min, resting_min);
         this.canvasLoaded =  true;
-        console.log('canvas drawing');
       }
     }
   }
@@ -70,37 +66,7 @@ class RecipeShow extends React.Component {
       $header2.removeClass("sticky-header");
     }
   }
-
-  // textHandling() {
-  //   let textCopy = this.props.recipe.text; //copy text
-  //   let textArray = [];
-  //   // find "Step" and save to title:
-  //   let startIndexOfStep = textCopy.indexOf('Step');
-  //
-  //   while (startIndexOfStep !== -1) {
-  //     const endIndexOfStep = startIndexOfStep + 8;
-  //     const stepTitle = textCopy.slice(startIndexOfStep, endIndexOfStep); //save title
-  //     textCopy = textCopy.slice(endIndexOfStep, textCopy.length); //remove saved title
-  //
-  //     let stepBody;
-  //     startIndexOfStep = textCopy.indexOf('Step'); //search for next "Step"
-  //     if (startIndexOfStep < 0) {
-  //       stepBody = textCopy.slice(0, textCopy.length);
-  //     }
-  //     else {
-  //       stepBody = textCopy.slice(0, startIndexOfStep);
-  //     }
-  //
-  //     textArray.push( //save as react element
-  //       <div className="step">
-  //         <p className="step-title">{stepTitle}</p>
-  //         <p className="step-body">{stepBody}</p>
-  //       </div>
-  //     );
-  //   }
-  //   return textArray;
-  // }
-
+  
   jumpTo(id, e) {
     const dest = document.getElementById(id);
     dest.scrollIntoView({behavior: "smooth", block: "start"});

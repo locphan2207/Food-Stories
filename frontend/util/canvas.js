@@ -34,7 +34,6 @@ const drawMinute = (min, context) => {
   const percentage = min/60;
   const radian = 2 * Math.PI * percentage;
   context.beginPath();
-
   //Canvas arc note:
   //It draws clockwise as default.
   //The starting radian is based on the drawing direction.

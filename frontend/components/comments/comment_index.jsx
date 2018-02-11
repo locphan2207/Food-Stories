@@ -130,7 +130,6 @@ class CommentIndex extends React.Component {
   }
 
   iconHover(e, imgUrl) {
-    console.log("hovering");
     e.target.src = imgUrl;
   }
 
