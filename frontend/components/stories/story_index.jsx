@@ -7,9 +7,9 @@ class StoryIndex extends React.Component {
   }
 
   componentWillUnmount() {
-    document.getElementById('app').scrollIntoView({behavior: "smooth"});
+    document.getElementById('app').scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
   }
-  
+
   render() {
     const {stories} = this.props;
     return (
