@@ -53,9 +53,10 @@ class RecipeForm extends React.Component {
     }
 
     return (
-      <div>
-        <p>New Recipe</p>
-        <form onSubmit={e => this.handleSubmit(e)}>
+      <div className="recipe-form-container">
+        <p>{this.props.formType === 'new' ? 'Create New Recipe' : 'Edit the Recipe'}</p>
+        <form className='recipe-form'
+          onSubmit={e => this.handleSubmit(e)}>
           <label>Title:
             <input onChange={e => this.handleChange(e, 'title')}
               type="text" value={this.state.title} />
@@ -88,10 +89,11 @@ class RecipeForm extends React.Component {
               type="number" value={this.state.resting_min} />
           </label>
 
-          <p>Ingredients</p>
-          <input ref="ingreName" type="text" placeholder="Ingredient"/>
-          <input ref="ingreQuan" type="text" placeholder="Quantity"/>
-          <button onClick={e => this.addIngre(e)}>Add ingredient</button>
+          <label>Ingredients
+            <input ref="ingreName" type="text" placeholder="Ingredient"/>
+            <input ref="ingreQuan" type="text" placeholder="Quantity"/>
+            <button onClick={e => this.addIngre(e)}>Add ingredient</button>
+          </label>
 
           <input type="submit" value="Create" />
         </form>

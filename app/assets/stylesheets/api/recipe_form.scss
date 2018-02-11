@@ -1,0 +1,61 @@
+.recipe-form-container {
+  margin: 50px;
+  border: 1px solid #8e8e8e;
+}
+
+.recipe-form-container>p {
+  color: #0388ce;
+  font-family: "Conv_Brandon_reg";
+  font-size: 200%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.recipe-form {
+  padding: 30px;
+  margin: 0 auto;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  font-size: 120%;
+  text-align: center;
+}
+
+.recipe-form>label>select {
+  background: #f2f2f2;
+  border-radius: 4px;
+  height: 30px;
+  width: 105%;
+  color: #707070;
+  font-size: 100%;
+  border: none;
+  padding: 10px;
+}
+
+.recipe-form>label>input {
+  background: #f2f2f2;
+  border-radius: 4px;
+  padding: 10px;
+  border: none;
+}
+
+.recipe-form>label>button {
+  border: 1px solid #0388ce;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 90%;
+  padding: 10px;
+  outline: none;
+}
+
+.recipe-form>input {
+  background: #0388ce;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 120%;
+  padding: 10px;
+  outline: none;
+  margin-top: 30px;
+}
