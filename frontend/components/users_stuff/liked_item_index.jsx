@@ -6,7 +6,6 @@ import SmallImage from '../display/small_image';
 
 class LikedItemIndex extends React.Component {
   componentDidMount() {
-    console.log("likes did mounting");
     this.props.fetchLikedRecipes(this.props.currentUser.likedRecipeIds)
       .then(() => this.props.fetchLikedStories(this.props.currentUser.likedStoryIds));
   }
@@ -16,7 +15,6 @@ class LikedItemIndex extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     if (!this.props.currentUser) return (
       <Redirect to="/" />
     );

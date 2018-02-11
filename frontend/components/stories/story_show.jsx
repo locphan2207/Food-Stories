@@ -15,7 +15,6 @@ class StoryShow extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('props changing');
     if (this.props.match.params.storyId !== nextProps.match.params.storyId) {
       document.getElementById('app').scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
       this.props.fetchStory(nextProps.match.params.storyId);
@@ -27,7 +26,6 @@ class StoryShow extends React.Component {
   }
 
   stickyHandling() {
-    // console.log($(window).scrollTop());
     const $header1 = $('#header1');
     if ($(window).scrollTop() >= 522.7272338867188) { // I got this by checking on window console
       $header1.addClass("hidden-header");

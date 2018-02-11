@@ -16,7 +16,6 @@ class CommentIndex extends React.Component {
     const replies = [];
     this.props.comments.forEach(comment => {
       if (comment.parent_comment_id === parentCommentId) {
-        console.log(users[comment.author_id]);
         replies.push(
           <div className="comment-reply-box">
             <div className="comment-container">
@@ -44,7 +43,6 @@ class CommentIndex extends React.Component {
   returnTopLvComment() {
     const {users} = this.props;
     const topLevelComments = [];
-    console.log(this.props.comments);
     this.props.comments.forEach(comment => {
       let replyForm = null;
       if (this.state.replyTargetId === comment.id) {
@@ -164,7 +162,6 @@ class CommentIndex extends React.Component {
   //Use built-in FormData
   submitComment(e, parentCommentId) {
     e.preventDefault();
-    // console.log(this.refs.commentBodyInput);
     if (!this.refs.commentBodyInput || (this.refs.commentBodyInput.value === "" &&
         !this.refs.commentImgInput.files[0])) {
       return;

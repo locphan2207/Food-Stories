@@ -26,9 +26,7 @@ class SuggestionBox extends React.Component {
   }
 
   render() {
-    console.log('suggest loading');
     if (this.props.threeStos.length < 3) return (<div>Loading...</div>);
-    console.log('suggestiong rendering');
     return (
       <div>
         <p className="suggest-sentence">More delicious ideas for you</p>

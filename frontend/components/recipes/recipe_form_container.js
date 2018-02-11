@@ -17,7 +17,6 @@ const convertStringToIngre = (ingreString) => {
 const mapSTP = (state, ownProps) => {
   const recipeIds = Object.keys(state.entities.recipes);
   const latestId = recipeIds[recipeIds.length-1];
-  console.log(latestId);
   let recipe = {
     title: "",
     img_url: "",

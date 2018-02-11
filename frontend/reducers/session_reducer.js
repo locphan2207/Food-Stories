@@ -18,7 +18,6 @@ const sessionReducer = (state = _defaultState, action) => {
     case (RECEIVE_LIKED_RECIPE_ID):
       newState = _.merge({}, state);  //dup
       newState.currentUser.likedRecipeIds.push(parseInt(action.likedRecipeId)); //add new liked rec id
-      console.log(newState);
       return newState;
     case (DELETE_LIKED_RECIPE_ID):
       newState = _.merge({}, state);  //dup
@@ -29,7 +28,6 @@ const sessionReducer = (state = _defaultState, action) => {
           newState.currentUser.likedRecipeIds.push(id);
         }
       });
-      console.log(newState);
       return newState;
     default:
       return state;

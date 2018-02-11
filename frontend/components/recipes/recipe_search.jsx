@@ -56,7 +56,6 @@ class RecipeSearch extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="search-container">
         <form className="search-form" onSubmit={e => this.handleSubmit(e)}>

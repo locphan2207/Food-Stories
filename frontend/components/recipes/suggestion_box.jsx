@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 class SuggestionBox extends React.Component {
   constructor(props) {
     super(props);
-    console.log('creating suggestion');
   }
 
   handleImg() {
@@ -20,9 +19,6 @@ class SuggestionBox extends React.Component {
 
   componentDidMount() {
     this.props.fetchRecipes();
-    // if (!this.props.threeRecs) {
-    //   console.log('suggestion needs call fetchAlls');
-    // }
   }
 
   componentDidUpdate() {
@@ -30,9 +26,7 @@ class SuggestionBox extends React.Component {
   }
 
   render() {
-    console.log('suggest loading');
     if (this.props.threeRecs.length < 3) return (<div>Loading...</div>);
-    console.log('suggestiong rendering');
     return (
       <div>
         <p className="suggest-sentence">More delicious ideas for you</p>

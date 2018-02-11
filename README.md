@@ -2,7 +2,7 @@
 
 [Live Demo](https://food-stories.herokuapp.com/)
 
-<img width="500px" style="margin-left: 50%;transform:translateX(-50%)" src="photos/screenshot:gifs/homepage.png"/>
+<img width="600px" style="margin-left:50%;transform:translateX(-50%)" src="photos/screenshot:gifs/homepage.png"/>
 
 **Food Stories** is a full-stack web application that is inspired by _Kitchen Stories_. The project is built entirely on Ruby on Rails backend and with React-Redux frontend.   
 

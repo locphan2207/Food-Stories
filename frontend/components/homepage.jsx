@@ -6,7 +6,6 @@ import ListHighlight from './display/list_highlight';
 
 class Homepage extends React.Component {
   componentWillMount() {
-    console.log("hompage will mounting");
     this.props.fetchRecipes()
       .then(() => this.props.fetchStories());
   }
@@ -37,10 +36,7 @@ class Homepage extends React.Component {
 
   render() {
     const {stories, recipes} = this.props;
-    console.log(stories);
-    console.log(recipes);
     if (stories.length === 0 || recipes.length === 0) return (<h1>Loading...</h1>);
-    // console.log(stories[stories.length-1]);
     return (
       <div>
         <p className="homepage-title">Today's Story</p>

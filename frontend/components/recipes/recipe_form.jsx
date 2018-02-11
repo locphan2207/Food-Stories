@@ -7,18 +7,6 @@ class RecipeForm extends React.Component {
     this.state = this.props.recipe;
   }
 
-  // convertStringToIngre(ingreString) {
-  //   let ingreHash = {};
-  //   let ingredientPairs = ingreString.split(", "); //split by comma
-  //   ingredientPairs = ingredientPairs.map((row, idx) => {
-  //     //We split the pair by colon, and show add to hash
-  //     const ingreName = row.split(": ")[0];
-  //     const ingreQuan = row.split(": ")[1];
-  //     ingreHash[`${ingreName}`] = ingreQuan;
-  //   });
-  //   return ingreHash;
-  // }
-
   //Add ingredient pair as key-value into state
   addIngre(e) {
     e.preventDefault();
@@ -46,7 +34,6 @@ class RecipeForm extends React.Component {
     let recipe = Object.assign({}, this.state);
     recipe.author_id = this.props.currentUser.id;
     recipe.ingredients = this.convertIngreToString();
-    console.log(recipe);
     this.props.submit(recipe);
   }
 
@@ -59,7 +46,6 @@ class RecipeForm extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     if (!this.props.isLoggedIn) {
       return (
         <Redirect to="/login" />
