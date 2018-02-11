@@ -4,7 +4,7 @@
 
 <img width="500px" style="margin-left: 50%;transform:translateX(-50%)" src="photos/screenshot:gifs/homepage.png"/>
 
-Food Stories is a full-stack web application that is inspired by Kitchen Stories. The project is built entirely on Ruby on Rails backend and with React-Redux frontend.   
+**Food Stories** is a full-stack web application that is inspired by _Kitchen Stories_. The project is built entirely on Ruby on Rails backend and with React-Redux frontend.   
 
 Different from the original web, Food Stories is a single-page web app. It only re-renders components instead of reloading the whole page every time user navigate to different routes.
 
@@ -27,3 +27,8 @@ Beside that, users can upload their food photos through the comment sections of 
 This is another type of posts that user can enjoy reading while exploring the website. Stories are supposed to be written by contributors. Therefore, users cannot create their own story post. However, like and comment functions are also available here.
 
 ![story](photos/screenshot:gifs/story.gif)
+
+### Searching
+This feature is built for better user's experience. They can search with title, difficulty and cooking time.
+
+![search](photos/screenshot:gifs/search.gif)
