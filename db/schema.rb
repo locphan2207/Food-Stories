@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20180209105312) do
     t.datetime "updated_at", null: false
     t.string "image_file_name"
     t.string "image_content_type"
-    t.integer "image_file_size"
+    t.bigint "image_file_size"
     t.datetime "image_updated_at"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20180209105312) do
     t.integer "step_order"
     t.string "image_file_name"
     t.string "image_content_type"
-    t.integer "image_file_size"
+    t.bigint "image_file_size"
     t.datetime "image_updated_at"
   end
 

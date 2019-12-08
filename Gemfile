@@ -33,6 +33,7 @@ gem 'jquery-rails'
 gem 'paperclip'
 gem 'figaro'
 gem 'aws-sdk', '< 3.0'
+gem 'rails_12factor'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
